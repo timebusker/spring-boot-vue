@@ -6,7 +6,13 @@
 
     <groupId>com.timebusker</groupId>
     <artifactId>spring-boot-vue</artifactId>
+    <packaging>pom</packaging>
     <version>1.0.0</version>
+    <modules>
+        <module>spring-boot-vue-model</module>
+        <module>spring-boot-vue-common</module>
+        <module>spring-boot-vue-web-server</module>
+    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -14,5 +20,12 @@
         <version>2.1.3.RELEASE</version>
     </parent>
 
-
+    <dependencies>
+        <!--使用lombok插件简化代码开发-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.6</version>
+        </dependency>
+    </dependencies>
 </project>

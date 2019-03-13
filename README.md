@@ -13,3 +13,50 @@
 
 -----------------
 
+#### [lombok的使用]()
+
+```
+# 安装插件，新增maven插件
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.6</version>
+</dependency>
+
+@Getter/@Setter:     自动生成Getter/Setter方法 
+@NoArgsConstructor:  自动生成无参数构造函数
+@AllArgsConstructor: 自动生成全参数构造函数
+@Data:               自动为所有字段添加@ToString, @EqualsAndHashCode, @Getter方法，为非final字段添加@Setter,和@RequiredArgsConstructor
+@Cleanup:            自动帮我们调用close()方法
+@NonNull:            可以帮助我们避免空指针
+```
+
+#### [使用MapStruct自动映射DTO](https://www.jianshu.com/p/3f20ca1a93b0)
+
+```
+<!--mapStruct依赖-->
+<dependency>
+    <groupId>org.mapstruct</groupId>
+    <artifactId>mapstruct-jdk8</artifactId>
+    <version>1.3.0.Final</version>
+</dependency>
+<dependency>
+    <groupId>org.mapstruct</groupId>
+    <artifactId>mapstruct-processor</artifactId>
+    <version>${org.mapstruct.version}</version>
+    <version>1.3.0.Final</version>
+</dependency>
+```
+
+#### 使用PostgreSQL
+
+```
+# 安装并建库
+CREATE DATABASE "minedb" WITH  OWNER = postgres ENCODING = 'UTF8' CONNECTION LIMIT = -1;
+COMMENT ON DATABASE "spring-boot-vue" IS 'spring-boot-vue实战项目数据库';
+# drop database minedb
+
+# 创建表模式
+create schema spring-boot-vue;
+```
+

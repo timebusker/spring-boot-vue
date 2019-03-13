@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/spring-boot-vue.iml" filepath="$PROJECT_DIR$/spring-boot-vue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-vue-common/spring-boot-vue-common.iml" filepath="$PROJECT_DIR$/spring-boot-vue-common/spring-boot-vue-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-vue-model/spring-boot-vue-model.iml" filepath="$PROJECT_DIR$/spring-boot-vue-model/spring-boot-vue-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-vue-web-server/spring-boot-vue-web-server.iml" filepath="$PROJECT_DIR$/spring-boot-vue-web-server/spring-boot-vue-web-server.iml" />
     </modules>
   </component>
 </project>
