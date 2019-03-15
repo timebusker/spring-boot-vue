@@ -1,7 +1,7 @@
 package com.timebusker.exceptions.handler;
 
 import com.timebusker.exceptions.CommonException;
-import com.timebusker.web.ResponseBean;
+import com.timebusker.common.web.ResponseBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -16,7 +16,7 @@ public class SysMenu implements Serializable {
      * 是否外链
      */
     @Column(name = "is_frame")
-    private Boolean isFrame;
+    private Integer isFrame;
 
     /**
      * 菜单名称
@@ -79,7 +79,7 @@ public class SysMenu implements Serializable {
      *
      * @return is_frame - 是否外链
      */
-    public Boolean getIsFrame() {
+    public Integer getIsFrame() {
         return isFrame;
     }
 
@@ -88,7 +88,7 @@ public class SysMenu implements Serializable {
      *
      * @param isFrame 是否外链
      */
-    public void setIsFrame(Boolean isFrame) {
+    public void setIsFrame(Integer isFrame) {
         this.isFrame = isFrame;
     }
 

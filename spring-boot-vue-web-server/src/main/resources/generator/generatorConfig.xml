@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <!--加载jdbc配置-->
-    <properties resource="generator/jdbc.properties"/>
+    <properties resource="application-dev.properties"/>
 
     <!--已经POM.XML增加依赖-->
     <!-- 数据库驱动:选择你的本地硬盘上面的数据库驱动包-->
@@ -21,7 +21,7 @@
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <!--继承通用接口类-->
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.timebusker.utils.CommonMapper"/>
+            <property name="mappers" value="com.timebusker.common.mybatis.CommonMapper"/>
         </plugin>
 
         <commentGenerator>
@@ -35,10 +35,10 @@
         </commentGenerator>
 
         <!--配置数据库连接-->
-        <jdbcConnection driverClass="${datasource.driver-class-name}"
-                        connectionURL="${datasource.url}"
-                        userId="${datasource.username}"
-                        password="${datasource.password}">
+        <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
+                        connectionURL="${spring.datasource.url}"
+                        userId="${spring.datasource.username}"
+                        password="${spring.datasource.password}">
         </jdbcConnection>
 
         <!--java数据类型解析定义-->

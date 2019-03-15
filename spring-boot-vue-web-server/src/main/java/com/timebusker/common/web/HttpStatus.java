@@ -1,5 +1,10 @@
-package com.timebusker.web;
+package com.timebusker.common.web;
 
+/**
+ * @DESC:HttpStatus:http状态码
+ * @author:timebusker
+ * @date:2019/3/15
+ */
 public interface HttpStatus {
     int SC_CONTINUE = 100;
     int SC_SWITCHING_PROTOCOLS = 101;

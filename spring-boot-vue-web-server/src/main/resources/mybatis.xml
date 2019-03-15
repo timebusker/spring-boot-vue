@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+        <!--mybatis日志输出控制：STDOUT_LOGGING（控制台输出）、NO_LOGGING(不输出日志)、LOG4J（log4j输出）、SLF4J(slf4j输出)、jdk输出、apache common输出-->
+        <setting name="logImpl" value="NO_LOGGING"/>
+    </settings>
+</configuration>

@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2019-03-14.22:50:39.424</IntrospectionTimestamp>
-      <IntrospectionStateNumber>563</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2019-03-15.15:57:32.780</IntrospectionTimestamp>
+      <IntrospectionStateNumber>642</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -30,80 +30,351 @@
       <ObjectId>12113</ObjectId>
     </schema>
     <table id="9" parent="3" name="sys_menu">
-      <ObjectId>16443</ObjectId>
-      <StateNumber>563</StateNumber>
+      <ObjectId>16514</ObjectId>
+      <StateNumber>601</StateNumber>
     </table>
-    <column id="10" parent="9" name="id">
+    <table id="10" parent="3" name="sys_permission">
+      <ObjectId>16526</ObjectId>
+      <StateNumber>612</StateNumber>
+    </table>
+    <table id="11" parent="3" name="sys_role">
+      <ObjectId>16534</ObjectId>
+      <StateNumber>618</StateNumber>
+    </table>
+    <table id="12" parent="3" name="sys_roles_menus">
+      <ObjectId>16560</ObjectId>
+      <StateNumber>634</StateNumber>
+    </table>
+    <table id="13" parent="3" name="sys_roles_permissions">
+      <ObjectId>16565</ObjectId>
+      <StateNumber>637</StateNumber>
+    </table>
+    <table id="14" parent="3" name="sys_user">
+      <ObjectId>16542</ObjectId>
+      <StateNumber>623</StateNumber>
+    </table>
+    <table id="15" parent="3" name="sys_users_roles">
+      <ObjectId>16570</ObjectId>
+      <StateNumber>640</StateNumber>
+    </table>
+    <column id="16" parent="9" name="id">
       <Position>1</Position>
       <Comment>主键ID</Comment>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>561</StateNumber>
+      <StateNumber>601</StateNumber>
     </column>
-    <column id="11" parent="9" name="is_frame">
+    <column id="17" parent="9" name="is_frame">
       <Position>2</Position>
       <Comment>是否外链</Comment>
-      <DataType>bit|0</DataType>
-      <StateNumber>561</StateNumber>
-      <DefaultExpression>NULL::&quot;bit&quot;</DefaultExpression>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>601</StateNumber>
+      <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="12" parent="9" name="name">
+    <column id="18" parent="9" name="name">
       <Position>3</Position>
       <Comment>菜单名称</Comment>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>561</StateNumber>
-      <DefaultExpression>NULL::character varying</DefaultExpression>
+      <NotNull>1</NotNull>
+      <StateNumber>601</StateNumber>
     </column>
-    <column id="13" parent="9" name="component">
+    <column id="19" parent="9" name="component">
       <Position>4</Position>
       <Comment>组件</Comment>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>561</StateNumber>
+      <StateNumber>601</StateNumber>
       <DefaultExpression>NULL::character varying</DefaultExpression>
     </column>
-    <column id="14" parent="9" name="pid">
+    <column id="20" parent="9" name="pid">
       <Position>5</Position>
       <Comment>上级菜单ID</Comment>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>561</StateNumber>
+      <StateNumber>601</StateNumber>
     </column>
-    <column id="15" parent="9" name="sort">
+    <column id="21" parent="9" name="sort">
       <Position>6</Position>
       <Comment>排序</Comment>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>561</StateNumber>
+      <StateNumber>601</StateNumber>
     </column>
-    <column id="16" parent="9" name="icon">
+    <column id="22" parent="9" name="icon">
       <Position>7</Position>
       <Comment>图标</Comment>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>561</StateNumber>
+      <StateNumber>601</StateNumber>
       <DefaultExpression>NULL::character varying</DefaultExpression>
     </column>
-    <column id="17" parent="9" name="url">
+    <column id="23" parent="9" name="url">
       <Position>8</Position>
       <Comment>链接地址</Comment>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>561</StateNumber>
+      <StateNumber>601</StateNumber>
       <DefaultExpression>NULL::character varying</DefaultExpression>
     </column>
-    <column id="18" parent="9" name="create_time">
+    <column id="24" parent="9" name="create_time">
       <Position>9</Position>
       <Comment>创建日期</Comment>
       <DataType>timestamp with time zone|0</DataType>
-      <StateNumber>561</StateNumber>
+      <StateNumber>601</StateNumber>
     </column>
-    <index id="19" parent="9" name="tb_sys_menu_pkey">
-      <ObjectId>16454</ObjectId>
+    <index id="25" parent="9" name="sys_menu_pkey">
+      <ObjectId>16524</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="20" parent="9" name="tb_sys_menu_pkey">
-      <ObjectId>16455</ObjectId>
+    <key id="26" parent="9" name="sys_menu_pkey">
+      <ObjectId>16525</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>tb_sys_menu_pkey</UnderlyingIndexName>
+      <UnderlyingIndexName>sys_menu_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="27" parent="10" name="id">
+      <Position>1</Position>
+      <Comment>id主键</Comment>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>612</StateNumber>
+    </column>
+    <column id="28" parent="10" name="alias">
+      <Position>2</Position>
+      <Comment>别名</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>612</StateNumber>
+    </column>
+    <column id="29" parent="10" name="name">
+      <Position>3</Position>
+      <Comment>名称</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>612</StateNumber>
+    </column>
+    <column id="30" parent="10" name="pid">
+      <Position>4</Position>
+      <Comment>上级id主键</Comment>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>612</StateNumber>
+    </column>
+    <column id="31" parent="10" name="create_time">
+      <Position>5</Position>
+      <Comment>创建时间</Comment>
+      <DataType>timestamp with time zone|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>612</StateNumber>
+    </column>
+    <index id="32" parent="10" name="sys_permission_pkey">
+      <ObjectId>16532</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="33" parent="10" name="sys_permission_pkey">
+      <ObjectId>16533</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>sys_permission_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="34" parent="11" name="id">
+      <Position>1</Position>
+      <Comment>id主键</Comment>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>618</StateNumber>
+    </column>
+    <column id="35" parent="11" name="name">
+      <Position>2</Position>
+      <Comment>角色名称</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>618</StateNumber>
+    </column>
+    <column id="36" parent="11" name="remark">
+      <Position>3</Position>
+      <Comment>备注</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>618</StateNumber>
+    </column>
+    <column id="37" parent="11" name="create_time">
+      <Position>4</Position>
+      <Comment>创建时间</Comment>
+      <DataType>timestamp with time zone|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>618</StateNumber>
+    </column>
+    <index id="38" parent="11" name="sys_role_pkey">
+      <ObjectId>16540</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="39" parent="11" name="sys_role_pkey">
+      <ObjectId>16541</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>sys_role_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="40" parent="12" name="role_id">
+      <Position>1</Position>
+      <Comment>角色ID</Comment>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>634</StateNumber>
+    </column>
+    <column id="41" parent="12" name="menu_id">
+      <Position>2</Position>
+      <Comment>菜单id</Comment>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>634</StateNumber>
+    </column>
+    <index id="42" parent="12" name="sys_roles_menus_pkey">
+      <ObjectId>16563</ObjectId>
+      <ColNames>menu_id
+role_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="43" parent="12" name="sys_roles_menus_pkey">
+      <ObjectId>16564</ObjectId>
+      <ColNames>menu_id
+role_id</ColNames>
+      <UnderlyingIndexName>sys_roles_menus_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="44" parent="13" name="role_id">
+      <Position>1</Position>
+      <Comment>角色ID</Comment>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>637</StateNumber>
+    </column>
+    <column id="45" parent="13" name="permission_id">
+      <Position>2</Position>
+      <Comment>权限id</Comment>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>637</StateNumber>
+    </column>
+    <index id="46" parent="13" name="sys_roles_permissions_pkey">
+      <ObjectId>16568</ObjectId>
+      <ColNames>role_id
+permission_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="47" parent="13" name="sys_roles_permissions_pkey">
+      <ObjectId>16569</ObjectId>
+      <ColNames>role_id
+permission_id</ColNames>
+      <UnderlyingIndexName>sys_roles_permissions_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="48" parent="14" name="id">
+      <Position>1</Position>
+      <Comment>id主键</Comment>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>623</StateNumber>
+    </column>
+    <column id="49" parent="14" name="email">
+      <Position>2</Position>
+      <Comment>邮件地址</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>623</StateNumber>
+    </column>
+    <column id="50" parent="14" name="status">
+      <Position>3</Position>
+      <Comment>账户状态：1启用、0禁用</Comment>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>623</StateNumber>
+      <DefaultExpression>1</DefaultExpression>
+    </column>
+    <column id="51" parent="14" name="password">
+      <Position>4</Position>
+      <Comment>密码</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>623</StateNumber>
+    </column>
+    <column id="52" parent="14" name="username">
+      <Position>5</Position>
+      <Comment>用户/登录名</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>623</StateNumber>
+    </column>
+    <column id="53" parent="14" name="last_password_reset_time">
+      <Position>6</Position>
+      <Comment>最后修改密码的日期</Comment>
+      <DataType>timestamp with time zone|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>623</StateNumber>
+    </column>
+    <column id="54" parent="14" name="create_time">
+      <Position>7</Position>
+      <Comment>创建时间</Comment>
+      <DataType>timestamp with time zone|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>623</StateNumber>
+    </column>
+    <index id="55" parent="14" name="sys_user_pkey">
+      <ObjectId>16549</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="56" parent="14" name="sys_user_email">
+      <ObjectId>16551</ObjectId>
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="57" parent="14" name="sys_user_username">
+      <ObjectId>16553</ObjectId>
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="58" parent="14" name="sys_user_pkey">
+      <ObjectId>16550</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>sys_user_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="59" parent="14" name="sys_user_email">
+      <ObjectId>16552</ObjectId>
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>sys_user_email</UnderlyingIndexName>
+    </key>
+    <key id="60" parent="14" name="sys_user_username">
+      <ObjectId>16554</ObjectId>
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>sys_user_username</UnderlyingIndexName>
+    </key>
+    <column id="61" parent="15" name="user_id">
+      <Position>1</Position>
+      <Comment>用户id</Comment>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>640</StateNumber>
+    </column>
+    <column id="62" parent="15" name="role_id">
+      <Position>2</Position>
+      <Comment>角色id</Comment>
+      <DataType>bigint|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>640</StateNumber>
+    </column>
+    <index id="63" parent="15" name="sys_users_roles_pkey">
+      <ObjectId>16573</ObjectId>
+      <ColNames>user_id
+role_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="64" parent="15" name="sys_users_roles_pkey">
+      <ObjectId>16574</ObjectId>
+      <ColNames>user_id
+role_id</ColNames>
+      <UnderlyingIndexName>sys_users_roles_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
   </database-model>

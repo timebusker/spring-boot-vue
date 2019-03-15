@@ -1,7 +1,7 @@
 package com.timebusker.exceptions;
 
 /**
- * @DESC:VueException:自定义异常类
+ * @DESC:VueException:自定义异常封装类
  * @author:timebusker
  * @date:2019/3/13
  */

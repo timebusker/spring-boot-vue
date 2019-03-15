@@ -1,4 +1,4 @@
-package com.timebusker.utils;
+package com.timebusker.common.mybatis;
 
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;

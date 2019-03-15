@@ -1,4 +1,4 @@
-package com.timebusker.web;
+package com.timebusker.common.web;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public class ResponseBean extends HashMap<String, Object> implements Serializabl
     }
 
     public static ResponseBean error() {
-        return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常，请联系管理员");
+        return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常，请联系管理员！");
     }
 
     public static ResponseBean error(String msg) {
