@@ -31,7 +31,7 @@
 @NonNull:            可以帮助我们避免空指针
 ```
 
-#### [使用MapStruct自动映射DTO](https://www.jianshu.com/p/3f20ca1a93b0)
+#### [通用Mapper快速使用](https://blog.csdn.net/isea533/article/details/83045335)
 
 ```
 <!--mapStruct依赖-->
@@ -60,3 +60,4 @@ COMMENT ON DATABASE "spring-boot-vue" IS 'spring-boot-vue实战项目数据库';
 create schema spring-boot-vue;
 ```
 
+#### 
