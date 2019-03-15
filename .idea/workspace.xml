@@ -2,51 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de12f0e6-5684-413f-852e-a15563d9c5d3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_spring_boot_starter_1_1_14.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_31.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_joda_2_9_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_10_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_freemarker_freemarker_2_3_28.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_freemarker_2_1_3_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_1_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/ApplicationStarter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/common/filter/HTMLFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/common/filter/XssFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/common/filter/XssHttpServletRequestWrapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/common/mybatis/BitTypeHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/conf/FilterConfig.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/service/AbstractBaseService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/utils/SequenceIdUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/resources/application-dev.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/resources/application-prod.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/resources/application.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/resources/logback-spring.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/resources/mybatis.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/test/java/com/timebusker/ApplicationTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/filter/WebStaticFileFilter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/mapper/SysMenuMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/model/SysMenu.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/resources/generator/jdbc.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/resources/mapper/SysMenuMapper.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/591c20fa-201b-40c8-9920-f41b6bdc3353/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/591c20fa-201b-40c8-9920-f41b6bdc3353/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/591c20fa-201b-40c8-9920-f41b6bdc3353/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/591c20fa-201b-40c8-9920-f41b6bdc3353/_metadata_/metadata.values.at" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/591c20fa-201b-40c8-9920-f41b6bdc3353.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/591c20fa-201b-40c8-9920-f41b6bdc3353.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web/src/assets/styles/border.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web/src/assets/styles/reset.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web/src/components/home.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spring-boot-vue-web/src/components/login.vue" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/spring-boot-vue-web/src/components/HelloWorld.vue" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/spring-boot-vue.sql" afterPath="$PROJECT_DIR$/doc/spring-boot-vue.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/pom.xml" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/spring-boot-vue-web-server.iml" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/spring-boot-vue-web-server.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/exceptions/CommonException.java" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/exceptions/CommonException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/exceptions/handler/GlobalExceptionHandler.java" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/exceptions/handler/GlobalExceptionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/utils/DateUtil.java" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/utils/DateUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/resources/generator/generatorConfig.xml" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/resources/generator/generatorConfig.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue.iml" afterPath="$PROJECT_DIR$/spring-boot-vue.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/filter/SQLFilter.java" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/common/filter/SQLFilter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/utils/CommonMapper.java" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/common/mybatis/CommonMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/web/HttpStatus.java" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/common/web/HttpStatus.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/web/ResponseBean.java" afterPath="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/common/web/ResponseBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue-web/README.md" afterPath="$PROJECT_DIR$/spring-boot-vue-web/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue-web/build/webpack.base.conf.js" afterPath="$PROJECT_DIR$/spring-boot-vue-web/build/webpack.base.conf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue-web/config/index.js" afterPath="$PROJECT_DIR$/spring-boot-vue-web/config/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue-web/index.html" afterPath="$PROJECT_DIR$/spring-boot-vue-web/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue-web/src/main.js" afterPath="$PROJECT_DIR$/spring-boot-vue-web/src/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spring-boot-vue-web/src/router/index.js" afterPath="$PROJECT_DIR$/spring-boot-vue-web/src/router/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -103,13 +72,65 @@
     <favorites_list name="spring-boot-vue" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/src/router/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/src/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="webpack.base.conf.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/build/webpack.base.conf.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/src/components/login.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/src/components/home.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="Vue File" />
       </list>
     </option>
   </component>
@@ -127,13 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/spring-boot-vue-model/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/spring-boot-vue-model/src/main/resources/application-production.properties" />
-        <option value="$PROJECT_DIR$/spring-boot-vue-model/src/main/resources/application-dev.properties" />
-        <option value="$PROJECT_DIR$/spring-boot-vue-model/pom.xml" />
-        <option value="$PROJECT_DIR$/spring-boot-vue-model/src/main/java/com/timebusker/utils/CommonMapper.java" />
-        <option value="$PROJECT_DIR$/spring-boot-vue-model/src/main/resources/generator/jdbc.properties" />
-        <option value="$PROJECT_DIR$/spring-boot-vue-model/src/main/resources/mapper/TbSysMenuMapper.xml" />
         <option value="$PROJECT_DIR$/spring-boot-vue-model/src/main/resources/generator/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/spring-boot-vue-model/src/test/java/com/timebusker/ConnectionPools.java" />
         <option value="$PROJECT_DIR$/spring-boot-vue-model/src/main/java/com/timebusker/utils/SpringContextUtils.java" />
@@ -178,11 +192,24 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/591c20fa-201b-40c8-9920-f41b6bdc3353/console.sql" />
         <option value="$PROJECT_DIR$/doc/spring-boot-vue.sql" />
         <option value="$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/service/AbstractBaseService.java" />
+        <option value="$PROJECT_DIR$/spring-boot-vue-web/config/index.js" />
+        <option value="$PROJECT_DIR$/spring-boot-vue-web/index.html" />
+        <option value="$PROJECT_DIR$/spring-boot-vue-web/src/components/HelloWorld.vue" />
+        <option value="$PROJECT_DIR$/spring-boot-vue-web/src/components/home.vue" />
+        <option value="$PROJECT_DIR$/spring-boot-vue-web/src/router/index.js" />
+        <option value="$PROJECT_DIR$/spring-boot-vue-web/build/webpack.base.conf.js" />
+        <option value="$PROJECT_DIR$/spring-boot-vue-web/src/main.js" />
       </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>true</other-services-enabled>
+  </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
@@ -343,6 +370,90 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-boot-vue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-boot-vue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-boot-vue-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-boot-vue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-boot-vue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-boot-vue-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-boot-vue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-boot-vue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-boot-vue-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="styles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-boot-vue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-boot-vue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spring-boot-vue-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -351,7 +462,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -359,17 +470,19 @@
     <property name="project.structure.side.proportion" value="0.30044842" />
     <property name="nodejs_interpreter_path" value="$PROJECT_DIR$/../../node-v10.15.1-win-x64/node" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
+    <property name="JavaScriptPreferStrict" value="false" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.timebusker.utils" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WorkSpaces\ideaProjectes\spring-boot-vue\spring-boot-vue-web\src\assets\styles" />
       <recent name="D:\WorkSpaces\ideaProjectes\spring-boot-vue\spring-boot-vue-web-server\src\main\java\com\timebusker\common\filter" />
       <recent name="D:\WorkSpaces\ideaProjectes\spring-boot-vue\spring-boot-vue-web-server\src\main\java\com\timebusker\conf" />
       <recent name="D:\WorkSpaces\ideaProjectes\spring-boot-vue\spring-boot-vue-web-server\src\main\java\com\timebusker" />
       <recent name="D:\WorkSpaces\ideaProjectes\spring-boot-vue\spring-boot-vue-web-server\src\main\resources" />
-      <recent name="D:\WorkSpaces\ideaProjectes\spring-boot-vue\spring-boot-vue-common\src\main\java\com\timebusker\filter" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1002,7 +1115,7 @@
       <workItem from="1552578958084" duration="638000" />
       <workItem from="1552611905293" duration="13843000" />
       <workItem from="1552631207494" duration="534000" />
-      <workItem from="1552631902502" duration="4491000" />
+      <workItem from="1552631902502" duration="8118000" />
     </task>
     <servers />
   </component>
@@ -1039,7 +1152,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38523000" />
+    <option name="totallyTimeSpent" value="42150000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1051,7 +1164,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1071,8 +1184,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5309829" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52884614" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42841882" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32799146" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30170575" sideWeight="0.4871795" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2249467" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1145,34 +1258,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-common/src/main/java/com/timebusker/web/ResponseBean.java" />
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-common/src/main/java/com/timebusker/web/HttpStatus.java" />
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-common/src/main/java/com/timebusker/exceptions/CommonException.java" />
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-common/src/main/java/com/timebusker/exceptions/handler/GlobalExceptionHandler.java" />
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-common/src/main/java/com/timebusker/filter.java" />
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-model/src/test/java/com/timebusker/ApplicationTest.java" />
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-model/src/test/java/com/timebusker/ConnectionPools.java" />
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-common/src/main/java/com/timebusker/filter/WebStaticFileFilter.java" />
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/filter/WebStaticFileFilter.java" />
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/conf/DruidConfig.java" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/591c20fa-201b-40c8-9920-f41b6bdc3353/console_1.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="20" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web-server/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="71" lean-forward="false" selection-start-line="17" selection-start-column="71" selection-end-line="17" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web-server/src/main/resources/generator/jdbc.properties" />
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/conf/WebMvcConfig.java" />
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/common/web.java" />
-    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web-server/src/main/java/com/timebusker/common/mybayis.java" />
     <entry file="file://$PROJECT_DIR$/spring-boot-vue-web-server/src/main/resources/mapper/SysMenuMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1241,9 +1326,9 @@
         <state relative-caret-position="289">
           <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#ApplicationStarter#0" expanded="true" />
-            <element signature="docComment;method#main#0;class#ApplicationStarter#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="docComment;class#ApplicationStarter#0" expanded="false" />
+            <element signature="docComment;method#main#0;class#ApplicationStarter#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1463,8 +1548,8 @@
         <state relative-caret-position="102">
           <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
           <folding>
-            <element signature="e#1273#1274#0" expanded="true" />
-            <element signature="e#1311#1312#0" expanded="true" />
+            <element signature="e#1273#1274#0" expanded="false" />
+            <element signature="e#1311#1312#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1490,8 +1575,133 @@
         <state relative-caret-position="238">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/src/assets/logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="66" column="25" lean-forward="false" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/dist/static/css/app.30790115300ab27614ce176899523b62.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/dist/static/js/app.b22ce679862c47a75225.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/dist/static/js/manifest.2ae2e69a05c33dfc65f8.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/dist/static/js/vendor.4e6936140256982905ea.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/dist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/src/pages/admin/login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="66" lean-forward="true" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/src/components/HelloWorld.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-66">
+          <caret line="48" column="8" lean-forward="false" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/src/components/home.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/src/components/login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/src/assets/styles/reset.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="41" lean-forward="true" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/build/webpack.base.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-vue-web/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>

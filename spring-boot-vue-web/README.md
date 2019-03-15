@@ -1,21 +1,19 @@
-# spring-boot-vue-web
+### spring-boot-vue项目实战总结
 
-> spring-boot-vue项目实战总结
+> 本项目技术栈基于 ES2015+、vue、vuex、vue-router 、axios 和 element-ui
 
-## Build Setup
+#### 第一天
 
-``` bash
-# install dependencies
-npm install
+```
+# 项目初始化
+# 安装node.js、vue-cli
+# 初始化项目
+vue init webpack spring-boot-vue-web
 
-# serve with hot reload at localhost:8080
-npm run dev
+# idea ESLint 关闭代码检查
+config/index.js --> useEslint: false,
 
-# build for production with minification
-npm run build
+# 常用样式引用
 
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
