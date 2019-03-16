@@ -6,16 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-boot-vue-generator" />
         <module name="spring-boot-vue-web-server" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
-      <module name="spring-boot-vue" target="1.8" />
-      <module name="spring-boot-vue-common" target="1.8" />
-      <module name="spring-boot-vue-generator" target="1.8" />
-      <module name="spring-boot-vue-model" target="1.8" />
-      <module name="spring-boot-vue-web-server" target="1.8" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8" />
   </component>
 </project>
