@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container class="container">
     <el-header class="header">
       这是头部区
     </el-header>
@@ -22,14 +22,24 @@
 </script>
 
 <style lang="stylus" scoped>
+  .container
+    display flex
+    flex-wrap wrap
   .header
     width 100%
+    height 15%
     background yellow
   .aside
-    width 20%
+    height auto
     background #25a4bb
+    float left
   .main
-    background #333333
+    float right
+    width 70%
+    height auto
+    background #eee
   .footer
-    background black
+    height 10%
+    width 100%
+    background #ccc
 </style>
