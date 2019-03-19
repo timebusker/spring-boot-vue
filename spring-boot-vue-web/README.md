@@ -10,6 +10,11 @@
 # 初始化项目
 vue init webpack spring-boot-vue-web
 
+# 配置任意IP可以访问
+# 修改index.js--> localhost==0.0.0.0
+host: '0.0.0.0', // can be overwritten by process.env.HOST
+port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+
 # 目录结构
 ├── build                      // 构建相关  
 ├── config                     // 配置相关

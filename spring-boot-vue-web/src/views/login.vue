@@ -1,17 +1,19 @@
 <template>
   <el-container class="container">
-    <el-header class="header">
-      这是头部区
-    </el-header>
-    <el-aside class="aside">
+    <div class="aside">
       这是侧边栏
-    </el-aside>
-    <el-main class="main">
-      这是主要内容展示区
-    </el-main>
-    <el-footer class="footer">
-      这时底部
-    </el-footer>
+    </div>
+    <div class="context">
+      <div class="header">
+        这是头部区
+      </div>
+      <div class="main">
+        这是主要内容展示区
+      </div>
+      <div class="footer">
+        这时底部
+      </div>
+    </div>
   </el-container>
 </template>
 
@@ -25,21 +27,27 @@
   .container
     display flex
     flex-wrap wrap
-  .header
+    height 100%
     width 100%
-    height 15%
-    background yellow
   .aside
-    height auto
+    width 15%
+    height 100%
     background #25a4bb
     float left
-  .main
+  .context
+    width 85%
     float right
-    width 70%
-    height auto
+  .header
+    width 100%
+    height 60px
+    background yellow
+  .main
+    width 100%
+    height 0
+    padding-bottom: 53%;
     background #eee
   .footer
-    height 10%
+    height 30px
     width 100%
     background #ccc
 </style>
