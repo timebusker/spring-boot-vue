@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import elementUi from 'element-ui'
+import axios from 'axios'
 
 import 'styles/common/reset.css'
 import 'styles/common/border.css'

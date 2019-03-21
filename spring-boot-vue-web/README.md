@@ -73,5 +73,79 @@ import elementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(elementUi)
+
+# axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端
+# 从浏览器中创建 XMLHttpRequest
+# 从 node.js 发出 http 请求
+# 支持 Promise API
+# 拦截请求和响应
+# 转换请求和响应数据
+# 取消请求
+# 自动转换JSON数据
+# 客户端支持防止 CSRF/XSRF
+npm install axios --save
 ```
 
+#### 第二天
+
+```$xslt
+# 使用axios发送后台交互请求：axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端
+# 从浏览器中创建 XMLHttpRequest
+# 从 node.js 发出 http 请求
+# 支持 Promise API
+# 拦截请求和响应
+# 转换请求和响应数据
+# 取消请求
+# 自动转换JSON数据
+# 客户端支持防止 CSRF/XSRF
+https://www.kancloud.cn/yunye/axios/234845
+
+npm install axios --save
+
+
+# 配置端口转发到后端服务程序进行数据交互
+# 编辑config/index.js配置代理转发
+# 将请求转发到80端口服务器上：/api/login-->http://localhost:80/api/login
+proxyTable: {
+  '/api': {
+    target: 'http://localhost:80'
+  }
+}
+
+# (重写的新路径):/api/login-->http://localhost:80/static/mock/login
+# changeOrigin: true 开启跨域请求
+proxyTable: {
+  '/api': {
+    target: 'http://localhost:8080'
+    changeOrigin: true, 
+	  pathRewrite:{
+	    '^api/':'/static/mock' 
+	  }
+  }
+}
+
+# /api/admin/login --> http://localhost:8033/admin/login
+proxyTable: {
+  '/api': {
+    target: 'http://localhost:8033/',
+    changeOrigin: true,
+    pathRewrite: {
+      '^/api/': '/'
+    }
+  }
+},
+
+
+
+# v-model 与 ：model 之间的区别
+:model是v-bind:model的缩写,<child :model="msg"></child>这种只是将父组件的数据传递到了子组件，并没有实现子组件和父组件数据的双向绑定。
+v-model通常用于input的双向数据绑定 <input v-model="parentMsg">，也可以实现子组件到父组件数据的双向数据绑定
+:model != v-model---> v-show/v-if/v-else 等指令不能缩写，其主要完成数据直接的双向绑定
+
+
+# axios 发post请求，后端接收不到参数的解决方案
+axios会帮我们 转换请求数据和响应数据 以及 自动转换 JSON 数据-->传输对象：源码中会触发生成json串
+Object --> JSON.stringify(Object)
+对于参数封装为对象传输的，后端服务可直接使用对象引用，spring mvc底层会自动帮助完成对象转换
+对于未封装为对象传输的参数，可采用axios 原生AIP封装
+```
