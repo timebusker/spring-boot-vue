@@ -78,14 +78,22 @@
         this.isShowPassword = !this.isShowPassword;
       },
       handleLogin: function () {
+        var _this = this;
         axios.post('/api/admin/login', {
             userName: this.loginForm.userName,
             password: this.loginForm.password,
             checkNum: this.loginForm.checkNum
           }
         ).then(function (response) {
-          // 捕获异常
-          console.log(response.data)
+          // 正常返回值处理
+          console.log(response.data);
+          if (response && response.status == 200) {
+            var data = response.data;
+            var path = _this.$route.query.redirect;
+            // 设置当前路由地址-->指定跳转
+            // _this.$router.replace({path: path == '/' || path == undefined ? '/home' : path});
+            _this.$router.push({path: path == '/' || path == undefined ? '/home' : path});
+          }
         }).catch(function (error) {
           // 捕获异常
           console.log(error)
