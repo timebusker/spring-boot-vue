@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
  * @author:timebusker
  * @date:2019/3/15
  */
-@Service
 public abstract class AbstractBaseService {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());

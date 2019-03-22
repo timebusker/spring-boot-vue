@@ -1,6 +1,6 @@
 <template>
   <el-container class="main">
-    <el-aside class="aside">
+    <el-aside class="aside" style="text-align: left;width: 230px">
       <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
         <el-submenu index="1">
           <template slot="title">
@@ -40,11 +40,11 @@
         </el-submenu>
       </el-menu>
     </el-aside>
-    <el-header class="header">
+    <el-header class="header" style="height: 80px">
     
     </el-header>
     <el-main class="main">
-    
+      <router-view></router-view>
     </el-main>
   </el-container>
 </template>
@@ -67,6 +67,9 @@
     data: function () {
       return {}
     },
+    created: function () {
+      this.$router.push("/home/menu");
+    },
     methods: {
       handleOpen: function (key, keyPath) {
         console.log(key, keyPath);
@@ -88,12 +91,10 @@
     .aside
       background #545c64
       height 100%
-      width 100px
     .header
-      height 80px
-      width calc(100vw - 100px)
+      width calc(100vw - 230px)
       background #25a4bb
     .main
+      width calc(100vw - 230px)
       background #ffffff
-      width calc(100vw - 100px)
 </style>

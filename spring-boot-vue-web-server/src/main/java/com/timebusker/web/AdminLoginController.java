@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class AdminLoginController extends AbstractBaseController {
 
     @RequestMapping(value="/login",method = RequestMethod.POST)
-    public Object login(@RequestBody UserVo vo) {
+    public ResponseBean login(@RequestBody UserVo vo) {
         System.out.println(JSON.toJSONString(vo));
         vo.setCheckNum(vo.getCheckNum() + System.currentTimeMillis());
         vo.setPassword(vo.getPassword() + System.currentTimeMillis());
