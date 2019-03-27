@@ -12,14 +12,11 @@ import java.util.*;
  * @author:timebusker
  * @date:2019/3/22
  */
-@Service
 public interface SysMenuService {
 
     List<SysMenu> getMenusList(Map<String, Object> map);
 
-    boolean AddMenu(SysMenu menu);
-
     boolean deleteMenu(SysMenu menu);
 
-    boolean updateMenu(SysMenu menu);
+    boolean save(SysMenu menu);
 }

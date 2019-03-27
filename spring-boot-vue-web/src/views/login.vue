@@ -38,8 +38,7 @@
 
 <script>
   // 按需引入自定义组件
-  import {isValidUserName} from '@/utils/Validate'
-  import axios from 'axios'
+  import {isValidUserName} from '@/utils/ValidateUtil'
   
   export default {
     name: 'login',
@@ -79,12 +78,7 @@
       },
       handleLogin: function () {
         var _this = this;
-        axios.post('/api/admin/login', {
-            userName: this.loginForm.userName,
-            password: this.loginForm.password,
-            checkNum: this.loginForm.checkNum
-          }
-        ).then(function (response) {
+        _this.postRequest('/api/admin/login',this.loginForm).then(response => {
           // 正常返回值处理
           console.log(response.data);
           if (response && response.status == 200) {

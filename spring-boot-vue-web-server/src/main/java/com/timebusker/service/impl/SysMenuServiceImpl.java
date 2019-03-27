@@ -4,7 +4,10 @@ import com.timebusker.mapper.SysMenuMapper;
 import com.timebusker.model.SysMenu;
 import com.timebusker.service.AbstractBaseService;
 import com.timebusker.service.SysMenuService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.*;
 
@@ -13,6 +16,7 @@ import java.util.*;
  * @author:timebusker
  * @date:2019/3/22
  */
+@Service
 public class SysMenuServiceImpl extends AbstractBaseService implements SysMenuService {
 
     @Autowired
@@ -20,9 +24,10 @@ public class SysMenuServiceImpl extends AbstractBaseService implements SysMenuSe
 
     @Override
     public List<SysMenu> getMenusList(Map<String, Object> map) {
+        HashMap<String, Object> res = new HashMap<>();
         List<SysMenu> list = new ArrayList<>();
         try {
-            list = sysMenuMapper.selectAll();
+            list = sysMenuMapper.queryMenuTree(0l, 0l);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,9 +35,13 @@ public class SysMenuServiceImpl extends AbstractBaseService implements SysMenuSe
     }
 
     @Override
-    public boolean AddMenu(SysMenu menu) {
+    public boolean save(SysMenu menu) {
         try {
-            sysMenuMapper.insert(menu);
+            if (menu.getId() <= 0) {
+                sysMenuMapper.insert(menu);
+            } else {
+                sysMenuMapper.updateByPrimaryKey(menu);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,16 +52,6 @@ public class SysMenuServiceImpl extends AbstractBaseService implements SysMenuSe
     public boolean deleteMenu(SysMenu menu) {
         try {
             sysMenuMapper.delete(menu);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return Boolean.TRUE;
-    }
-
-    @Override
-    public boolean updateMenu(SysMenu menu) {
-        try {
-            sysMenuMapper.updateByPrimaryKey(menu);
         } catch (Exception e) {
             e.printStackTrace();
         }

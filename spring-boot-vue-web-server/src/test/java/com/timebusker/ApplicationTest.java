@@ -1,7 +1,9 @@
 package com.timebusker;
 
+import com.alibaba.fastjson.JSON;
 import com.timebusker.mapper.SysMenuMapper;
 import com.timebusker.model.SysMenu;
+import com.timebusker.utils.SequenceIdUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,20 +24,25 @@ public class ApplicationTest {
     @Autowired
     private SysMenuMapper sysMenuMapper;
 
+    private SequenceIdUtil sequenceId = new SequenceIdUtil(0, 1);
+
     @Test
     public void menuTest() {
         SysMenu menu = new SysMenu();
-        menu.setComponent("11111");
-        menu.setCreateTime(new Date());
-        menu.setIcon("111111");
-        menu.setId(2L);
+        menu.setId(sequenceId.nextId());
         menu.setIsFrame(0);
-        menu.setPid(0l);
-        menu.setSort(1L);
-        menu.setName("测试的");
+        menu.setName("SQL监控");
+        menu.setComponent("SQL监控");
+        menu.setPid(307956714219507712L);
+        menu.setSort(5L);
+        menu.setIcon("");
+        menu.setUrl("/admin/sqles");
+        menu.setCreateTime(new Date());
         sysMenuMapper.insert(menu);
+    }
 
-        SysMenu menu1 = sysMenuMapper.selectByPrimaryKey(2);
-        System.out.println(menu1);
+    @Test
+    public void menuTree() {
+        System.err.println(JSON.toJSONString(sysMenuMapper.queryMenuTree(0l,307956714219507712L)));
     }
 }

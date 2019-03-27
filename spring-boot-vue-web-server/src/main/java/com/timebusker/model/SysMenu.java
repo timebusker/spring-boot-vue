@@ -2,6 +2,7 @@ package com.timebusker.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "sys_menu")
@@ -53,6 +54,16 @@ public class SysMenu implements Serializable {
      */
     @Column(name = "create_time")
     private Date createTime;
+
+    private List<SysMenu> children;
+
+    public List<SysMenu> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<SysMenu> children) {
+        this.children = children;
+    }
 
     private static final long serialVersionUID = 1L;
 

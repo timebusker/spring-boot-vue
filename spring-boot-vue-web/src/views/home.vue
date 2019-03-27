@@ -1,49 +1,19 @@
 <template>
   <el-container class="main">
     <el-aside class="aside" style="text-align: left;width: 230px">
-      <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-        <el-submenu index="1">
+      <el-menu default-active="0-0" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" v-for="(item,index) in list" :key="item.id">
+        <el-submenu :index="index + ''">
           <template slot="title">
             <i class="el-icon-location"></i>
-            <span>导航一</span>
+            <span>{{item.name}}</span>
           </template>
-          <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="1-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="1-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="1-4-1">选项1</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-submenu index="2">
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>导航二</span>
-          </template>
-          <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="2-1">选项1</el-menu-item>
-            <el-menu-item index="2-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="2-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="2-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="2-4-1">选项1</el-menu-item>
-          </el-submenu>
+          <el-menu-item @click="handleMenuClick(sub)" :index="index + '-' + subId" v-for="(sub,subId) in item.children" :key="sub.id">{{sub.name}}</el-menu-item>
         </el-submenu>
       </el-menu>
     </el-aside>
     <el-header class="header" style="height: 80px">
-    
     </el-header>
-    <el-main class="main">
+    <el-main style="padding:0">
       <router-view></router-view>
     </el-main>
   </el-container>
@@ -55,6 +25,7 @@
   import ElMenu from "../../node_modules/element-ui/packages/menu/src/menu";
   import ElHeader from "../../node_modules/element-ui/packages/header/src/main";
   import ElMain from "../../node_modules/element-ui/packages/main/src/main";
+  
   export default {
     components: {
       ElMain,
@@ -65,10 +36,16 @@
     },
     name: 'home',
     data: function () {
-      return {}
+      return {
+        menu: {
+          id: 0,
+          pid: 0
+        },
+        list: {}
+      }
     },
     created: function () {
-      this.$router.push("/home/menu");
+      this.queryMenu();
     },
     methods: {
       handleOpen: function (key, keyPath) {
@@ -76,6 +53,18 @@
       },
       handleClose: function (key, keyPath) {
         console.log(key, keyPath);
+      },
+      queryMenu: function () {
+        var _this = this;
+        this.getRequest("/api/menu/list", _this.menu).then(response => {
+          _this.list = response.data.list;
+        }).catch(error => {
+          console.log(error)
+        });
+      },
+      handleMenuClick: function (item) {
+        console.log(item);
+        this.$router.push("/home/menu");
       }
     }
   }
@@ -83,7 +72,6 @@
 
 <style lang="stylus" scoped>
   .main
-    display flex
     flex-wrap wrap
     background red
     width 100%
@@ -91,10 +79,8 @@
     .aside
       background #545c64
       height 100%
+      float left
     .header
       width calc(100vw - 230px)
       background #25a4bb
-    .main
-      width calc(100vw - 230px)
-      background #ffffff
 </style>

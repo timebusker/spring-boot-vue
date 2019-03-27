@@ -6,6 +6,7 @@ import com.timebusker.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,21 +21,15 @@ public class AdminSysMenuController extends AbstractBaseController {
     @Autowired
     private SysMenuService sysMenuService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public ResponseBean list() {
-        List<SysMenu> list = sysMenuService.getMenusList(null);
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ResponseBean list(HashMap<String,Object> params) {
+        List<SysMenu> list = sysMenuService.getMenusList(params);
         return ResponseBean.ok().put("list", list);
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.PUT)
-    public ResponseBean add(@RequestBody SysMenu menu) {
-        sysMenuService.AddMenu(menu);
-        return ResponseBean.ok();
-    }
-
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseBean update(@RequestBody SysMenu menu) {
-        sysMenuService.updateMenu(menu);
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public ResponseBean save(@RequestBody SysMenu menu) {
+        sysMenuService.save(menu);
         return ResponseBean.ok();
     }
 

@@ -2,10 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import login from '@/views/login'
 import home from '@/views/home'
-import menu from '@/views/menu/index'
+import AdminMenu from '@/views/menu/index'
 
 Vue.use(Router);
 
+//
 export default new Router({
   routes: [
     {
@@ -16,12 +17,14 @@ export default new Router({
     {
       path: '/home',
       name: '主页',
-      component: home
-    },
-    {
-      path: '/home/menu',
-      name: '菜单管理',
-      component: menu
+      component: home,
+      children: [
+        {
+          path: 'menu',
+          name: '菜单管理',
+          component: AdminMenu
+        }
+      ]
     }
   ]
 })

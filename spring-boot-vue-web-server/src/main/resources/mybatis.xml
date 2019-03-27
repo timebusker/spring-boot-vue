@@ -5,6 +5,14 @@
     <settings>
         <setting name="mapUnderscoreToCamelCase" value="true" />
         <!--mybatis日志输出控制：STDOUT_LOGGING（控制台输出）、NO_LOGGING(不输出日志)、LOG4J（log4j输出）、SLF4J(slf4j输出)、jdk输出、apache common输出-->
-        <setting name="logImpl" value="NO_LOGGING"/>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+
+        <!--lazyLoadingEnabled表示是否开启延迟加载，默认为false表示没有开启，true表示开启延迟加载。-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--aggressiveLazyLoading表示延迟加载的时候内容是按照层级来延迟加载还是按照需求来延迟加载-->
+        <!--默认为true表示按照层级来延迟加载,false表示按照需求来延迟加载-->
+        <!--以我们上文查询食物的需求为例，去查询rice表或者noodle表是属于同一级的，但是在我查询到陕西省的时候，这个时候只需要去查询noodle表就可以了，当我查询到广东省的时候再去查询rice表-->
+        <!--但是如果aggressiveLazyLoading为true的话，即使我只查询到陕西省，系统也会去把rice和noodle都查一遍，因为它俩属于同一级-->
+        <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
 </configuration>
