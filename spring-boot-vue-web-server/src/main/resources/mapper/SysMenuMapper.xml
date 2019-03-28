@@ -80,5 +80,6 @@
                 t1.id= #{id}
             </if>
         </where>
+        order by pid,sort
     </select>
 </mapper>

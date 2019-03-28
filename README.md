@@ -60,4 +60,8 @@ COMMENT ON DATABASE "spring-boot-vue" IS 'spring-boot-vue实战项目数据库';
 create schema spring-boot-vue;
 ```
 
-#### 
+#### Mybatis菜单管理查询级缓存使用
+
+```aidl
+
+```

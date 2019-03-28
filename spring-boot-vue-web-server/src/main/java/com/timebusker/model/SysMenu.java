@@ -1,5 +1,8 @@
 package com.timebusker.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -55,6 +58,10 @@ public class SysMenu implements Serializable {
     @Column(name = "create_time")
     private Date createTime;
 
+    /**
+     * 忽略该属性在JPA中映射
+     */
+    @Transient
     private List<SysMenu> children;
 
     public List<SysMenu> getChildren() {

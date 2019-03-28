@@ -6,6 +6,7 @@ import com.timebusker.model.SysMenu;
 import com.timebusker.utils.SequenceIdUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.objectweb.asm.tree.ModuleExportNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -44,5 +45,14 @@ public class ApplicationTest {
     @Test
     public void menuTree() {
         System.err.println(JSON.toJSONString(sysMenuMapper.queryMenuTree(0l,307956714219507712L)));
+    }
+
+    @Test
+    public void menuUpdate(){
+        SysMenu menu = sysMenuMapper.selectByPrimaryKey(307957599674830850L);
+        System.err.println(JSON.toJSONString(menu));
+        menu.setIcon("icon-xitonghuancun1");
+        sysMenuMapper.updateByPrimaryKey(menu);
+        System.err.println(JSON.toJSONString(menu));
     }
 }

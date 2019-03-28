@@ -6,13 +6,15 @@ import {getRequest} from '@/utils/AxiosUtil'
 import {postRequest} from '@/utils/AxiosUtil'
 import {deleteRequest} from '@/utils/AxiosUtil'
 import {putRequest} from '@/utils/AxiosUtil'
-import Base64 from "@/utils/Base64Util"
+import {encode} from "@/utils/Base64Util"
+import {decode} from "@/utils/Base64Util"
 
 import * as filters from './filter' // global filters
 
 import 'styles/common/reset.css'
 import 'styles/common/border.css'
-import 'styles/icon/iconfont.css'
+// 已在index.html中引入
+// import 'styles/icon/iconfont.css'
 import 'element-ui/lib/theme-chalk/index.css'
 
 // 设置全局组件属性，避免每个组件都需要引用
@@ -32,11 +34,12 @@ Object.keys(filters).forEach(key => {
 
 Vue.filter('decodeFilter', function(value) {
   console.log("------------------>",value)
-  return new Base64().decode(value);
+  return decode(value);
 })
 
 Vue.filter('encodeFilter', function(value) {
-  return new Base64().encode(value);
+  console.log("------------------>",value)
+  return encode(value);
 })
 
 new Vue({

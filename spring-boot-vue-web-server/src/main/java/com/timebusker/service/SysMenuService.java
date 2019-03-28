@@ -16,6 +16,8 @@ public interface SysMenuService {
 
     List<SysMenu> getMenusList(Map<String, Object> map);
 
+    SysMenu getMenuById(long id);
+
     boolean deleteMenu(SysMenu menu);
 
     boolean save(SysMenu menu);

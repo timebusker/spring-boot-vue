@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import login from '@/views/login'
 import home from '@/views/home'
 import AdminMenu from '@/views/menu/index'
+import test from '@/views/test'
 
 Vue.use(Router);
 
@@ -25,6 +26,11 @@ export default new Router({
           component: AdminMenu
         }
       ]
+    },
+    {
+      path: '/test',
+      name: '测试',
+      component: test
     }
   ]
 })

@@ -167,8 +167,23 @@ routes: [
   }
 ]
 # 在需要跳转时，设置当前路由地址，实现路由跳转
-// _this.$router.replace({path: path == '/' || path == undefined ? '/home' : path});
+// _this.$router.replace({path: path == '/' || path == undefined ? '/home' : path});（该方式不会向 history 添加新记录）
 _this.$router.push({path: path == '/' || path == undefined ? '/home' : path});
+# this.$router 和 router 使用起来完全一样。我们使用 this.$router 的原因是我们并不想在每个独立需要封装路由的组件中都导入路由
+
+# 申明式
+<router-link :to="..." replace>
+
+# 编程式
+router.replace(location, onComplete?, onAbort?)
+# 路由出口：路由匹配到的组件将渲染在这里(指定位置渲染)
+<router-view></router-view>
+
+# 路由后退：类似 window.history.go(n)
+router.go(n)
+
+
+# 指定对应element-ui版本开发
 
 
 ```

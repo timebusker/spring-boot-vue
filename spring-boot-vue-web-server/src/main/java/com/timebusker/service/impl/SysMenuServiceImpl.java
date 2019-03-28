@@ -40,7 +40,7 @@ public class SysMenuServiceImpl extends AbstractBaseService implements SysMenuSe
             if (menu.getId() <= 0) {
                 sysMenuMapper.insert(menu);
             } else {
-                sysMenuMapper.updateByPrimaryKey(menu);
+                int k = sysMenuMapper.updateByPrimaryKey(menu);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,5 +56,16 @@ public class SysMenuServiceImpl extends AbstractBaseService implements SysMenuSe
             e.printStackTrace();
         }
         return Boolean.TRUE;
+    }
+
+    @Override
+    public SysMenu getMenuById(long id) {
+        SysMenu menu = new SysMenu();
+        try {
+            menu = sysMenuMapper.selectByPrimaryKey(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return menu;
     }
 }

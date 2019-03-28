@@ -1,56 +1,42 @@
 <template>
   <el-container class="container">
-    <el-table :data="list" style="width: 100%" :stripe="true" :highlight-current-row="true">
-      <el-table-column type="expand">
-        <template slot-scope="scope">
-          <!--隐藏内置表头-->
-          <el-table :data="scope.row.children" style="width: 100%;" :show-header="false" :highlight-current-row="true">
-            <el-table-column label="编号" prop="id"></el-table-column>
-            <el-table-column label="名称" prop="name"></el-table-column>
-            <el-table-column label="图标" prop="icon" width="80">
-              <template slot-scope="scope">
-                <span class="iconfont">&{{scope.row.icon | encodeFilter}}</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="Url连接" prop="url"></el-table-column>
-            <el-table-column label="Vue组件" prop="component"></el-table-column>
-            <el-table-column label="排序号" prop="sort" width="80">
-              <template slot-scope="scope">
-                <el-tag>{{scope.row.sort}}</el-tag>
-              </template>
-            </el-table-column>
-            <el-table-column label="创建时间" prop="createTime"></el-table-column>
-            <el-table-column label="编辑">
-              <template slot-scope="scope">
-                <el-button type="warning" icon="el-icon-edit" round size="mini" @click="handleEdit(scope.row)"></el-button>
-                <el-button type="danger" icon="el-icon-delete" round size="mini"></el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </template>
-      </el-table-column>
-      <el-table-column label="编号" prop="id"></el-table-column>
-      <el-table-column label="名称" prop="name"></el-table-column>
-      <el-table-column label="图标" prop="icon" width="80">
-        <template slot-scope="scope">
-          <span class="iconfont">&{{scope.row.icon}}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="Url连接" prop="url"></el-table-column>
-      <el-table-column label="Vue组件" prop="component"></el-table-column>
-      <el-table-column label="排序号" prop="sort" width="80">
-        <template slot-scope="scope">
-          <el-tag>{{scope.row.sort}}</el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column label="创建时间" prop="createTime"></el-table-column>
-      <el-table-column label="编辑">
-        <template slot-scope="scope">
-          <el-button type="warning" icon="el-icon-edit" round size="mini" @click="handleEdit(scope.row)"></el-button>
-          <el-button type="danger" icon="el-icon-delete" round size="mini" @click="handleDelete(scope.row)"></el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+    <el-row style="width: 100%;height: 90px;background: white">
+    
+    </el-row>
+    <el-row style="width: 100%;margin-top: 10px">
+      <el-table :data="list" style="width: 100%" :height="tableHeight" :stripe="true" :highlight-current-row="true" size="small" row-key="id" tooltip-effect="dark">
+        <el-table-column label="编号" prop="id"></el-table-column>
+        <el-table-column label="名称" prop="name"></el-table-column>
+        <el-table-column label="名称" prop="isFrame">
+          <template slot-scope="scope">
+            <el-tag>{{scope.row.isFrame ===0 ? '否' : '是' }}</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column label="图标" prop="icon">
+          <template slot-scope="scope">
+            <span class="iconfont" :class="scope.row.icon"></span>
+          </template>
+        </el-table-column>
+        <el-table-column label="Url连接" prop="url"></el-table-column>
+        <el-table-column label="Vue组件" prop="component"></el-table-column>
+        <el-table-column label="排序号" prop="sort">
+          <template slot-scope="scope">
+            <el-tag>{{scope.row.sort}}</el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column label="创建时间" prop="createTime"></el-table-column>
+        <el-table-column label="编辑">
+          <template slot-scope="scope">
+            <el-button type="primary" icon="el-icon-edit" round size="mini" @click="handleEdit(scope.row)"></el-button>
+            <el-button type="warning" icon="el-icon-delete" round size="mini" @click="handleDelete(scope.row)"></el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="1"
+                     :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400"
+                     style="float: right;margin-bottom: 30px;margin-top: 10px;margin-right: 80px">
+      </el-pagination>
+    </el-row>
     <el-dialog title="编辑菜单" :visible.sync="dialogVisible" width="35%" :before-close="handleClose">
       <el-form ref="menu" :model="menu" label-width="80px">
         <el-form-item label="名称">
@@ -86,6 +72,7 @@
       return {
         menu: {},
         list: [],
+        tableHeight : (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - 252,
         dialogVisible: false
       }
     },
@@ -146,6 +133,12 @@
             });
           });
         })
+      },
+      handleSizeChange :function () {
+      
+      },
+      handleCurrentChange:function () {
+      
       }
     }
   }
@@ -155,5 +148,7 @@
   .container
     width 100%
     height 100%
-    background red
+    display flex
+    flex-wrap wrap
+    background white
 </style>
