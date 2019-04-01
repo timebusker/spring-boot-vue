@@ -34,10 +34,10 @@ public class ApplicationTest {
         menu.setIsFrame(0);
         menu.setName("SQL监控");
         menu.setComponent("SQL监控");
-        menu.setPid(307956714219507712L);
-        menu.setSort(5L);
+        menu.setPid(0L);
+        menu.setSort(310183468862541824l);
         menu.setIcon("");
-        menu.setUrl("/admin/sqles");
+        menu.setUrl("/");
         menu.setCreateTime(new Date());
         sysMenuMapper.insert(menu);
     }
