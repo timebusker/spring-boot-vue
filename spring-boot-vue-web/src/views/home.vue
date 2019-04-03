@@ -13,7 +13,7 @@
     </el-aside>
     <el-header class="header" style="height: 80px">
     </el-header>
-    <el-main style="padding:0">
+    <el-main class="router-view">
       <router-view></router-view>
     </el-main>
   </el-container>
@@ -70,6 +70,7 @@
   }
 </script>
 
+<!-- 严格控制页面布局 ：100vh/100vw:高度/宽度等分100份。类似100%，但可以和像素单位计算-->
 <style lang="stylus" scoped>
   .main
     flex-wrap wrap
@@ -83,4 +84,8 @@
     .header
       width calc(100vw - 230px)
       background #25a4bb
+    .router-view
+      width calc(100vw - 230px)
+      height calc(100vh - 80px)
+      padding 0px
 </style>

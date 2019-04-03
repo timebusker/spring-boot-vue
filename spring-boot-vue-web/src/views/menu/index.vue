@@ -1,7 +1,12 @@
 <template>
   <el-container class="container">
-    <el-row style="width: 100%;height: 90px;background: white">
-    
+    <el-row style="width: 100%;height: 90px;background: grey;">
+      <el-col :span="12" style="padding: 5px 20px;margin-top: 30px;">
+        <el-input placeholder="请输入内容检索！" prefix-icon="el-icon-search"></el-input>
+      </el-col>
+      <el-col :span="3" style="padding: 5px 20px;margin-top: 30px">
+        <el-button size="small" type="primary" round @click="handleEdit(null)">新增菜单</el-button>
+      </el-col>
     </el-row>
     <el-row style="width: 100%;margin-top: 10px">
       <el-table :data="list" style="width: 100%" :height="tableHeight" :stripe="true" :highlight-current-row="true" size="small" row-key="id" tooltip-effect="dark">
@@ -9,7 +14,7 @@
         <el-table-column label="名称" prop="name"></el-table-column>
         <el-table-column label="名称" prop="isFrame">
           <template slot-scope="scope">
-            <el-tag>{{scope.row.isFrame ===0 ? '否' : '是' }}</el-tag>
+            <el-tag>{{scope.row.isFrame === 0 ? '否' : '是' }}</el-tag>
           </template>
         </el-table-column>
         <el-table-column label="图标" prop="icon">
@@ -52,7 +57,11 @@
           <el-input v-model="menu.component" placeholder="Vue组件"></el-input>
         </el-form-item>
         <el-form-item label="排序号">
-          <el-input v-model="menu.sort" placeholder="排序号"></el-input>
+          <el-input-number style="float:left;width:50%" v-model="menu.sort" :step="1" :min="0" :max="999" placeholder="排序号" size="small"></el-input-number>
+        </el-form-item>
+        <el-form-item label="父级菜单">
+          <!-- expand-trigger="hover"-->
+          <el-cascader style="float:left;width:50%" :change-on-select="true" :show-all-levels="false" :options="list" :props="props" @change="handleSelectChange" placeholder="父级菜单"></el-cascader>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -65,15 +74,26 @@
 
 <script>
   import ElButton from "../../../node_modules/element-ui/packages/button/src/button";
+  import ElInput from "../../../node_modules/element-ui/packages/input/src/input";
+  import ElCol from "element-ui/packages/col/src/col";
   export default{
-    components: {ElButton},
+    components: {
+      ElCol,
+      ElInput,
+      ElButton
+    },
     name: 'AdminMenu',
     data: function () {
       return {
         menu: {},
         list: [],
-        tableHeight : (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - 252,
-        dialogVisible: false
+        tableHeight: (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - 252,
+        dialogVisible: false,
+        props: {
+          value: 'id',
+          label: 'name',
+          children: 'children'
+        }
       }
     },
     created: function () {
@@ -89,7 +109,9 @@
         })
       },
       handleEdit: function (item) {
-        this.menu = item
+        if (null !== item) {
+          this.menu = item;
+        }
         this.dialogVisible = true;
       },
       handleClose: function (done) {
@@ -134,10 +156,18 @@
           });
         })
       },
-      handleSizeChange :function () {
+      handleSelectChange: function (value) {
+        var len = value.length;
+        console.log(value, "----->", len, "----->", value[len - 1]);
+        this.menu.pid= parseInt(value[len - 1] + "");
+        console.log(this.menu.pid)
+      },
+      // 分页组件
+      handleSizeChange: function () {
       
       },
-      handleCurrentChange:function () {
+      // 分页组件
+      handleCurrentChange: function () {
       
       }
     }
