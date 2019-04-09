@@ -148,11 +148,21 @@ axios会帮我们 转换请求数据和响应数据 以及 自动转换 JSON 数
 Object --> JSON.stringify(Object)
 对于参数封装为对象传输的，后端服务可直接使用对象引用，spring mvc底层会自动帮助完成对象转换--> 服务端参数使用@RequestBody注解
 对于未封装为对象传输的参数，可采用axios 原生AIP封装
+
+
+// 使用监听器监听数据变化，完成异步数据更新;
+watch: {
+  dialogVisible: function (newVisible, oldVisible) {
+    if (false === newVisible) {
+      this.menu = {};
+    }
+  }
+},
 ```
 
 #### 第三天（使用vue-router开发菜单栏）
 
-```aidl
+```
 # router/index.js文件下设置路由表规则（url-->组件）
 routes: [
   {
@@ -186,4 +196,44 @@ router.go(n)
 # 指定对应element-ui版本开发
 
 
+# vue拦截器
+// register global utility filters.
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
+
+Vue.filter('decodeFilter', function(value) {
+  console.log("------------------>",value)
+  return decode(value);
+})
+
+
+# 动态路由 --> 动态组件加载 --> 侧边栏功能
+# 动态路由设置时，要保证所有路由组件不能为空
+
+之前偷懒，父级菜单设置了组件信息为空，想在前端简单控制一下
+# -- 动态加载组件，虽然侧边栏菜单能加载成功，但是动态路由一直设置失败，导致所有菜单不能跳转
+component(resolve){
+  if (component.length > 0) {
+    // 异步加载
+    require(['@/views' + component + '.vue'], resolve)
+  } else {
+    import('@/views/home')
+  }
+}
+```
+
+
+#### VueX 状态管理模式 -- 数据共享，避免N多个组件件传值共享
+
+采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
+
+```
+# state : 单一状态树，用一个对象就包含了全部的应用层级状态。至此它便作为一个“唯一数据源 (SSOT)”而存在。从 store 实例中读取状态最简单的方法就是在计算属性中返回某个状态。
+
+# Getter ： 
+
+# Mutation ： 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。
+
+# 
 ```

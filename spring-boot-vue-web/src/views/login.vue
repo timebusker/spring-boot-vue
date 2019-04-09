@@ -77,16 +77,15 @@
         this.isShowPassword = !this.isShowPassword;
       },
       handleLogin: function () {
-        var _this = this;
-        _this.postRequest('/api/admin/login',this.loginForm).then(response => {
+        this.postRequest('/api/admin/login',this.loginForm).then(response => {
           // 正常返回值处理
           console.log(response.data);
           if (response && response.status == 200) {
             var data = response.data;
-            var path = _this.$route.query.redirect;
+            var path = this.$route.query.redirect;
             // 设置当前路由地址-->指定跳转
             // _this.$router.replace({path: path == '/' || path == undefined ? '/home' : path});
-            _this.$router.push({path: path == '/' || path == undefined ? '/home' : path});
+            this.$router.push({path: path == '/' || path == undefined ? '/home' : path});
           }
         }).catch(function (error) {
           // 捕获异常

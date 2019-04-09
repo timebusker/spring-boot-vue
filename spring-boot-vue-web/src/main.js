@@ -1,15 +1,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import elementUi from 'element-ui'
-import {getRequest} from '@/utils/AxiosUtil'
-import {postRequest} from '@/utils/AxiosUtil'
-import {deleteRequest} from '@/utils/AxiosUtil'
-import {putRequest} from '@/utils/AxiosUtil'
-import {encode} from "@/utils/Base64Util"
-import {decode} from "@/utils/Base64Util"
+import {getRequest, postRequest, deleteRequest, putRequest} from './utils/AxiosUtil'
+import {initMenu} from './utils/MenuUtil'
 
-import * as filters from './filter' // global filters
+// import * as filters from './filter' // global filters
 
 import 'styles/common/reset.css'
 import 'styles/common/border.css'
@@ -28,24 +25,45 @@ Vue.config.productionTip = false;
 Vue.use(elementUi);
 
 // register global utility filters.
-Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
-})
+// Object.keys(filters).forEach(key => {
+//   Vue.filter(key, filters[key])
+// })
+//
+// Vue.filter('decodeFilter', function (value) {
+//   console.log("------------------>", value)
+//   return decode(value);
+// })
+//
+// Vue.filter('encodeFilter', function (value) {
+//   console.log("------------------>", value)
+//   return encode(value);
+// })
 
-Vue.filter('decodeFilter', function(value) {
-  console.log("------------------>",value)
-  return decode(value);
-})
+// 全局前置导航守卫——>“导航”表示路由正在发生改变。
+router.beforeEach((to, from, next) => {
+    if (to.path.indexOf("/login") >= 0) {
+      next();
+      return;
+    } else if (to.path === "/") {
+      // next({path: "/login", query: {redirect: to.fullPath }});
+      next("/login");
+      return;
+    }
+    initMenu(router, store);
+    next();
+  }
+)
 
-Vue.filter('encodeFilter', function(value) {
-  console.log("------------------>",value)
-  return encode(value);
+// 全局后置钩子
+router.afterEach((to, from) => {
+  store.commit('setCurrentMenuName', to.name);
 })
 
 new Vue({
   el: '#app',
   router,
-
+  // 把 store 对象提供给 “store” 选项，这可以把 store 的实例注入所有的子组件
+  store,
   // 等价
   // components: { App },
   // template: '<App/>'
