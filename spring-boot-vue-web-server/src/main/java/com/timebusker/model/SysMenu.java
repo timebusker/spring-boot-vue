@@ -30,7 +30,8 @@ public class SysMenu implements Serializable {
     /**
      * 组件
      */
-    private String component;
+    @Column(name = "component")
+    private String componentPath;
 
     /**
      * 上级菜单ID
@@ -50,7 +51,8 @@ public class SysMenu implements Serializable {
     /**
      * 链接地址
      */
-    private String url;
+    @Column(name="url")
+    private String path;
 
     /**
      * 创建日期
@@ -133,8 +135,8 @@ public class SysMenu implements Serializable {
      *
      * @return component - 组件
      */
-    public String getComponent() {
-        return component;
+    public String getComponentPath() {
+        return componentPath;
     }
 
     /**
@@ -142,8 +144,8 @@ public class SysMenu implements Serializable {
      *
      * @param component 组件
      */
-    public void setComponent(String component) {
-        this.component = component == null ? null : component.trim();
+    public void setComponentPath(String componentPath) {
+        this.componentPath = componentPath == null ? null : componentPath.trim();
     }
 
     /**
@@ -205,8 +207,8 @@ public class SysMenu implements Serializable {
      *
      * @return url - 链接地址
      */
-    public String getUrl() {
-        return url;
+    public String getPath() {
+        return path;
     }
 
     /**
@@ -214,8 +216,8 @@ public class SysMenu implements Serializable {
      *
      * @param url 链接地址
      */
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+    public void setPath(String path) {
+        this.path = path == null ? null : path.trim();
     }
 
     /**
@@ -245,11 +247,11 @@ public class SysMenu implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", isFrame=").append(isFrame);
         sb.append(", name=").append(name);
-        sb.append(", component=").append(component);
+        sb.append(", componentPath=").append(componentPath);
         sb.append(", pid=").append(pid);
         sb.append(", sort=").append(sort);
         sb.append(", icon=").append(icon);
-        sb.append(", url=").append(url);
+        sb.append(", url=").append(path);
         sb.append(", createTime=").append(createTime);
         sb.append("]");
         return sb.toString();

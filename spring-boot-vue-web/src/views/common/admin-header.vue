@@ -1,5 +1,5 @@
 <template>
-  <div style="background: white;text-align: left">
+  <div style="background: #b4bccc;text-align: left">
     <div class="user">
       <el-radio-group v-model="collapse" style="display: inline-block;margin: 5px 5px 15px" size="mini" @change="handleCollapse">
         <el-radio-button :label="false" v-show="collapse"><span class="iconfont icon-zhankai2">&nbsp;</span></el-radio-button>

@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.timebusker.mapper.SysMenuMapper">
+
     <resultMap id="BaseResultMap" type="com.timebusker.model.SysMenu">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="is_frame" jdbcType="INTEGER" property="isFrame"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="component" jdbcType="VARCHAR" property="component"/>
+        <result column="component" jdbcType="VARCHAR" property="componentPath"/>
         <result column="pid" jdbcType="BIGINT" property="pid"/>
         <result column="sort" jdbcType="BIGINT" property="sort"/>
         <result column="icon" jdbcType="VARCHAR" property="icon"/>
-        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="url" jdbcType="VARCHAR" property="path"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
-        <collection property="children" ofType="com.timebusker.model.SysMenu" column="id">
+        <collection column="id" ofType="com.timebusker.model.SysMenu" property="children">
             <id column="id2" jdbcType="BIGINT" property="id"/>
             <result column="is_frame2" jdbcType="INTEGER" property="isFrame"/>
             <result column="name2" jdbcType="VARCHAR" property="name"/>
-            <result column="component2" jdbcType="VARCHAR" property="component"/>
+            <result column="component2" jdbcType="VARCHAR" property="componentPath"/>
             <result column="pid2" jdbcType="BIGINT" property="pid"/>
             <result column="sort2" jdbcType="BIGINT" property="sort"/>
             <result column="icon2" jdbcType="VARCHAR" property="icon"/>
-            <result column="url2" jdbcType="VARCHAR" property="url"/>
+            <result column="url2" jdbcType="VARCHAR" property="path"/>
             <result column="create_time2" jdbcType="TIMESTAMP" property="createTime"/>
-            <collection property="children" ofType="com.timebusker.model.SysMenu" column="id">
+            <collection column="id" ofType="com.timebusker.model.SysMenu" property="children">
                 <id column="id3" jdbcType="BIGINT" property="id"/>
                 <result column="is_frame3" jdbcType="INTEGER" property="isFrame"/>
                 <result column="name3" jdbcType="VARCHAR" property="name"/>
-                <result column="component3" jdbcType="VARCHAR" property="component"/>
+                <result column="component3" jdbcType="VARCHAR" property="componentPath"/>
                 <result column="pid3" jdbcType="BIGINT" property="pid"/>
                 <result column="sort3" jdbcType="BIGINT" property="sort"/>
                 <result column="icon3" jdbcType="VARCHAR" property="icon"/>
-                <result column="url3" jdbcType="VARCHAR" property="url"/>
+                <result column="url3" jdbcType="VARCHAR" property="path"/>
                 <result column="create_time3" jdbcType="TIMESTAMP" property="createTime"/>
             </collection>
         </collection>
@@ -80,6 +81,6 @@
                 t1.id= #{id}
             </if>
         </where>
-        order by pid,sort
+        order by t1.sort,t2.sort,t3.sort,t1.id,t2.id,t3.id asc
     </select>
 </mapper>

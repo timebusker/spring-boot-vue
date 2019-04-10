@@ -1,5 +1,7 @@
 package com.timebusker.common.fastdfs;
 
+import com.timebusker.utils.MD5Utils;
+
 /**
  * @DESC:FastDFSFile：数据模型封装
  * @author:timebusker
@@ -16,6 +18,8 @@ public class FastDFSFile {
     private String md5;
 
     private String author;
+
+    private String url;
 
     public FastDFSFile(String name, byte[] content, String ext, String height, String width, String author) {
         this.name = name;
@@ -56,7 +60,7 @@ public class FastDFSFile {
     }
 
     public String getMd5() {
-        return md5;
+        return MD5Utils.MD5Encode(content);
     }
 
     public void setMd5(String md5) {
@@ -69,5 +73,13 @@ public class FastDFSFile {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

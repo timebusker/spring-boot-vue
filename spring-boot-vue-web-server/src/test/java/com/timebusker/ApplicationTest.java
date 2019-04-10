@@ -25,7 +25,8 @@ public class ApplicationTest {
     @Autowired
     private SysMenuMapper sysMenuMapper;
 
-    private SequenceIdUtil sequenceId = new SequenceIdUtil(0, 1);
+    @Autowired
+    private SequenceIdUtil sequenceId;
 
     @Test
     public void menuTest() {
@@ -33,11 +34,11 @@ public class ApplicationTest {
         menu.setId(sequenceId.nextId());
         menu.setIsFrame(0);
         menu.setName("SQL监控");
-        menu.setComponent("SQL监控");
+        menu.setComponentPath("/home");
         menu.setPid(0L);
         menu.setSort(310183468862541824l);
         menu.setIcon("");
-        menu.setUrl("/");
+        menu.setPath("/");
         menu.setCreateTime(new Date());
         sysMenuMapper.insert(menu);
     }

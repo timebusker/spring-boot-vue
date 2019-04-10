@@ -22,8 +22,8 @@
             <span class="iconfont" :class="scope.row.icon"></span>
           </template>
         </el-table-column>
-        <el-table-column label="Url连接" prop="url"></el-table-column>
-        <el-table-column label="Vue组件" prop="component"></el-table-column>
+        <el-table-column label="Url连接" prop="path"></el-table-column>
+        <el-table-column label="Vue组件" prop="componentPath"></el-table-column>
         <el-table-column label="排序号" prop="sort" width="70">
           <template slot-scope="scope">
             <el-tag>{{scope.row.sort}}</el-tag>
@@ -48,22 +48,22 @@
           <el-input v-model="menu.name" placeholder="菜单名称"></el-input>
         </el-form-item>
         <el-form-item label="外部链接">
-          <el-switch v-model="menu.isFrame" style="justify-content:center;float: left"></el-switch>
+          <el-switch v-model="menu.isFrame" style="justify-content:center;float: left" inactive-value="0" active-value="1"></el-switch>
         </el-form-item>
         <el-form-item label="图标">
           <el-input v-model="menu.icon" placeholder="iconfont的16进制图标"></el-input>
         </el-form-item>
-        <el-form-item label="URL连接" prop="url">
-          <el-input v-model="menu.url" placeholder="URL连接"></el-input>
+        <el-form-item label="URL连接" prop="path">
+          <el-input v-model="menu.path" placeholder="URL连接"></el-input>
         </el-form-item>
-        <el-form-item label="Vue组件" prop="component">
-          <el-input v-model="menu.component" placeholder="Vue组件"></el-input>
+        <el-form-item label="Vue组件" prop="componentPath">
+          <el-input v-model="menu.componentPath" placeholder="Vue组件"></el-input>
         </el-form-item>
         <el-form-item label="排序号">
           <el-input-number style="float:left;width:50%" v-model="menu.sort" :step="1" :min="0" :max="999" placeholder="排序号" size="small"></el-input-number>
         </el-form-item>
         <el-form-item label="父级菜单" prop="pid">
-          <el-cascader style="float:left;width:50%" :change-on-select="true" v-model="menu.pid" :show-all-levels="false" :options="list" :props="props" @change="handleSelectChange" placeholder="父级菜单"></el-cascader>
+          <el-cascader style="float:left;width:50%" clearable expand-trigger="hover" :change-on-select="true" :show-all-levels="false" :options="list" :props="props" @change="handleSelectChange" placeholder="父级菜单"></el-cascader>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -87,8 +87,11 @@
     data: function () {
       return {
         isAdd: false,
-        menu: {},
-        list: [],
+        menu: {
+          isFrame: false,
+          sort: 1,
+          pid: 0
+        },
         tableHeight: (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - 252,
         dialogVisible: false,
         props: {
@@ -102,14 +105,11 @@
             {required: true, message: '请输入菜单名称', trigger: 'blur'},
             {min: 3, max: 5, message: '长度在 1 到 32 个字符', trigger: 'blur'}
           ],
-          url: [
+          path: [
             {required: true, message: '请输入菜单URL地址', trigger: 'blur'}
           ],
-          component: [
+          componentPath: [
             {required: true, message: '请输入组件地址及名称', trigger: 'blur'}
-          ],
-          pid: [
-            {required: true, message: '请选择活父级菜单', trigger: 'blur'}
           ]
         }
       }
@@ -129,18 +129,14 @@
       }
     },
     created: function () {
-      this.queryMenu();
+    
     },
-    compute: {},
+    computed: {
+      list () {
+        return this.$store.state.routes;
+      }
+    },
     methods: {
-      queryMenu: function () {
-        var _this = this
-        this.getRequest("/api/menu/list", _this.menu).then(response => {
-          _this.list = response.data.list;
-        }).catch(error => {
-          console.log(error)
-        })
-      },
       handleEdit: function (item) {
         if (null !== item) {
           this.menu = item;
@@ -157,16 +153,14 @@
           });
       },
       saveEdit: function () {
-        var _this = this;
-        _this.postRequest("/api/menu/save", _this.menu).then(response => {
-          _this.dialogVisible = false;
-          _this.$message({
+        this.postRequest("/api/menu/save", this.menu).then(response => {
+          this.dialogVisible = false;
+          this.$message({
             message: '菜单保存成功！',
             type: 'success'
           });
-          _this.queryMenu();
         }).catch(error => {
-          _this.$message({
+          this.$message({
             message: '菜单保存失败！',
             type: 'error'
           });
@@ -191,10 +185,7 @@
       },
       handleSelectChange: function (value) {
         var len = value.length;
-        console.log(value, "----->", len, "----->", value[len - 1]);
-        // this.menu.pid= parseInt(value[len - 1] + "");
         this.menu.pid = value[len - 1] + "";
-        console.log(this.menu.pid);
       },
       // 分页组件
       handleSizeChange: function () {

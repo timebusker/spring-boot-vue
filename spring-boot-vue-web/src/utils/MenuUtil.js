@@ -14,32 +14,22 @@ export const formatRoutes = (routes) => {
       id,
       isFrame,
       name,
-      component,
-      url,
+      componentPath,
+      path,
       icon,
       sort,
       pid,
       children
     } = router;
-    if (children && children instanceof Array) {
-      children = formatRoutes(children);
-    }
     let fmtRouter = {
       id: id,
       isFrame: isFrame,
-      path: url,
-      // component : menu,
-      // component: () => {
-      //   if(component.length > 0){
-      //     import('@/views' + component)
-      //   }else {
-      //     import('@/views/home')
-      //   }
-      // },
+      path: path,
+      componentPath: componentPath,
       component(resolve){
-        if (component.length > 0) {
+        if (componentPath.length > 0) {
           // 异步加载
-          require(['@/views' + component + '.vue'], resolve)
+          require(['@/views' + componentPath + '.vue'], resolve)
         } else {
           import('@/views/home')
         }
@@ -47,9 +37,13 @@ export const formatRoutes = (routes) => {
       name: name,
       icon: icon,
       sort: sort,
-      pid: pid,
-      children: children
+      pid: pid
     };
+    // 处理空节点
+    if (children instanceof Array && children.length > 0) {
+      children = formatRoutes(children);
+      fmtRouter.children = children;
+    }
     fmtRoutes.push(fmtRouter);
   })
   return fmtRoutes;

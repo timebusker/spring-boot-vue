@@ -4,6 +4,7 @@ import com.timebusker.mapper.SysMenuMapper;
 import com.timebusker.model.SysMenu;
 import com.timebusker.service.AbstractBaseService;
 import com.timebusker.service.SysMenuService;
+import com.timebusker.utils.SequenceIdUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,9 @@ public class SysMenuServiceImpl extends AbstractBaseService implements SysMenuSe
     @Autowired
     public SysMenuMapper sysMenuMapper;
 
+    @Autowired
+    private SequenceIdUtil sequenceId;
+
     @Override
     public List<SysMenu> getMenusList(Map<String, Object> map) {
         HashMap<String, Object> res = new HashMap<>();
@@ -37,10 +41,18 @@ public class SysMenuServiceImpl extends AbstractBaseService implements SysMenuSe
     @Override
     public boolean save(SysMenu menu) {
         try {
-            if (menu.getId() <= 0) {
-                sysMenuMapper.insert(menu);
-            } else {
+            if (menu.getId() != null) {
                 int k = sysMenuMapper.updateByPrimaryKey(menu);
+            } else {
+                menu.setId(sequenceId.nextId());
+                if (menu.getPid() == null) {
+                    menu.setPid(0l);
+                }
+                if (menu.getIsFrame() == null) {
+                    menu.setIsFrame(0);
+                }
+                menu.setCreateTime(new Date());
+                sysMenuMapper.insert(menu);
             }
         } catch (Exception e) {
             e.printStackTrace();

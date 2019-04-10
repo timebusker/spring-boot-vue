@@ -1,111 +1,127 @@
 -- 菜单目录表;
-drop table if exists sys_menu;
-create table sys_menu  (
-  id bigint not null ,
-  is_frame int not null default 0 ,
-  name varchar(255) not null ,
-  component varchar(255) null default null ,
-  pid bigint not null,
-  sort bigint not null,
-  icon varchar(255) null default null,
-  url varchar(255) null default null,
-  create_time timestamptz null default null,
-  primary key (id)
+DROP TABLE IF EXISTS sys_menu;
+CREATE TABLE sys_menu (
+  id          BIGINT       NOT NULL,
+  is_frame    INT          NOT NULL DEFAULT 0,
+  name        VARCHAR(255) NOT NULL,
+  component   VARCHAR(255) NULL     DEFAULT NULL,
+  pid         BIGINT       NOT NULL,
+  sort        BIGINT       NOT NULL,
+  icon        VARCHAR(255) NULL     DEFAULT NULL,
+  url         VARCHAR(255) NULL     DEFAULT NULL,
+  create_time TIMESTAMPTZ  NULL     DEFAULT NULL,
+  PRIMARY KEY (id)
 );
-comment on column sys_menu.id is '主键id';
-comment on column sys_menu.is_frame is '是否外链';
-comment on column sys_menu.name is '菜单名称';
-comment on column sys_menu.component is '组件';
-comment on column sys_menu.pid is '上级菜单id';
-comment on column sys_menu.sort is '排序';
-comment on column sys_menu.icon is '图标';
-comment on column sys_menu.url is '链接地址';
-comment on column sys_menu.create_time is '创建日期';
+COMMENT ON COLUMN sys_menu.id IS '主键id';
+COMMENT ON COLUMN sys_menu.is_frame IS '是否外链';
+COMMENT ON COLUMN sys_menu.name IS '菜单名称';
+COMMENT ON COLUMN sys_menu.component IS '组件';
+COMMENT ON COLUMN sys_menu.pid IS '上级菜单id';
+COMMENT ON COLUMN sys_menu.sort IS '排序';
+COMMENT ON COLUMN sys_menu.icon IS '图标';
+COMMENT ON COLUMN sys_menu.url IS '链接地址';
+COMMENT ON COLUMN sys_menu.create_time IS '创建日期';
 
 -- 权限控制表;
-drop table if exists sys_permission;
-create table sys_permission  (
-  id bigint not null ,
-  alias varchar(255) not null ,
-  name varchar(255) not null ,
-  pid bigint not null ,
-  create_time timestamptz not null,
-  primary key (id)
+DROP TABLE IF EXISTS sys_permission;
+CREATE TABLE sys_permission (
+  id          BIGINT       NOT NULL,
+  alias       VARCHAR(255) NOT NULL,
+  name        VARCHAR(255) NOT NULL,
+  pid         BIGINT       NOT NULL,
+  create_time TIMESTAMPTZ  NOT NULL,
+  PRIMARY KEY (id)
 );
 
-comment on column sys_permission.id is 'id主键';
-comment on column sys_permission.alias is '别名';
-comment on column sys_permission.name is '名称';
-comment on column sys_permission.pid is '上级id主键';
-comment on column sys_permission.create_time is '创建时间';
+COMMENT ON COLUMN sys_permission.id IS 'id主键';
+COMMENT ON COLUMN sys_permission.alias IS '别名';
+COMMENT ON COLUMN sys_permission.name IS '名称';
+COMMENT ON COLUMN sys_permission.pid IS '上级id主键';
+COMMENT ON COLUMN sys_permission.create_time IS '创建时间';
 
 -- 角色表;
-drop table if exists sys_role;
-create table sys_role  (
-  id bigint not null ,
-  name varchar(255) not null ,
-  remark varchar(255) not null ,
-  create_time timestamptz not null ,
-  primary key (id)
+DROP TABLE IF EXISTS sys_role;
+CREATE TABLE sys_role (
+  id          BIGINT       NOT NULL,
+  name        VARCHAR(255) NOT NULL,
+  remark      VARCHAR(255) NOT NULL,
+  create_time TIMESTAMPTZ  NOT NULL,
+  PRIMARY KEY (id)
 );
 
-comment on column sys_role.id is 'id主键';
-comment on column sys_role.name is '角色名称';
-comment on column sys_role.remark is '备注';
-comment on column sys_role.create_time is '创建时间';
+COMMENT ON COLUMN sys_role.id IS 'id主键';
+COMMENT ON COLUMN sys_role.name IS '角色名称';
+COMMENT ON COLUMN sys_role.remark IS '备注';
+COMMENT ON COLUMN sys_role.create_time IS '创建时间';
 
 -- 用户表;
-drop table if exists sys_user;
-create table sys_user  (
-  id bigint not null,
-  email varchar(255) ,
-  status int not null default 1 ,
-  password varchar(255) not null ,
-  username varchar(255) not null ,
-  last_password_reset_time timestamptz not null ,
-  create_time timestamptz not null ,
-  primary key (id) ,
-  constraint sys_user_email unique(email),
-  constraint sys_user_username unique(username)
+DROP TABLE IF EXISTS sys_user;
+CREATE TABLE sys_user (
+  id                       BIGINT       NOT NULL,
+  email                    VARCHAR(255),
+  status                   INT          NOT NULL DEFAULT 1,
+  password                 VARCHAR(255) NOT NULL,
+  username                 VARCHAR(255) NOT NULL,
+  last_password_reset_time TIMESTAMPTZ  NOT NULL,
+  create_time              TIMESTAMPTZ  NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT sys_user_email UNIQUE (email),
+  CONSTRAINT sys_user_username UNIQUE (username)
 );
 
-comment on column sys_user.id is 'id主键';
-comment on column sys_user.email is '邮件地址';
-comment on column sys_user.status is '账户状态：1启用、0禁用';
-comment on column sys_user.password is '密码';
-comment on column sys_user.username is '用户/登录名';
-comment on column sys_user.last_password_reset_time is '最后修改密码的日期';
-comment on column sys_user.create_time is '创建时间';
+COMMENT ON COLUMN sys_user.id IS 'id主键';
+COMMENT ON COLUMN sys_user.email IS '邮件地址';
+COMMENT ON COLUMN sys_user.status IS '账户状态：1启用、0禁用';
+COMMENT ON COLUMN sys_user.password IS '密码';
+COMMENT ON COLUMN sys_user.username IS '用户/登录名';
+COMMENT ON COLUMN sys_user.last_password_reset_time IS '最后修改密码的日期';
+COMMENT ON COLUMN sys_user.create_time IS '创建时间';
 
 -- 角色-菜单关系表;
-drop table if exists sys_roles_menus;
-create table sys_roles_menus  (
-  role_id bigint not null ,
-  menu_id bigint not null ,
-  primary key (menu_id, role_id)
+DROP TABLE IF EXISTS sys_roles_menus;
+CREATE TABLE sys_roles_menus (
+  role_id BIGINT NOT NULL,
+  menu_id BIGINT NOT NULL,
+  PRIMARY KEY (menu_id, role_id)
 );
 
-comment on column sys_roles_menus.role_id is '角色ID';
-comment on column sys_roles_menus.menu_id is '菜单id';
+COMMENT ON COLUMN sys_roles_menus.role_id IS '角色ID';
+COMMENT ON COLUMN sys_roles_menus.menu_id IS '菜单id';
 
 -- 角色-权限关系表;
 DROP TABLE IF EXISTS sys_roles_permissions;
-CREATE TABLE sys_roles_permissions  (
-  role_id bigint NOT NULL ,
-  permission_id bigint NOT NULL ,
+CREATE TABLE sys_roles_permissions (
+  role_id       BIGINT NOT NULL,
+  permission_id BIGINT NOT NULL,
   PRIMARY KEY (role_id, permission_id)
 );
 
-comment on column sys_roles_permissions.role_id is '角色ID';
-comment on column sys_roles_permissions.permission_id is '权限id';
+COMMENT ON COLUMN sys_roles_permissions.role_id IS '角色ID';
+COMMENT ON COLUMN sys_roles_permissions.permission_id IS '权限id';
 
 -- 用户-角色关系表;
-drop table if exists sys_users_roles;
-create table sys_users_roles  (
-  user_id bigint not null ,
-  role_id bigint not null ,
-  primary key (user_id, role_id)
+DROP TABLE IF EXISTS sys_users_roles;
+CREATE TABLE sys_users_roles (
+  user_id BIGINT NOT NULL,
+  role_id BIGINT NOT NULL,
+  PRIMARY KEY (user_id, role_id)
 );
 
-comment on column sys_users_roles.role_id is '角色id';
-comment on column sys_users_roles.user_id is '用户id';
+COMMENT ON COLUMN sys_users_roles.role_id IS '角色id';
+COMMENT ON COLUMN sys_users_roles.user_id IS '用户id';
+
+DROP TABLE IF EXISTS file_image;
+CREATE TABLE file_image (
+  id          BIGINT        NOT NULL,
+  name        VARCHAR(1024) NOT NULL,
+  user_id        VARCHAR(64)   NOT NULL,
+  url         VARCHAR(2048) NOT NULL,
+  description        VARCHAR(2048),
+  create_time TIMESTAMPTZ   NOT NULL,
+  PRIMARY KEY (id)
+);
+COMMENT ON COLUMN file_image.id IS '主键id';
+COMMENT ON COLUMN file_image.name IS '文件名称';
+COMMENT ON COLUMN file_image.user_id IS '所有者';
+COMMENT ON COLUMN file_image.description IS '文件描述';
+COMMENT ON COLUMN file_image.create_time IS '上传时间';
