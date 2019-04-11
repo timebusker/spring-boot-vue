@@ -47,7 +47,6 @@ export function validateIP(rule, value, callback) {
  */
 export function validatePhoneTwo(rule, value, callback) {
   const reg = /^((0\d{2,3}-\d{7,8})|(1[34578]\d{9}))$/;
-  ;
   if (value == '' || value == undefined || value == null) {
     callback();
   } else {

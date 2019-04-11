@@ -1,3 +1,5 @@
+-- noinspection SqlNoDataSourceInspectionForFile
+
 -- 菜单目录表;
 DROP TABLE IF EXISTS sys_menu;
 CREATE TABLE sys_menu (
@@ -125,3 +127,5 @@ COMMENT ON COLUMN file_image.name IS '文件名称';
 COMMENT ON COLUMN file_image.user_id IS '所有者';
 COMMENT ON COLUMN file_image.description IS '文件描述';
 COMMENT ON COLUMN file_image.create_time IS '上传时间';
+-- 修改字段属性;
+alter table file_image alter id type varchar(32);

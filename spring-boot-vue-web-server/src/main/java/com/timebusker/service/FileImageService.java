@@ -1,7 +1,7 @@
 package com.timebusker.service;
 
-import com.timebusker.common.fastdfs.FastDFSFile;
 import com.timebusker.model.FileImage;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -12,7 +12,9 @@ import java.util.List;
  */
 public interface FileImageService {
 
-    void save(FastDFSFile file);
+    FileImage save(MultipartFile image);
 
     List<FileImage> getAll();
+
+    FileImage getImage(String id);
 }

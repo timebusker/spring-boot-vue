@@ -6,11 +6,12 @@ import javax.persistence.*;
 
 @Table(name = "file_image")
 public class FileImage implements Serializable {
+
     /**
      * 主键id
      */
     @Id
-    private Long id;
+    private String id;
 
     /**
      * 文件名称
@@ -43,7 +44,7 @@ public class FileImage implements Serializable {
      *
      * @return id - 主键id
      */
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
@@ -52,7 +53,7 @@ public class FileImage implements Serializable {
      *
      * @param id 主键id
      */
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

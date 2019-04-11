@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.timebusker.common.fastdfs.FastDFSClient;
 import com.timebusker.common.fastdfs.FastDFSFile;
 import com.timebusker.common.web.ResponseBean;
+import com.timebusker.model.FileImage;
 import com.timebusker.service.FileImageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @DESC:FileUploadController:文件上传控制器
@@ -20,36 +22,30 @@ import java.io.IOException;
  */
 @RestController
 @RequestMapping("/file")
-public class FileUploadController {
-
-    private static final Logger logger = LoggerFactory.getLogger(FileUploadController.class);
+public class FileUploadController extends AbstractBaseController {
 
     @Autowired
     private FileImageService fileImageService;
 
-    /**
-     * file
-     *
-     * @param image
-     * @return
-     */
     @PostMapping("/single-image")
-    public Object UploadSingleImage(@RequestParam("file") MultipartFile image) {
+    public Object UploadSingleImage(@RequestParam("image") MultipartFile image) {
         if (image.isEmpty()) {
             ResponseBean.error("请选择文件上传！");
         }
-        try {
-            String suffix = image.getOriginalFilename().substring(image.getOriginalFilename().lastIndexOf(".") + 1);
-            FastDFSFile fast = new FastDFSFile(image.getOriginalFilename(), image.getBytes(), suffix);
-            String[] res = FastDFSClient.upload(fast);
-            String path = FastDFSClient.getTrackerUrl() + "/" + res[0] + "/" + res[1];
-            fast.setUrl(path);
-            fileImageService.save(fast);
-            System.out.println(JSON.toJSONString(res));
-            return ResponseBean.ok().put("url", path);
-        } catch (IOException io) {
-            logger.error(io.getMessage());
-        }
-        return ResponseBean.error("未知错误！");
+        FileImage res = fileImageService.save(image);
+        System.out.println(JSON.toJSONString(res));
+        return ResponseBean.ok().put("res", res);
+    }
+
+    @GetMapping("/image/{id}")
+    public Object getImage(@PathVariable("id") String id) {
+        FileImage image = fileImageService.getImage(id);
+        return ResponseBean.ok().put("image", image);
+    }
+
+    @GetMapping("/list")
+    public Object getImages() {
+        List<FileImage> res = fileImageService.getAll();
+        return ResponseBean.ok().put("res", res);
     }
 }

@@ -2,6 +2,10 @@ package com.timebusker.common.fastdfs;
 
 import com.timebusker.utils.MD5Utils;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * @DESC:FastDFSFile：数据模型封装
  * @author:timebusker
@@ -60,7 +64,15 @@ public class FastDFSFile {
     }
 
     public String getMd5() {
-        return MD5Utils.MD5Encode(content);
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            messageDigest.update(content);
+            BigInteger bigInt = new BigInteger(1, messageDigest.digest());
+            return bigInt.toString(16);
+        } catch (NoSuchAlgorithmException a) {
+            a.printStackTrace();
+        }
+        return "";
     }
 
     public void setMd5(String md5) {
