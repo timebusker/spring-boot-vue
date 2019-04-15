@@ -1,5 +1,6 @@
 <template>
-  <div style="text-align: left;">
+  <!-- overflow-y: auto;overflow-x: hidden; 纵向滚动条可以展示-->
+  <div style="text-align: left;overflow-y: auto;overflow-x: hidden;">
     <div style="height: 60px;width: 100%;text-align: center">
       <img src="./../../assets/header.png" style="width: 60px;border-radius: 30px"/>
     </div>

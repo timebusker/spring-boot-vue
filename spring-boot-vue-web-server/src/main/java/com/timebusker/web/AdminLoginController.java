@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @date:2019/3/21
  */
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/")
 public class AdminLoginController extends AbstractBaseController {
 
     @RequestMapping(value="/login",method = RequestMethod.POST)

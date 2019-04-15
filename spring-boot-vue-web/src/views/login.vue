@@ -77,7 +77,7 @@
         this.isShowPassword = !this.isShowPassword;
       },
       handleLogin: function () {
-        this.postRequest('/api/admin/login',this.loginForm).then(response => {
+        this.postRequest('/login',this.loginForm).then(response => {
           // 正常返回值处理
           console.log(response.data);
           if (response && response.status == 200) {

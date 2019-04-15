@@ -18,7 +18,7 @@
           :limit="9"
           list-type="picture-card"
           accept="image/png, image/jpeg"
-          action="/api/file/single-image"
+          action="/file/single-image"
           :on-preview="handlePreview"
           :on-change="handleChange"
           :on-remove="handleRemove"
@@ -66,7 +66,7 @@
     },
     methods: {
       queryAllImage(){
-        this.getRequest("/api/file/list").then((response => {
+        this.getRequest("/file/list").then((response => {
             this.list = response.data.res;
           })
         ).catch(error => {
@@ -74,7 +74,7 @@
         })
       },
       queryImage(value){
-        this.getRequest("/api/file/image/" + value).then((response => {
+        this.getRequest("/file/image/" + value).then((response => {
             return response.data.image;
           })
         ).catch(error => {

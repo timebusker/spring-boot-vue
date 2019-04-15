@@ -135,6 +135,20 @@ proxyTable: {
   }
 },
 
+# 如果前后端需要合并部署，不建议重新URL地址
+proxyTable: {
+  '/': {
+    target: 'http://localhost:8082',
+    changeOrigin: true,
+    pathRewrite: {
+      '^/': ''
+    }
+  },
+  '/ws/*': {
+    target: 'ws://127.0.0.1:8082',
+    ws: true
+  }
+},
 
 
 # v-model 与 ：model 之间的区别

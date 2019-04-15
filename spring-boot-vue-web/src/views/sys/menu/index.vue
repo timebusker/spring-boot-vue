@@ -153,7 +153,7 @@
           });
       },
       saveEdit: function () {
-        this.postRequest("/api/menu/save", this.menu).then(response => {
+        this.postRequest("/menu/save", this.menu).then(response => {
           this.dialogVisible = false;
           this.$message({
             message: '菜单保存成功！',
@@ -169,7 +169,7 @@
       handleDelete: function (item) {
         var _this = this;
         this.$confirm('确认关闭？').then(_ => {
-          _this.deleteRequest("/api/menu/delete", item).then(response => {
+          _this.deleteRequest("/menu/delete", item).then(response => {
             _this.$message({
               message: '菜单删除成功！',
               type: 'success'

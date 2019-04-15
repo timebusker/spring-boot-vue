@@ -68,7 +68,7 @@
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
         <!--表没有主见或者获取不到主键时，只会生成两个方法-->
         <!--模糊匹配使用：%-->
-        <table tableName="file_%">
+        <table tableName="shop_%">
             <!--不适用字段实际名：使用驼峰规则字段-->
             <property name="useActualColumnNames" value="false"/>
             <!--使用后会不满足驼峰命名规则-->

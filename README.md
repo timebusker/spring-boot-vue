@@ -34,17 +34,29 @@
 #### [通用Mapper快速使用](https://blog.csdn.net/isea533/article/details/83045335)
 
 ```
-<!--mapStruct依赖-->
+<!--mybatis通用Mapper-->
 <dependency>
-    <groupId>org.mapstruct</groupId>
-    <artifactId>mapstruct-jdk8</artifactId>
-    <version>1.3.0.Final</version>
+    <groupId>tk.mybatis</groupId>
+    <artifactId>mapper-spring-boot-starter</artifactId>
+    <version>2.1.5</version>
 </dependency>
+<!--mybatis-starter-->
 <dependency>
-    <groupId>org.mapstruct</groupId>
-    <artifactId>mapstruct-processor</artifactId>
-    <version>${org.mapstruct.version}</version>
-    <version>1.3.0.Final</version>
+    <groupId>org.mybatis.spring.boot</groupId>
+    <artifactId>mybatis-spring-boot-starter</artifactId>
+    <version>2.0.0</version>
+</dependency>
+<!--分页控制-->
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper-spring-boot-starter</artifactId>
+    <version>1.2.10</version>
+    <exclusions>
+        <exclusion>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </exclusion>
+    </exclusions>
 </dependency>
 ```
 
@@ -154,4 +166,108 @@ export function getFileMD5(file, callback) {
 
   loadNext()
 }
+```
+
+#### [Springboot项目与vue项目整合打包](https://www.cnblogs.com/kevinZhu/p/9931317.html)
+
+在一些公司，部署实施人员的技术无法和互联网公司的运维团队相比，由于各种不定的环境也无法做到自动构建，
+容器化部署等。因此在这种情况下尽量减少部署时的服务软件需求，打出的包数量也尽量少。针对这种情况这里采用的在开发中做到前后端独立开发，打包时在后端springboot打包发布时将前端的构建输出一起打入，
+最后只需部署springboot的项目即可，无需再安装nginx服务器
+
+```
+<properties>
+    <vue-modle-path>${basedir}/../spring-boot-vue-web/</vue-modle-path>
+</properties>
+
+
+<!--在执行打包时，进行npm 打包-->
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <executions>
+        <execution>
+            <id>exec-npm-install</id>
+            <phase>validate</phase>
+            <goals>
+                <goal>exec</goal>
+            </goals>
+            <configuration>
+                <executable>npm</executable>
+                <arguments>
+                    <argument>install</argument>
+                </arguments>
+                <workingDirectory>${vue-modle-path}</workingDirectory>
+            </configuration>
+        </execution>
+        <execution>
+            <id>exec-cnpm-run-build</id>
+            <phase>validate</phase>
+            <goals>
+                <goal>exec</goal>
+            </goals>
+            <configuration>
+                <executable>npm</executable>
+                <arguments>
+                    <argument>run</argument>
+                    <argument>build</argument>
+                </arguments>
+                <workingDirectory>${vue-modle-path}</workingDirectory>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+<!--资源复制：将项目的前端文件打包到boot项目的classes中-->
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+    <configuration>
+        <encoding>${project.build.sourceEncoding}</encoding>
+    </configuration>
+    <executions>
+        <execution>
+            <id>copy-vue-resources</id>
+            <phase>generate-sources</phase>
+            <goals>
+                <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+                <encoding>${project.build.sourceEncoding}</encoding>
+                <outputDirectory>${basedir}/src/main/resources/static</outputDirectory>
+                <resources>
+                    <resource>
+                        <directory>${vue-modle-path}/dist</directory>
+                    </resource>
+                </resources>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+- `注意maven的生命周期选择 否则编译的web无法被打包进项目`
+maven常用生命周期:
+
+```
+validate
+generate-sources
+process-sources
+generate-resources
+process-resources     复制并处理资源文件，至目标目录，准备打包。
+compile     编译项目的源代码。
+process-classes
+generate-test-sources 
+process-test-sources 
+generate-test-resources
+process-test-resources     复制并处理资源文件，至目标测试目录。
+test-compile     编译测试源代码。
+process-test-classes
+test     使用合适的单元测试框架运行测试。这些测试代码不会被打包或部署。
+prepare-package
+package     接受编译好的代码，打包成可发布的格式，如 JAR 。
+pre-integration-test
+integration-test
+post-integration-test
+verify
+install     将包安装至本地仓库，以让其它项目依赖。
+deploy     将最终的包复制到远程的仓库，以让其它开发人员与项目共享。
 ```

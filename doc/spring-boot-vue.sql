@@ -112,6 +112,7 @@ CREATE TABLE sys_users_roles (
 COMMENT ON COLUMN sys_users_roles.role_id IS '角色id';
 COMMENT ON COLUMN sys_users_roles.user_id IS '用户id';
 
+-- 图片路径;
 DROP TABLE IF EXISTS file_image;
 CREATE TABLE file_image (
   id          BIGINT        NOT NULL,
@@ -129,3 +130,63 @@ COMMENT ON COLUMN file_image.description IS '文件描述';
 COMMENT ON COLUMN file_image.create_time IS '上传时间';
 -- 修改字段属性;
 alter table file_image alter id type varchar(32);
+
+-- 文件上传临时表;
+DROP TABLE IF EXISTS file_tmp;
+CREATE TABLE file_tmp (
+  id          varchar(32)   NOT NULL,
+  url         VARCHAR(2048) NOT NULL,
+  create_time TIMESTAMPTZ   NOT NULL,
+  PRIMARY KEY (id)
+);
+COMMENT ON COLUMN file_tmp.id IS '主键id';
+COMMENT ON COLUMN file_tmp.url IS '文件URL地址';
+COMMENT ON COLUMN file_tmp.create_time IS '上传时间';
+
+
+-- 秒杀商品信息表;
+drop table if exists shop_goods;
+create table shop_goods(
+  id BIGINT not NULL,
+  name VARCHAR(128) not null,
+  title VARCHAR(1024) not null,
+  image VARCHAR(128) not null,
+  stock INT not NULL DEFAULT 0,
+  price FLOAT not null DEFAULT 99999.99,
+  start_time TIMESTAMPTZ NOT NULL,
+  end_time TIMESTAMPTZ not null,
+  PRIMARY KEY (id)
+);
+
+COMMENT ON column shop_goods.id is '商品主键ID';
+COMMENT ON column shop_goods.name is '商品名称';
+COMMENT ON column shop_goods.title is '商品标题';
+COMMENT ON column shop_goods.image is '商品图片地址';
+COMMENT ON column shop_goods.stock is '商品库存量';
+COMMENT ON column shop_goods.price is '商品价格';
+COMMENT ON column shop_goods.start_time is '秒杀开始时间';
+COMMENT ON column shop_goods.end_time is '秒杀结束时间';
+
+drop table if exists shop_order;
+create table shop_order(
+  id BIGINT not null,
+  user_id BIGINT NOT NULL,
+  goods_id BIGINT NOT NULL,
+  count int NOT NULL,
+  status int not NULL,
+  amount FLOAT NOT NULL,
+  pay_time timestamptz,
+  pay_end_time timestamp NOT NULL,
+  create_time timestamp NOT NULL,
+  PRIMARY KEY (id)
+);
+
+COMMENT ON column shop_order.id is '订单主键ID';
+COMMENT ON column shop_order.user_id is '用户ID';
+COMMENT ON column shop_order.goods_id is '商品ID';
+COMMENT ON column shop_order.count is '商品数量';
+COMMENT ON column shop_order.amount is '订单金额';
+COMMENT ON column shop_order.status is '订单状态';
+COMMENT ON column shop_order.pay_time is '支付时间';
+COMMENT ON column shop_order.pay_end_time is '支付截止时间';
+COMMENT ON column shop_order.create_time is '订单创建时间';

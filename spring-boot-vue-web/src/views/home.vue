@@ -24,8 +24,7 @@
     name: 'home',
     data: function () {
       return {
-        isCollapse: false,
-        tags: []
+        isCollapse: false
       }
     },
     methods: {

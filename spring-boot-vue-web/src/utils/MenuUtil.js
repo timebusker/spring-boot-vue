@@ -53,7 +53,7 @@ export const initMenu = (router, store) => {
   if (store.state.routes.length > 0) {
     return;
   }
-  getRequest("/api/menu/list").then(response => {
+  getRequest("/menu/list").then(response => {
     let fmtRoutes = formatRoutes(response.data.list);
     router.addRoutes(fmtRoutes);
     store.commit('initMenu', fmtRoutes);

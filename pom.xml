@@ -12,6 +12,10 @@
         <module>spring-boot-vue-web-server</module>
     </modules>
 
+    <properties>
+        <vue-modle-path>${basedir}/../spring-boot-vue-web/</vue-modle-path>
+    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -53,6 +57,10 @@
                     <artifactId>spring-boot-starter-tomcat</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -181,6 +189,76 @@
                         <fork>true</fork>
                         <mainClass>com.timebusker.ApplicationStarter</mainClass>
                     </configuration>
+                </plugin>
+                <!-- 跳过单元测试 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <skipTests>true</skipTests>
+                    </configuration>
+                </plugin>
+                <!--在执行打包时，进行npm 打包-->
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>exec-npm-install</id>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>exec</goal>
+                            </goals>
+                            <configuration>
+                                <executable>npm</executable>
+                                <arguments>
+                                    <argument>install</argument>
+                                </arguments>
+                                <workingDirectory>${vue-modle-path}</workingDirectory>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>exec-cnpm-run-build</id>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>exec</goal>
+                            </goals>
+                            <configuration>
+                                <executable>npm</executable>
+                                <arguments>
+                                    <argument>run</argument>
+                                    <argument>build</argument>
+                                </arguments>
+                                <workingDirectory>${vue-modle-path}</workingDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!--资源复制：将项目的前端文件打包到boot项目的classes中-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <configuration>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>copy-vue-resources</id>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>copy-resources</goal>
+                            </goals>
+                            <configuration>
+                                <encoding>${project.build.sourceEncoding}</encoding>
+                                <outputDirectory>${basedir}/src/main/resources/static</outputDirectory>
+                                <resources>
+                                    <resource>
+                                        <directory>${vue-modle-path}/dist</directory>
+                                    </resource>
+                                </resources>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>

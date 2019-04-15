@@ -11,11 +11,20 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': {
+      // 废弃不用（不能与后端URL路径匹配，不利于前后端合并部署）
+      '/api/**': {
         target: 'http://localhost:8033/',
         changeOrigin: true,
         pathRewrite: {
           '^/api/': '/'
+        }
+      },
+      // 正式使用
+      '/': {
+        target: 'http://localhost:8033/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/': '/'
         }
       }
     },
