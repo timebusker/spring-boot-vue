@@ -25,6 +25,7 @@ public class ApplicationStarter extends SpringBootServletInitializer {
      */
     public static void main(String[] args) {
         SpringApplication.run(ApplicationStarter.class);
+        logger.info("....服务启动成功....");
     }
 
     @Override

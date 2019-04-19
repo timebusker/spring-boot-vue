@@ -5,6 +5,12 @@
 
 import {getRequest} from '@/utils/AxiosUtil'
 
+export const root = () => {
+  let url = window.location.href;
+  let root = url.substring(0, url.lastIndexOf("#") + 1);
+  return root;
+}
+
 // 动态路由设置时，要保证所有路由组件不能为空
 
 export const formatRoutes = (routes) => {
@@ -21,12 +27,15 @@ export const formatRoutes = (routes) => {
       pid,
       children
     } = router;
+    if (isFrame != 0) {
+      path = root() + path
+    }
     let fmtRouter = {
       id: id,
       isFrame: isFrame,
       path: path,
       componentPath: componentPath,
-      component(resolve){
+      component(resolve) {
         if (componentPath.length > 0) {
           // 异步加载
           require(['@/views' + componentPath + '.vue'], resolve)

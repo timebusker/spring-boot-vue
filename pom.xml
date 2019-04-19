@@ -263,4 +263,13 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <!--jar 包最全-->
+	<repositories>
+        <repository>
+            <id>maven2</id>
+            <name>maven2 Repository</name>
+            <url>http://central.maven.org/maven2/</url>
+        </repository>
+    </repositories>
 </project>

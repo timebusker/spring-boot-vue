@@ -1,7 +1,7 @@
 package com.timebusker.exceptions.handler;
 
 import com.timebusker.exceptions.CommonException;
-import com.timebusker.common.web.ResponseBean;
+import com.timebusker.common.web.ResultVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -24,8 +24,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(CommonException.class)
     @ResponseBody
-    public ResponseBean handleRRException(CommonException e) {
-        ResponseBean rb = new ResponseBean();
+    public ResultVo handleRRException(CommonException e) {
+        ResultVo rb = new ResultVo();
         rb.put("code", e.getCode());
         rb.put("msg", e.getMessage());
         return rb;

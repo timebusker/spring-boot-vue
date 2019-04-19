@@ -129,7 +129,7 @@
       }
     },
     created: function () {
-    
+
     },
     computed: {
       list () {
@@ -189,11 +189,11 @@
       },
       // 分页组件
       handleSizeChange: function () {
-      
+
       },
       // 分页组件
       handleCurrentChange: function () {
-      
+
       }
     }
   }

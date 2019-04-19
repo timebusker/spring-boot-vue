@@ -40,7 +40,7 @@ public class HttpMessageConverter {
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
         // 设置JSON格式化时间格式
         HttpLongMapper mapper = new HttpLongMapper();
-        DateFormat format = new SimpleDateFormat(DateUtil.DEFAULT_DATE_PATTERN);
+        DateFormat format = new SimpleDateFormat(DateUtil.DEFAULT_DATE_PATTERN2);
         format.setTimeZone(TimeZone.getTimeZone("GMT+8"));
         mapper.setDateFormat(format);
         // 注入转换器
