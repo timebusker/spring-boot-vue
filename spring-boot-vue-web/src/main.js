@@ -14,6 +14,14 @@ import 'styles/common/border.css'
 // import 'styles/icon/iconfont.css'
 import 'element-ui/lib/theme-chalk/index.css'
 
+// 使用局部注册
+// <!--vue awesome swiper轮播图使用-->
+// <!--npm install vue-awesome-swiper --save-dev-->
+// import VueAwesomeSwiper from 'vue-awesome-swiper'
+// import 'swiper/dist/css/swiper.css'
+// Vue.use(VueAwesomeSwiper)
+
+
 // 设置全局组件属性，避免每个组件都需要引用
 Vue.prototype.getRequest = getRequest;
 Vue.prototype.postRequest = postRequest;
