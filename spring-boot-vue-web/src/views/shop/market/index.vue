@@ -36,21 +36,31 @@
               <span style="font-size: 12px;font-weight: bold;color: red;width: 100%;">3天12时34分12秒</span>
             </div>
           </div>
+          <div class="goods">
+            <img :src="item.image" width="90px"/>
+            <div style="margin-top:10px;font-size: 12px;">
+              <span style="font-weight: bold;width: 50%;display: inline-block;text-align: left">{{item.name}}</span>
+              <span style="font-weight: bold;color: red;width: 40%;display: inline-block;text-align: right">￥ {{item.price}}</span>
+            </div>
+            <div style="margin-top:10px;text-align: right">
+              <span style="font-size: 12px;font-weight: bold;color: red;width: 100%;">3天12时34分12秒</span>
+            </div>
+          </div>
         </swiper-slide>
       </swiper>
-      <div style="height: auto;overflow: auto;margin: 10px 2px;background: white;width: 100%">
+      <div style="height: auto;overflow-x: hidden;overflow-y:auto;margin-top: 10px;background: white;width: 100%">
         <div style="display: flex;height: 100px;width: 100%" v-for="(item,index) in list" :index="index" :key="item.id">
           <div style="padding: 2px;">
             <img :src="item.image" width="90px" height="80px">
           </div>
           <!--flex:1;/*这里设置为占比1，填充满剩余空间*/ -->
-          <div style="padding: 2px;text-align: right;flex: 1">
-            <div style="width: 100%;display: inline-flex;margin: 5px;">
-              <span style="width: 60%;">{{item.title}}</span>
-              <span style="flex: 1">{{item.name}}</span>
-            </div>
+          <div style="flex: 1;text-align: left;padding: 5px;color:blue;font-size: 14px;font-weight: 200;text-decoration:underline">
+            {{item.title}}
+          </div>
+          <div style="margin-right: 3px;text-align: right;width: 120px">
+            <span style="display: block;margin: 5px">{{item.name}}</span>
             <span style="display: block;margin: 5px">￥ {{item.price}}</span>
-            <span style="display: block;margin: 5px">{{ diffTime(item.endTime) }}</span>
+            <span style="display: block;margin: 5px">{{ item.endTime}}</span>
             <a style="display: block;margin: 5px">
               <button style="border-radius: 10px;width: 80px;background: red;color: white;padding: 1px">立即秒杀</button>
             </a>
@@ -65,7 +75,7 @@
   import 'swiper/dist/css/swiper.css'
   import {swiper, swiperSlide} from 'vue-awesome-swiper'
   import {diffTime} from '../../../utils/DateUtil'
-
+  
   export default {
     components: {
       swiper,
@@ -128,12 +138,6 @@
         }).catch(error => {
           console.log(error)
         });
-      },
-      diffTime: function (time) {
-        let _this = this;
-        return setInterval(function () {
-          return _this.diffTime(time);
-        },1000);
       }
     }
   }
@@ -144,7 +148,8 @@
     width 100vw
     height auto
     background gray
-
+    overflow hidden
+  
   .search
     display flex
     flex-wrap nowrap
@@ -162,14 +167,14 @@
       color white
       padding 3px 5px
       width 80px
-
+  
   .header-swiper
     width 100vw
     height 150px
     img
       width inherit
       height inherit
-
+  
   .goods-main
     height auto
     display flex

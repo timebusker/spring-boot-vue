@@ -5,6 +5,7 @@ import com.timebusker.model.common.SysMenu;
 import com.timebusker.service.AbstractBaseService;
 import com.timebusker.service.common.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.*;
 import org.springframework.stereotype.Service;
 
 import java.util.*;

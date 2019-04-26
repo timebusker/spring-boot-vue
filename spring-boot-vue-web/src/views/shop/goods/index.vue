@@ -51,7 +51,8 @@
           </template>
         </el-table-column>
         <el-table-column label="名称" prop="name"></el-table-column>
-        <el-table-column label="标题" prop="title"></el-table-column>
+        <!--内容过多时，进行隐藏-->
+        <el-table-column label="标题" prop="title" show-overflow-tooltip="true"></el-table-column>
         <el-table-column label="价格" prop="price"></el-table-column>
         <el-table-column label="库存" prop="stock"></el-table-column>
         <el-table-column label="开始时间" prop="startTime"></el-table-column>
@@ -137,7 +138,7 @@
         });
       },
       handleDelete: function () {
-
+      
       },
       handleEdit: function (item) {
         console.log(item)
@@ -188,10 +189,10 @@
         this.goods.image = response.file.url;
       },
       handleCurrentPage: function () {
-
+      
       },
       handlePageChange: function () {
-
+      
       }
     }
   }
@@ -204,7 +205,7 @@
     display flex
     flex-wrap wrap
     background white
-
+  
   .avatar-uploader
     width 80px
     border: 1px dashed #d9d9d9;

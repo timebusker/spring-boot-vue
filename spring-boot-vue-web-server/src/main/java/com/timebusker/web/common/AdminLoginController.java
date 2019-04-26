@@ -2,8 +2,13 @@ package com.timebusker.web.common;
 
 import com.alibaba.fastjson.JSON;
 import com.timebusker.common.web.ResultVo;
+import com.timebusker.constant.CommonKey;
+import com.timebusker.service.cache.SysUserKey;
+import com.timebusker.service.common.SysUserService;
+import com.timebusker.utils.MD5Utils;
 import com.timebusker.web.AbstractBaseController;
 import com.timebusker.web.vo.UserVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -15,12 +20,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class AdminLoginController extends AbstractBaseController {
 
-    @RequestMapping(value="/login",method = RequestMethod.POST)
+    @Autowired
+    private SysUserService sysUserService;
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResultVo login(@RequestBody UserVo vo) {
-        System.out.println(JSON.toJSONString(vo));
-        vo.setCheckNum(vo.getCheckNum() + System.currentTimeMillis());
-        vo.setPassword(vo.getPassword() + System.currentTimeMillis());
-        vo.setUserName(vo.getUserName() + System.currentTimeMillis());
-        return ResultVo.ok().put("user", vo);
+        ResultVo resultVo = sysUserService.doLogin(vo);
+        if ("0".equals(resultVo.get("code").toString())) {
+            token = MD5Utils.MD5Encode(resultVo.get("user"));
+            addCookie(CommonKey.COOKIE_NAME_TOKEN, token);
+            redisService.set(SysUserKey.TOKEN, token, resultVo.get("user"));
+        }
+        return resultVo;
     }
 }

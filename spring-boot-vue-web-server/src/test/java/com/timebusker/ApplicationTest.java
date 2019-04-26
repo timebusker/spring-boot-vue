@@ -1,14 +1,20 @@
 package com.timebusker;
 
 import com.alibaba.fastjson.JSON;
+import com.timebusker.common.redis.RedisService;
 import com.timebusker.mapper.common.SysMenuMapper;
+import com.timebusker.mapper.common.SysUserMapper;
 import com.timebusker.model.common.SysMenu;
+import com.timebusker.model.common.SysUser;
+import com.timebusker.service.cache.SysUserKey;
+import com.timebusker.utils.MD5Utils;
 import com.timebusker.utils.SequenceIdUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
 
@@ -25,7 +31,13 @@ public class ApplicationTest {
     private SysMenuMapper sysMenuMapper;
 
     @Autowired
+    private SysUserMapper sysUserMapper;
+
+    @Autowired
     private SequenceIdUtil sequenceId;
+
+    @Autowired
+    private RedisService redisService;
 
     @Test
     public void menuTest() {
@@ -54,6 +66,24 @@ public class ApplicationTest {
         menu.setIcon("icon-xitonghuancun1");
         sysMenuMapper.updateByPrimaryKey(menu);
         System.err.println(JSON.toJSONString(menu));
+    }
+
+
+    @Test
+    public void testExample() {
+        Example example = new Example(SysUser.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("username", "admin");
+        criteria.andEqualTo("password", MD5Utils.MD5Encode(123));
+        SysUser user = sysUserMapper.selectOneByExample(example);
+        System.err.println(JSON.toJSONString(user));
+    }
+
+    @Test
+    public void testRedis(){
+        redisService.set(SysUserKey.TOKEN, "111111111111", new SysUser("1111",0,"222","333"));
+        SysUser user = redisService.get(SysUserKey.TOKEN, "111111111111", SysUser.class);
+        System.err.println(user);
     }
 
     public static void main(String[] args) {

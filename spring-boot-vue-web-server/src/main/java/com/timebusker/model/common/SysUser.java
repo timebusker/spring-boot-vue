@@ -172,6 +172,16 @@ public class SysUser implements Serializable {
         this.createTime = createTime;
     }
 
+    public SysUser(String email, Integer status, String password, String username) {
+        this.email = email;
+        this.status = status;
+        this.password = password;
+        this.username = username;
+    }
+
+    public SysUser() {
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

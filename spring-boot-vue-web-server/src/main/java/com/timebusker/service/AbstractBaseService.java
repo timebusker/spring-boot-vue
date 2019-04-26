@@ -17,4 +17,6 @@ public abstract class AbstractBaseService {
 
     @Autowired
     protected SequenceIdUtil sequenceId;
+
+
 }

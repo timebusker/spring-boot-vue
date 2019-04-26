@@ -58,4 +58,12 @@ public class MD5Utils {
         String tmp = bytes.toString();
         return MD5Utils.MD5Encode(tmp, CHARSET);
     }
+
+    public static String MD5Encode(Object encode) {
+        return MD5Utils.MD5Encode(encode.toString(), CHARSET);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(MD5Utils.MD5Encode(123));
+    }
 }
