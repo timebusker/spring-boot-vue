@@ -10,6 +10,8 @@ import com.alibaba.fastjson.JSON;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import java.util.Set;
+
 @Component
 public class RedisService {
 
@@ -17,7 +19,45 @@ public class RedisService {
     private JedisPool jedisPool;
 
     /**
+     * 匹配key集合
+     *
+     * @param key
+     * @return
+     */
+    public Set<String> keys(String key) {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            if (!key.equals("*")) {
+                key = "*" + key + "*";
+            }
+            return jedis.keys(key);
+        } finally {
+            release(jedis);
+        }
+    }
+
+    /**
+     * 刷新缓存
+     */
+    public void flushCache() {
+        Jedis jedis = null;
+        try {
+            jedis = jedisPool.getResource();
+            jedis.flushDB();
+        } finally {
+            release(jedis);
+        }
+    }
+
+    /**
      * 获取当个对象
+     *
+     * @param prefix
+     * @param key
+     * @param clazz
+     * @param <T>
+     * @return
      */
     public <T> T get(KeyPrefix prefix, String key, Class<T> clazz) {
         Jedis jedis = null;
@@ -35,6 +75,12 @@ public class RedisService {
 
     /**
      * 设置对象
+     *
+     * @param prefix
+     * @param key
+     * @param value
+     * @param <T>
+     * @return
      */
     public <T> boolean set(KeyPrefix prefix, String key, T value) {
         Jedis jedis = null;
@@ -60,6 +106,11 @@ public class RedisService {
 
     /**
      * 判断key是否存在
+     *
+     * @param prefix
+     * @param key
+     * @param <T>
+     * @return
      */
     public <T> boolean exists(KeyPrefix prefix, String key) {
         Jedis jedis = null;
@@ -75,6 +126,11 @@ public class RedisService {
 
     /**
      * 增加值
+     *
+     * @param prefix
+     * @param key
+     * @param <T>
+     * @return
      */
     public <T> Long incr(KeyPrefix prefix, String key) {
         Jedis jedis = null;
@@ -90,6 +146,11 @@ public class RedisService {
 
     /**
      * 减少值
+     *
+     * @param prefix
+     * @param key
+     * @param <T>
+     * @return
      */
     public <T> Long decr(KeyPrefix prefix, String key) {
         Jedis jedis = null;
@@ -149,6 +210,11 @@ public class RedisService {
         }
     }
 
+    /**
+     * 释放redis连接
+     *
+     * @param jedis
+     */
     private void release(Jedis jedis) {
         if (jedis != null) {
             jedis.close();

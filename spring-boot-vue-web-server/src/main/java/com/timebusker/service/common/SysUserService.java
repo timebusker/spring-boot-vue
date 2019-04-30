@@ -14,4 +14,6 @@ public interface SysUserService {
     ResultVo doLogin(UserVo vo);
 
     SysUser userByToken(String token);
+
+    SysUser userByName(String name);
 }

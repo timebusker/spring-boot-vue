@@ -59,4 +59,12 @@ public class SysUserServiceImpl implements SysUserService {
         return user;
     }
 
+    @Override
+    public SysUser userByName(String name) {
+        Example example = new Example(SysUser.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("username", name);
+        SysUser user = sysUserMapper.selectOneByExample(example);
+        return user;
+    }
 }

@@ -23,6 +23,11 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
         <!--使用lombok插件简化代码开发-->
         <dependency>
             <groupId>org.projectlombok</groupId>
