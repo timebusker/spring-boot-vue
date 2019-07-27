@@ -1,0 +1,34 @@
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+#home-header {
+    width: 100%;
+    padding: 0 !important;
+    background: #8cc5ff;
+}
+
+#home-container {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: white;
+}
+
+#home-aside {
+    width: 200px !important;
+    height: 100%;
+    background: #8c939d;
+}
+
+#main-container {
+    width: calc(100vw - 200px);
+    height: 100%;
+}
+
+#home-footer {
+    width: 100%;
+    height: 35px !important;
+    background: #c6dac4;
+    color: black;
+}

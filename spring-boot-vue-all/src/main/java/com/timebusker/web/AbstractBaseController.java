@@ -14,6 +14,7 @@ import javax.servlet.http.*;
 public abstract class AbstractBaseController {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
+
     protected HttpServletRequest request;
     protected HttpServletResponse response;
     protected HttpSession session;
@@ -28,6 +29,7 @@ public abstract class AbstractBaseController {
      */
     @ModelAttribute
     public void before(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        logger.info("----------============请求预处理============----------");
         this.request = request;
         this.response = response;
         this.session = session;
