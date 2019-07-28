@@ -12,7 +12,7 @@
     <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!--当前页面样式表-->
     <link href="css/index.css" rel="stylesheet">
-    
+
     <!--JS库导入-->
     <!--Vue组件-->
     <script src="libs/vue-2.5.2/vue.js"></script>
@@ -26,8 +26,8 @@
     <script src="libs/js-cookie-2.2.0/js.cookie.js"></script>
     <!--JQuery-->
     <script src="libs/jquery-3.4.1/jquery-3.4.1.min.js"></script>
-    
-    
+
+
     <!--Require需要放在最后-->
     <script src="libs/requirejs-2.3.5/require.js"></script>
     <!-- requireJS异步加载内容 -->
@@ -43,24 +43,29 @@
 <!--element-UI必须初始化Vue实例才生效-->
 <el-container id="app">
     <el-header id="home-header">
-        <el-menu class="el-menu-demo" mode="horizontal" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-<!--            <el-menu-item index="menu.menuId" :disabled="menu.disabled" target="menu.isFrame=true ? '_blank' : ''" v-if="menu.children == null" v-for="menu in menus">{{menu.menuName}}</el-menu-item>-->
-            <el-menu-item index="1">处理中心</el-menu-item>
-            <el-submenu index="2">
-                <template slot="title">我的工作台</template>
-                <el-menu-item index="2-1">待办任务</el-menu-item>
-                <el-menu-item index="2-2">工作日志</el-menu-item>
-                <el-menu-item index="2-3">个人信息</el-menu-item>
-                <el-submenu index="2-4">
-                    <template slot="title">部门管理</template>
-                    <el-menu-item index="2-4-1">工作审批</el-menu-item>
-                    <el-menu-item index="2-4-2">工作汇报</el-menu-item>
-                    <el-menu-item index="2-4-3">部门预算</el-menu-item>
+        <el-menu class="el-menu-demo" width="80%" :default-active="activeIndex" mode="horizontal" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+            <el-menu-item :index="menu.menuId" :disabled="menu.disabled" v-if="menu.children == null" v-for="menu in menus">
+                <template slot="title">
+                    <a v-if="menu.frameType==='_blank'" :href="menu.menuUrl">{{menu.menuName}}</a>
+                    <a v-else>{{menu.menuName}}</a>
+                </template>
+            </el-menu-item>
+            <el-submenu :index="menu.menuId" :disabled="menu.disabled" v-else>
+                <template slot="title">{{menu.menuName}}</template>
+                <el-menu-item :index="subMenu.menuId" v-if="subMenu.children == null" v-for="subMenu in menu.children">{{subMenu.menuName}}</el-menu-item>
+                <el-submenu :index="subMenu.menuId" :disabled="subMenu.disabled" v-else>
+                    <template slot="title">{{subMenu.menuName}}</template>
+                    <el-menu-item :index="sub.menuId" v-for="sub in subMenu.children">{{sub.menuName}}</el-menu-item>
                 </el-submenu>
             </el-submenu>
-            <el-menu-item index="3" disabled>消息中心</el-menu-item>
-            <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
         </el-menu>
+        <el-container width="10%">
+            <el-col>
+                <div class="block">
+                    <el-avatar :size="50" src="https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png"></el-avatar>
+                </div>
+            </el-col>
+        </el-container>
     </el-header>
     <el-container id="home-container">
         <el-aside id="home-aside">Aside</el-aside>

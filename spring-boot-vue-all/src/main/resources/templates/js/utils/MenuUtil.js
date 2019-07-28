@@ -1,14 +1,18 @@
 /**
  * 菜单-路由预处理工具类
+ * @returns {string}
  */
-
 function root() {
     let url = window.location.href;
     let path = url.substring(0, url.lastIndexOf("#") + 1);
     return path;
 }
 
-// 动态路由设置时，要保证所有路由组件不能为空
+/**
+ * 动态路由设置时，要保证所有路由组件不能为空
+ * @param menus
+ * @returns {Array}
+ */
 
 function formatRoutes(menus) {
     let fmtRoutes = [];
@@ -16,23 +20,24 @@ function formatRoutes(menus) {
         let {
             menuId,
             menuPid,
+            icon,
             menuName,
             menuUrl,
             template,
-            isFrame,
-            isEnable,
+            frameType,
+            disabled,
             children
         } = menu;
-        if (isFrame != true) {
+        if (frameType == '' || frameType == null || frameType == undefined) {
             menuUrl = root() + menuUrl
         }
         let fmtRouter = {
             menuId: menuId,
             menuPid: menuPid,
-            icon: "",
+            icon: icon,
             menuName: menuName,
-            isFrame: isFrame,
-            disabled: !isEnable,
+            frameType: frameType,
+            disabled: disabled,
             template: template,
             path: menuUrl,
         };

@@ -15,42 +15,55 @@ public class SystemMenu implements Serializable, Comparable<SystemMenu> {
 
     private String menuId;
     private String menuPid = "0";
+    private String icon;
     private String menuName;
     private String menuUrl = "#";
     private String template;
-    private boolean isFrame = false;
-    private boolean isEnable = true;
+    private String frameType = "";
+    private boolean disabled = false;
     private Set<SystemMenu> children;
 
     public SystemMenu() {
     }
 
-    public SystemMenu(String menuId, String menuPid, String menuName, boolean isEnable, String menuUrl, String template, boolean isFrame) {
+    public SystemMenu(String menuId, String menuPid, String icon, String menuName, String menuUrl, String template, String frameType, boolean disabled) {
         this.menuId = menuId;
         this.menuPid = menuPid;
+        this.icon = icon;
         this.menuName = menuName;
         this.menuUrl = menuUrl;
+        this.template = template;
+        this.frameType = frameType;
+        this.disabled = disabled;
     }
 
-    public SystemMenu(String menuId, String menuPid, String menuName, String menuUrl, String template, boolean isFrame) {
+    public SystemMenu(String menuId, String menuPid, String icon, String menuName, String menuUrl, String template, String frameType) {
         this.menuId = menuId;
         this.menuPid = menuPid;
+        this.icon = icon;
         this.menuName = menuName;
         this.menuUrl = menuUrl;
+        this.template = template;
+        this.frameType = frameType;
     }
 
-    public SystemMenu(String menuId, String menuPid, String menuName, boolean isEnable, String template, String menuUrl) {
+    public SystemMenu(String menuId, String menuPid, String icon, String menuName, String menuUrl, String template, boolean disabled) {
         this.menuId = menuId;
         this.menuPid = menuPid;
+        this.icon = icon;
         this.menuName = menuName;
         this.menuUrl = menuUrl;
+        this.template = template;
+        this.disabled = disabled;
     }
 
-    public SystemMenu(String menuId, String menuPid, String menuName, String menuUrl, String template) {
+    public SystemMenu(String menuId, String menuPid, String icon, String menuName, String menuUrl, String template) {
         this.menuId = menuId;
         this.menuPid = menuPid;
+        this.icon = icon;
         this.menuName = menuName;
         this.menuUrl = menuUrl;
+        this.template = template;
     }
 
     @Override
@@ -113,20 +126,20 @@ public class SystemMenu implements Serializable, Comparable<SystemMenu> {
         this.template = template;
     }
 
-    public boolean isFrame() {
-        return isFrame;
+    public String getFrameType() {
+        return frameType;
     }
 
-    public void setFrame(boolean iframe) {
-        isFrame = iframe;
+    public void setFrameType(String frameType) {
+        this.frameType = frameType;
     }
 
-    public boolean isEnable() {
-        return isEnable;
+    public boolean isDisabled() {
+        return disabled;
     }
 
-    public void setEnable(boolean enable) {
-        isEnable = enable;
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
     }
 
     public Set<SystemMenu> getChildren() {
@@ -135,5 +148,13 @@ public class SystemMenu implements Serializable, Comparable<SystemMenu> {
 
     public void setChildren(Set<SystemMenu> children) {
         this.children = children;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

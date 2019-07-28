@@ -4,7 +4,8 @@ window.$root = new Vue({
     el: '#app',
     router,
     data: {
-        menus: []
+        menus: [],
+        activeIndex: "0_1"
     },
     created: function () {
         this.menus = getMenus();
