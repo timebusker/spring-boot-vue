@@ -29,24 +29,19 @@ function formatRoutes(menus) {
             children
         } = menu;
         if (frameType == '' || frameType == null || frameType == undefined) {
-            menuUrl = root() + menuUrl
+            let fmtRouter = {
+                path: menuUrl,
+                // 根据组件实例名称获取组件实例
+                component: Vue.component(template)
+            };
+            // 处理空节点
+            if (children instanceof Array && children.length > 0) {
+                children = formatRoutes(children);
+                // fmtRouter.childs = children;
+                fmtRoutes = fmtRoutes.concat(children)
+            }
+            fmtRoutes.push(fmtRouter);
         }
-        let fmtRouter = {
-            menuId: menuId,
-            menuPid: menuPid,
-            icon: icon,
-            menuName: menuName,
-            frameType: frameType,
-            disabled: disabled,
-            template: template,
-            path: menuUrl,
-        };
-        // 处理空节点
-        if (children instanceof Array && children.length > 0) {
-            children = formatRoutes(children);
-            fmtRouter.children = children;
-        }
-        fmtRoutes.push(fmtRouter);
     })
     return fmtRoutes;
 }

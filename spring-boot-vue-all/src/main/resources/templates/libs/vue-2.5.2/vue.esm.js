@@ -9034,7 +9034,7 @@ if (inBrowser) {
         devtools.emit('init', Vue);
       } else if (
         process.env.NODE_ENV !== 'production' &&
-        process.env.NODE_ENV !== 'test'
+        process.env.NODE_ENV !== 'templates.js.process.test'
       ) {
         console[console.info ? 'info' : 'log'](
           'Download the Vue Devtools extension for a better development experience:\n' +
@@ -9043,7 +9043,7 @@ if (inBrowser) {
       }
     }
     if (process.env.NODE_ENV !== 'production' &&
-      process.env.NODE_ENV !== 'test' &&
+      process.env.NODE_ENV !== 'templates.js.process.test' &&
       config.productionTip !== false &&
       typeof console !== 'undefined'
     ) {

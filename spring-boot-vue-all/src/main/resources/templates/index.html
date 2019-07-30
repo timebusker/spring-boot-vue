@@ -12,7 +12,7 @@
     <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!--当前页面样式表-->
     <link href="css/index.css" rel="stylesheet">
-
+    
     <!--JS库导入-->
     <!--Vue组件-->
     <script src="libs/vue-2.5.2/vue.js"></script>
@@ -26,63 +26,86 @@
     <script src="libs/js-cookie-2.2.0/js.cookie.js"></script>
     <!--JQuery-->
     <script src="libs/jquery-3.4.1/jquery-3.4.1.min.js"></script>
-
-
+    
+    
     <!--Require需要放在最后-->
     <script src="libs/requirejs-2.3.5/require.js"></script>
     <!-- requireJS异步加载内容 -->
     <script>
         require.config({
             paths: {
-                text: 'libs/requirejs-2.3.5/text'
+                text: 'libs/requirejs-2.3.5/text',
+                // 模块会引入组件
+                // process
+                'processMap': 'js/process/process-map',
+                'processTable': 'js/process/process-table'
             }
         });
+        var getContextPath = function () {
+            var pathName = document.location.pathname;
+            var index = pathName.substr(1).indexOf("/");
+            var context = pathName.substr(0, index + 1);
+            return context;
+        };
+        var $contextPath = this.getContextPath();
     </script>
 </head>
 <body>
 <!--element-UI必须初始化Vue实例才生效-->
 <el-container id="app">
     <el-header id="home-header">
-        <el-menu class="el-menu-demo" width="80%" :default-active="activeIndex" mode="horizontal" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-            <el-menu-item :index="menu.menuId" :disabled="menu.disabled" v-if="menu.children == null" v-for="menu in menus">
-                <template slot="title">
-                    <a v-if="menu.frameType==='_blank'" :href="menu.menuUrl">{{menu.menuName}}</a>
-                    <a v-else>{{menu.menuName}}</a>
-                </template>
-            </el-menu-item>
-            <el-submenu :index="menu.menuId" :disabled="menu.disabled" v-else>
-                <template slot="title">{{menu.menuName}}</template>
-                <el-menu-item :index="subMenu.menuId" v-if="subMenu.children == null" v-for="subMenu in menu.children">{{subMenu.menuName}}</el-menu-item>
-                <el-submenu :index="subMenu.menuId" :disabled="subMenu.disabled" v-else>
-                    <template slot="title">{{subMenu.menuName}}</template>
-                    <el-menu-item :index="sub.menuId" v-for="sub in subMenu.children">{{sub.menuName}}</el-menu-item>
-                </el-submenu>
-            </el-submenu>
-        </el-menu>
-        <el-container width="10%">
-            <el-col>
-                <div class="block">
-                    <el-avatar :size="50" src="https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png"></el-avatar>
-                </div>
+        <el-row style="width:100%;height: 100%;" :gutter="4">
+            <el-col :span="20">
+                <el-menu class="el-menu-demo" :default-active="activeIndex" mode="horizontal" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" router style="border: none;">
+                    <!--:index="menu.menuUrl" 对应着 router 的path-->
+                    <el-menu-item :index="menu.menuUrl" :disabled="menu.disabled" v-if="menu.children == null" v-for="menu in menus">
+                        <template slot="title">
+                            <a v-if="menu.frameType==='_blank'" :href="menu.menuUrl">{{menu.menuName}}</a>
+                            <a v-else>{{menu.menuName}}</a>
+                        </template>
+                    </el-menu-item>
+                    <el-submenu :index="menu.menuUrl" :disabled="menu.disabled" v-else>
+                        <template slot="title">{{menu.menuName}}</template>
+                        <el-menu-item :index="subMenu.menuUrl" v-if="subMenu.children == null" v-for="subMenu in menu.children">{{subMenu.menuName}}</el-menu-item>
+                        <el-submenu :index="subMenu.menuUrl" :disabled="subMenu.disabled" v-else>
+                            <template slot="title">{{subMenu.menuName}}</template>
+                            <el-menu-item :index="sub.menuUrl" v-for="sub in subMenu.children">{{sub.menuName}}</el-menu-item>
+                        </el-submenu>
+                    </el-submenu>
+                </el-menu>
             </el-col>
-        </el-container>
+            <el-col :span="4">
+                <el-dropdown style="background: inherit;height: inherit;width: 100%;" size="small">
+                    <el-row style="line-height: 60px">
+                        <el-col :span="8" style="line-height: inherit">
+                            <el-avatar :size="35" fit="fill" src="http://www.timebusker.top/img/about-mine-gentle.gif"></el-avatar>
+                        </el-col>
+                        <el-col :span="12">
+                            <span style="font-size: 14px;font-weight: bold;color:white">timebusker</span>
+                        </el-col>
+                    </el-row>
+                    <el-dropdown-menu slot="dropdown" style="height: inherit;line-height: 60px">
+                        <el-dropdown-item index="2">个人中心</el-dropdown-item>
+                        <el-dropdown-item index="3">修改密码</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </el-col>
+        </el-row>
     </el-header>
-    <el-container id="home-container">
-        <el-aside id="home-aside">Aside</el-aside>
-        <el-container id="main-container">
-            <el-main id="home-main">Main</el-main>
-            <el-footer id="home-footer">
-                <el-tag style="font-weight: bold;margin: 0">timebusker.com</el-tag>
-            </el-footer>
-        </el-container>
-    </el-container>
+    <el-main id="home-main" style="background:rgb(171, 192, 214)">
+        <router-view></router-view>
+    </el-main>
 </el-container>
-<!--引入当前页面组件-->
 
 <!--自定义JS组件-->
 <script type="text/javascript" src="js/utils/MenuUtil.js"></script>
 <!--<script type="text/javascript" src="js/utils/AxiosUtil.js"></script>-->
 
+<!--页面Vue组件-->
+<script type="text/javascript" src="js/process/process.js"></script>
+<script type="text/javascript" src="js/work/backlog.js"></script>
+<script type="text/javascript" src="js/work/manage/approve.js"></script>
+<!--本页面根组件，放在最后加载-->
 <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
