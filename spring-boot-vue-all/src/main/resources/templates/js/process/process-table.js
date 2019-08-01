@@ -1,13 +1,11 @@
-let processTable = Vue.component("processTable", function (resolve) {
-    console.log("11111111111111111111111111")
+const processTable = Vue.component("processTable", function (resolve) {
     require(['text!./views/process/process-table.html'], function (tpl) {
-        console.log("---------------->",tpl)
         resolve({
             template: tpl,
             props: [],
             data: function () {
                 return {
-                    d: 'ddddddd'
+                    a: "aaaaaaaaaaaaaaaaaaa"
                 }
             },
             created: function () {
@@ -15,7 +13,4 @@ let processTable = Vue.component("processTable", function (resolve) {
             methods: {}
         })
     })
-});
-console.log("222222222222222222222222222222222")
-
-console.log(processTable.$data)
+})

@@ -1,16 +1,19 @@
 let $MENUS = [], $ROUTER = []
-
 $MENUS = getMenus();
 $ROUTER = formatRoutes($MENUS);
-// console.log("========>>>", $ROUTER)
 
-const router = new VueRouter({
-    routes: $ROUTER
+let children = []
+// 注意路由路径的定义
+children.push({path: "/map", component: Vue.component("processMap")})
+children.push({path: "table", component: processTable})
+$ROUTER.forEach(v => {
+    if (v.path === '/process') {
+        v.children = children
+    }
 })
-router.beforeEach((to, from, next) => {
-    // console.log(from.path)
-    // console.log(to.path)
-    next()
+
+let router = new VueRouter({
+    routes: $ROUTER
 })
 
 window.$root = new Vue({
@@ -21,11 +24,7 @@ window.$root = new Vue({
         activeIndex: "0_1"
     },
     created: function () {
-        // console.log("----->", this.$router)
-        // console.log("----->", this.menus)
-        // // 获取当前组件的父组件和子组件实例信息
-        // console.log("----->", this.$parent)
-        // console.log("----->", this.$children)
+        console.log("========>", this.$router)
     },
     methods: {}
 });

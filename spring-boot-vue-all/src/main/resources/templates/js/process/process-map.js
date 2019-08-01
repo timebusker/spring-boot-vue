@@ -1,18 +1,16 @@
-var processMap = Vue.component("processMap", function (resolve) {
-    console.log("333333333333333333333333333333333")
+const processMap = Vue.component("processMap", function (resolve) {
     require(['text!./views/process/process-map.html'], function (tpl) {
-        console.log("---------------->", tpl)
         resolve({
             template: tpl,
             props: [],
             data: function () {
-                return {}
+                return {
+                    a: "aaaaaaaaaaaaaaaaaaa"
+                }
             },
             created: function () {
             },
             methods: {}
         })
     })
-});
-
-console.log("4444444444444444444444444444444444444444")
+})

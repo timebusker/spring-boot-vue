@@ -37,17 +37,10 @@
                 text: 'libs/requirejs-2.3.5/text',
                 // 模块会引入组件
                 // process
-                'processMap': 'js/process/process-map',
-                'processTable': 'js/process/process-table'
+                'backlogCard': 'js/work/backlog-card',
+                'backlogTable': 'js/work/backlog-table'
             }
         });
-        var getContextPath = function () {
-            var pathName = document.location.pathname;
-            var index = pathName.substr(1).indexOf("/");
-            var context = pathName.substr(0, index + 1);
-            return context;
-        };
-        var $contextPath = this.getContextPath();
     </script>
 </head>
 <body>
@@ -58,18 +51,18 @@
             <el-col :span="20">
                 <el-menu class="el-menu-demo" :default-active="activeIndex" mode="horizontal" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" router style="border: none;">
                     <!--:index="menu.menuUrl" 对应着 router 的path-->
-                    <el-menu-item :index="menu.menuUrl" :disabled="menu.disabled" v-if="menu.children == null" v-for="menu in menus">
+                    <el-menu-item :index="menu.menuUrl" :disabled="menu.disabled" v-if="menu.children == null" :key="menu.menuId" v-for="menu in menus">
                         <template slot="title">
                             <a v-if="menu.frameType==='_blank'" :href="menu.menuUrl">{{menu.menuName}}</a>
                             <a v-else>{{menu.menuName}}</a>
                         </template>
                     </el-menu-item>
-                    <el-submenu :index="menu.menuUrl" :disabled="menu.disabled" v-else>
+                    <el-submenu :index="menu.menuUrl" :disabled="menu.disabled" :key="menu.menuId" v-else>
                         <template slot="title">{{menu.menuName}}</template>
-                        <el-menu-item :index="subMenu.menuUrl" v-if="subMenu.children == null" v-for="subMenu in menu.children">{{subMenu.menuName}}</el-menu-item>
-                        <el-submenu :index="subMenu.menuUrl" :disabled="subMenu.disabled" v-else>
+                        <el-menu-item :index="subMenu.menuUrl" v-if="subMenu.children == null" :key="subMenu.menuId" v-for="subMenu in menu.children">{{subMenu.menuName}}</el-menu-item>
+                        <el-submenu :index="subMenu.menuUrl" :disabled="subMenu.disabled" :key="subMenu.menuId" v-else>
                             <template slot="title">{{subMenu.menuName}}</template>
-                            <el-menu-item :index="sub.menuUrl" v-for="sub in subMenu.children">{{sub.menuName}}</el-menu-item>
+                            <el-menu-item :index="sub.menuUrl" :key="sub.menuId" v-for="sub in subMenu.children">{{sub.menuName}}</el-menu-item>
                         </el-submenu>
                     </el-submenu>
                 </el-menu>
@@ -103,7 +96,11 @@
 
 <!--页面Vue组件-->
 <script type="text/javascript" src="js/process/process.js"></script>
+<script type="text/javascript" src="js/process/process-map.js"></script>
+<script type="text/javascript" src="js/process/process-table.js"></script>
+
 <script type="text/javascript" src="js/work/backlog.js"></script>
+
 <script type="text/javascript" src="js/work/manage/approve.js"></script>
 <!--本页面根组件，放在最后加载-->
 <script type="text/javascript" src="js/index.js"></script>
