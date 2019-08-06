@@ -1,8 +1,9 @@
 /**
  * 此实例为全局注册，必须在根Vue实例之前完成注册
  */
+console.log(">>>   Vue:", Vue)
 const backlog = Vue.component("backlog", function (resolve) {
-    console.log("resolve:", resolve)
+    console.log(">>>   resolve:", resolve)
     require(['text!./views/work/backlog.html'], function (tpl) {
         resolve({
             template: tpl,
@@ -31,7 +32,7 @@ function loadComponent() {
     let children = []
     require(['backlogCard', 'backlogTable'], function (backlogCard, backlogTable) {
         children.push({path: "/card", component: backlogCard.component})
-        children.push({path: "table", component: backlogTable.component()})
+        children.push({path: "table", component: backlogTable})
     });
     return children;
 }
