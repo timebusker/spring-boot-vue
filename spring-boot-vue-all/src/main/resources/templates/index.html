@@ -37,9 +37,13 @@
                 text: 'libs/requirejs-2.3.5/text',
                 // 模块会引入组件
                 // process
-                'backlogCard': 'js/work/backlog-card',
-                'backlogTable': 'js/work/backlog-table'
-            }
+                backlogCard: 'js/work/backlog-card',
+                backlogTable: 'js/work/backlog-table'
+            },
+            // 向服务端传递额外的参数，通常用来起到禁用缓存的效果
+            urlArgs: "_t=" + new Date().getTime(),
+            // 直接加载默认项，不需要申明依赖关系（before require.js is loaded）
+            deps: ['text', 'backlogCard', 'backlogTable']
         });
     </script>
 </head>
