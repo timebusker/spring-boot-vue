@@ -1,5 +1,5 @@
-const process = Vue.component("process", function (resolve) {
-    require(['text!./views/process/process.html'], function (tpl) {
+const menuView = Vue.component("menuView", function (resolve) {
+    require(['text!./views/system/menu.html'], function (tpl) {
         resolve({
             template: tpl,
             props: [],

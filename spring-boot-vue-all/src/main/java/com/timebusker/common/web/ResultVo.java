@@ -1,6 +1,4 @@
-package com.timebusker.common;
-
-import com.timebusker.common.web.HttpStatus;
+package com.timebusker.common.web;
 
 import java.io.Serializable;
 import java.util.HashMap;

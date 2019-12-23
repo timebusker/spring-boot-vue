@@ -18,26 +18,29 @@ function formatRoutes(menus) {
     let fmtRoutes = [];
     menus.forEach(menu => {
         let {
-            menuId,
-            menuPid,
+            id,
+            systemId,
+            parentId,
             icon,
-            menuName,
-            menuUrl,
+            name,
+            url,
             template,
-            frameType,
+            type,
             disabled,
-            children
+            sort,
+            updateTime,
+            updateUserId,
+            children,
         } = menu;
-        if (frameType == '' || frameType == null || frameType == undefined) {
+        if (type === '0') {
             let fmtRouter = {
-                path: menuUrl,
+                path: url,
                 // 根据组件实例名称获取组件实例
                 component: Vue.component(template)
             };
             // 处理空节点
             if (children instanceof Array && children.length > 0) {
                 children = formatRoutes(children);
-                // fmtRouter.childs = children;
                 fmtRoutes = fmtRoutes.concat(children)
             }
             fmtRoutes.push(fmtRouter);
