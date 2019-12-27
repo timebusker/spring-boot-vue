@@ -6,9 +6,11 @@ import com.timebusker.service.MenuService;
 import com.timebusker.utils.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description: MenuController
@@ -23,8 +25,9 @@ public class MenuController extends AbstractBaseController {
     private MenuService menuService;
 
     @RequestMapping("/list")
-    public ResultVO list() {
-        List<MenuEntity> list = menuService.query(new Query());
+    public ResultVO list(@RequestParam Map<String, Object> params) {
+        Query query = new Query(params);
+        List<MenuEntity> list = menuService.query(query);
         return ResultVO.ok().put("menus", list);
     }
 }

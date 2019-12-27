@@ -6,13 +6,14 @@ const menuView = Vue.component("menuView", function (resolve) {
             data: function () {
                 return {
                     systemData: [],
-                    selectSystem: '',
                     tableData: [],
                     treeData: [],
-                    defaultProps: {
+                    treeProps: {
                         children: 'children',
-                        label: 'label'
-                    }
+                        label: 'name',
+                    },
+                    systemId: '',
+                    parentId: '',
                 }
             },
             created: function () {
@@ -20,18 +21,22 @@ const menuView = Vue.component("menuView", function (resolve) {
             },
             mounted: function () {
                 console.log(this.systemData[0]);
-                this.selectSystem = this.systemData[0].name;
             },
             methods: {
                 queryMenuTree() {
                     let _this = this;
                     $.post({
-                        url: "",
+                        url: "menu/list",
                         methods: "post",
                         dataType: "json",
-                        data: {},
+                        // contentType: "application/json;charset=utf-8",
+                        data: {
+                            systemId: _this.systemId,
+                            parentId: _this.parentId,
+                        },
                         success: function (res) {
-
+                            console.log(res);
+                            _this.treeData = res.menus;
                         },
                         error: function (res) {
                             this.$message.error('查询菜单树失败！');

@@ -21,13 +21,22 @@ public class Query extends HashMap<String, Object> {
     public Query(Map<String, Object> params) {
         this.putAll(params);
         //分页参数
-        this.currentPage = Integer.parseInt(params.get("currentPage").toString());
-        this.pageSize = Integer.parseInt(params.get("pageSize").toString());
+        this.currentPage = isBlankValue("currentPage") ? 0 : Integer.parseInt(params.get("currentPage").toString());
+        this.pageSize = isBlankValue("pageSize") ? 15 : Integer.parseInt(params.get("pageSize").toString());
         this.put("offset", (currentPage - 1) * pageSize);
         this.put("page", currentPage);
         this.put("limit", pageSize);
     }
 
     public Query() {
+    }
+
+
+    public boolean isBlankValue(String key) {
+        if (this.get(key) == null) {
+            return true;
+        } else {
+            return this.get(key).toString().trim().equals("");
+        }
     }
 }

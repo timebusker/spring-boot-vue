@@ -5,6 +5,8 @@ import com.timebusker.model.MenuEntity;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Description: CommonTest
@@ -33,5 +35,17 @@ public class CommonTest {
     public void test2() {
         String reg = "^[^(css)(js)]$";
         System.out.println("http://hhhh/ddd/ccc.cssd".matches(reg));
+    }
+
+    @Test
+    public void test3() {
+        Map<String, Object> map = new HashMap<>();
+        System.out.println(map.get("e"));
+        map.put("a", "a");
+        map.put("b", 2);
+        map.put("c", 3L);
+        map.put("e", null);
+
+        System.out.println(map.get("e"));
     }
 }

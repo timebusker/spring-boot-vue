@@ -1,5 +1,6 @@
 package com.timebusker.web;
 
+import com.timebusker.common.SystemConstant;
 import com.timebusker.common.web.ResultVO;
 import com.timebusker.model.MenuEntity;
 import com.timebusker.service.MenuService;
@@ -32,8 +33,6 @@ public class HomeController extends AbstractBaseController {
     @ResponseBody
     public ResultVO list() {
         Query query = new Query();
-        query.put("systemId", "M_1208608669512634368");
-        query.put("parentId", "0");
         List<MenuEntity> list = menuService.query(query);
         return ResultVO.ok().put("menus", list);
     }
