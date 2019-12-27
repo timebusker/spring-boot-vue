@@ -9,44 +9,44 @@ import java.util.Map;
  * @author:timebusker
  * @date:2019/3/14
  */
-public class ResultVo extends HashMap<String, Object> implements Serializable {
+public class ResultVO extends HashMap<String, Object> implements Serializable {
 
-    public ResultVo() {
+    public ResultVO() {
         put("code", 200);
     }
 
-    public static ResultVo error() {
+    public static ResultVO error() {
         return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常，请联系管理员！");
     }
 
-    public static ResultVo error(String msg) {
+    public static ResultVO error(String msg) {
         return error(HttpStatus.SC_INTERNAL_SERVER_ERROR, msg);
     }
 
-    public static ResultVo error(int code, String msg) {
-        ResultVo r = new ResultVo();
+    public static ResultVO error(int code, String msg) {
+        ResultVO r = new ResultVO();
         r.put("code", code);
         r.put("msg", msg);
         return r;
     }
 
-    public static ResultVo ok(String msg) {
-        ResultVo r = new ResultVo();
+    public static ResultVO ok(String msg) {
+        ResultVO r = new ResultVO();
         r.put("msg", msg);
         return r;
     }
 
-    public static ResultVo ok(Map<String, Object> map) {
-        ResultVo r = new ResultVo();
+    public static ResultVO ok(Map<String, Object> map) {
+        ResultVO r = new ResultVO();
         r.putAll(map);
         return r;
     }
 
-    public static ResultVo ok() {
-        return new ResultVo();
+    public static ResultVO ok() {
+        return new ResultVO();
     }
 
-    public ResultVo put(String key, Object value) {
+    public ResultVO put(String key, Object value) {
         super.put(key, value);
         return this;
     }

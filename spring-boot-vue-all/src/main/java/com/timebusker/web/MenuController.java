@@ -1,10 +1,9 @@
 package com.timebusker.web;
 
-import com.timebusker.common.web.ResultVo;
+import com.timebusker.common.web.ResultVO;
 import com.timebusker.model.MenuEntity;
 import com.timebusker.service.MenuService;
 import com.timebusker.utils.Query;
-import org.apache.commons.collections.list.TreeList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,9 +23,8 @@ public class MenuController extends AbstractBaseController {
     private MenuService menuService;
 
     @RequestMapping("/list")
-    public ResultVo list() {
+    public ResultVO list() {
         List<MenuEntity> list = menuService.query(new Query());
-        return ResultVo.ok().put("menus", list);
+        return ResultVO.ok().put("menus", list);
     }
-
 }

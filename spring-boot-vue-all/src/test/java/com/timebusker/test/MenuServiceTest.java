@@ -25,6 +25,23 @@ public class MenuServiceTest {
     private MenuService menuService;
 
     @Test
+    public void test3() {
+        MenuEntity menu = new MenuEntity();
+        menu.setDisabled(false);
+        menu.setIcon("###");
+        menu.setName("UI站点");
+        menu.setParentId("0");
+        menu.setSort(5);
+        menu.setSystemId("M_1208608669512634368");
+        menu.setTemplate("");
+        menu.setType("外部链接");
+        menu.setUpdateTime(LocalDateTime.now());
+        menu.setUrl("https://element.eleme.cn/#/zh-CN");
+        menu.setUpdateUserId("admin");
+        menuService.save(menu);
+    }
+
+    @Test
     public void test2() {
         MenuEntity menu1 = new MenuEntity();
         menu1.setDisabled(false);

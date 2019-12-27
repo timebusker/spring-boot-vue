@@ -6,8 +6,10 @@ import com.timebusker.utils.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +35,11 @@ public class SystemService extends AbstractBaseServiceImpl<SystemEntity, SystemR
 
     @Override
     public List<SystemEntity> query(Query params) {
-        return null;
+        List<SystemEntity> list = new ArrayList<>();
+        if (params == null || params.isEmpty()) {
+            list = systemRepository.findAll(systemRepository.sort);
+        }
+        return list;
     }
 
     @Override

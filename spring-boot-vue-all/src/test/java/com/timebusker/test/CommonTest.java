@@ -28,4 +28,10 @@ public class CommonTest {
             System.out.println(field.getName() + "\t:\t" + field.getType().getName());
         }
     }
+
+    @Test
+    public void test2() {
+        String reg = "^[^(css)(js)]$";
+        System.out.println("http://hhhh/ddd/ccc.cssd".matches(reg));
+    }
 }

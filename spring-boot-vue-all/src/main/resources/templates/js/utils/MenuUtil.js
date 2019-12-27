@@ -32,18 +32,20 @@ function formatRoutes(menus) {
             updateUserId,
             children,
         } = menu;
-        if (type === '0') {
-            let fmtRouter = {
-                path: url,
-                // 根据组件实例名称获取组件实例
-                component: Vue.component(template)
-            };
+        if (type === "view_frame") {
+            if (template != '') {
+                let fmtRouter = {
+                    path: url,
+                    // 根据组件实例名称获取组件实例
+                    component: Vue.component(template)
+                };
+                fmtRoutes.push(fmtRouter);
+            }
             // 处理空节点
             if (children instanceof Array && children.length > 0) {
                 children = formatRoutes(children);
                 fmtRoutes = fmtRoutes.concat(children)
             }
-            fmtRoutes.push(fmtRouter);
         }
     })
     return fmtRoutes;
