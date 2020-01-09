@@ -18,18 +18,25 @@ import java.util.List;
  * @date:2019/7/26
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping({"/index", "/home"})
 public class HomeController extends AbstractBaseController {
 
     @Autowired
     private MenuService menuService;
 
-    @RequestMapping({"/", "", "/index", "/home"})
+    /**
+     * 项目自动加载： Adding welcome page: class path resource [templates/index.html]
+     * 此处主要作为补充：
+     * 模板页面已配置到index.html,增加此处主要是方便页面跳转
+     *
+     * @return
+     */
+    @RequestMapping("")
     public String index() {
         return "index";
     }
 
-    @RequestMapping("/menus")
+    @RequestMapping("/menu")
     @ResponseBody
     public ResultVO list() {
         Query query = new Query();

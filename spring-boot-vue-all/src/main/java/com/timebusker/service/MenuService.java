@@ -6,6 +6,7 @@ import com.timebusker.repository.MenuRepository;
 import com.timebusker.utils.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -27,12 +28,6 @@ public class MenuService extends AbstractBaseServiceImpl<MenuEntity, MenuReposit
         this.setRepository(menuRepository);
     }
 
-    @Override
-    public MenuEntity queryByParams(Query params) {
-        return null;
-    }
-
-    @Override
     public List<MenuEntity> query(Query params) {
         String systemId = params.isBlankValue("systemId") ? SystemConstant.DEFAULT_SYSTEM_ID : params.get("systemId").toString();
         String parentId = params.isBlankValue("parentId") ? SystemConstant.DEFAULT_MENU_PARENT_ID : params.get("parentId").toString();
@@ -40,15 +35,13 @@ public class MenuService extends AbstractBaseServiceImpl<MenuEntity, MenuReposit
         for (MenuEntity menu : list) {
             parentId = menu.getId();
             List<MenuEntity> children = menuRepository.queryBySystemIdAndParentId(systemId, parentId);
-            if (children != null) {
-                menu.setChildren(children);
+            menu.setChildren(children);
+            for (MenuEntity sub : children) {
+                parentId = sub.getId();
+                List<MenuEntity> subs = menuRepository.queryBySystemIdAndParentId(systemId, parentId);
+                sub.setChildren(subs);
             }
         }
         return list;
-    }
-
-    @Override
-    public Page<MenuEntity> query(Query params, Pageable pageable) {
-        return null;
     }
 }

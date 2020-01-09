@@ -12,7 +12,6 @@
     <link href="libs/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!--当前页面样式表-->
     <link href="css/index.css" rel="stylesheet">
-
     <!--JS库导入-->
     <!--Vue组件-->
     <script src="libs/vue-2.5.2/vue.js"></script>
@@ -26,8 +25,6 @@
     <script src="libs/js-cookie-2.2.0/js.cookie.js"></script>
     <!--JQuery-->
     <script src="libs/jquery-3.4.1/jquery-3.4.1.min.js"></script>
-
-
     <!--Require需要放在最后-->
     <script src="libs/requirejs-2.3.5/require.js"></script>
     <!-- requireJS异步加载内容 -->
@@ -36,21 +33,18 @@
             paths: {
                 text: 'libs/requirejs-2.3.5/text',
                 // 模块会引入组件
-                // process
-                backlogCard: 'js/work/backlog-card',
-                backlogTable: 'js/work/backlog-table'
             },
             // 向服务端传递额外的参数，通常用来起到禁用缓存的效果
             urlArgs: "_t=" + new Date().getTime(),
             // 直接加载默认项，不需要申明依赖关系（before require.js is loaded）
-            deps: ['text', 'backlogCard', 'backlogTable']
+            deps: ['text']
         });
     </script>
 </head>
 <body>
 <!--element-UI必须初始化Vue实例才生效-->
 <el-container id="app">
-    <el-aside width="200px" style="background: #545c64">
+    <el-aside width="200px" style="background: #545c64;overflow: hidden">
         <el-row style="width:100%;height: 70px;padding-top: 10px;" :gutter="4">
             <el-col :span="8" style="height: 60px;padding-top: 10px">
                 <el-badge :value="3" class="item">
@@ -58,54 +52,37 @@
                 </el-badge>
             </el-col>
             <el-col :span="12" style="line-height: 60px;display: block">
-                <span style="font-size: 16px;font-weight: bold;color:white">timebusker</span>
+                <span style="font-size: 16px;font-weight: 500;color:white">timebusker</span>
             </el-col>
         </el-row>
         <el-row style="width:100%;">
             <el-divider><i class="el-icon-s-help"></i></el-divider>
         </el-row>
-        <el-row style="width:100%;height: auto;margin-top: 10px;font-weight: 600;text-align: left;overflow-y: auto;overflow-x: hidden;"
-                :gutter="4">
-            <el-menu class="el-menu-vertical-demo" :default-active="activeIndex"
-                     background-color="#545c64"
-                     text-color="#fff" active-text-color="#ffd04b" router style="border: none;"
-                     @select="handleSelectMenu">
+        <el-row style="width:100%;height: auto;margin-top: 10px;font-weight: 500;text-align: left;overflow-y: auto;overflow-x: hidden;" :gutter="4">
+            <el-menu class="el-menu-vertical-demo" :default-active="activeIndex" background-color="#545c64"
+                     text-color="#fff" active-text-color="#ffd04b" router style="border: none;" @select="selectMenu">
                 <!--:index="menu.url" 对应着 router 的 path -->
-                <el-menu-item :index="menu.url" :disabled="menu.disabled" v-if="menu.children.length === 0"
-                              :key="menu.id" v-for="menu in menus">
+                <el-menu-item :index="menu.url" :disabled="menu.disabled" v-if="menu.children.length === 0" :key="menu.id" v-for="menu in menus">
                     <template slot="title">
-                        <a v-if="menu.type === 'view_window'" :href="menu.url" target="menu.type"
-                           style="color: inherit">{{menu.name}}</a>
-                        <span v-else>{{menu.name}}</span>
+                        <a v-if="menu.type === 'view_window'" :href="menu.url" target="menu.type" style="color: inherit"><i :class="menu.icon" style="display: inline-block;margin: 3px"></i> {{menu.name}}</a>
+                        <span v-else><i :class="menu.icon" style="display: inline-block;margin: 3px"></i>{{menu.name}}</span>
                     </template>
                 </el-menu-item>
                 <el-submenu :index="menu.url" :disabled="menu.disabled" :key="menu.id" v-else>
-                    <template slot="title">{{menu.name}}</template>
-                    <el-menu-item :index="sub.url" :key="sub.id" v-for="sub in menu.children">{{sub.name}}
-                    </el-menu-item>
+                    <template slot="title"><i :class="menu.icon" style="display: inline-block;margin: 3px"></i>{{menu.name}}</template>
+                    <el-menu-item :index="sub.url" :key="sub.id" v-for="sub in menu.children"><i :class="sub.icon" style="display: inline-block;margin: 3px"></i>{{sub.name}}</el-menu-item>
                 </el-submenu>
             </el-menu>
         </el-row>
     </el-aside>
     <el-container>
         <el-header id="home-header">
-            <el-row style="height: 60px">
-                <el-button @click="drawer = true" type="primary" style="float: right;margin: 10px 20px">
-                    个人中心
-                </el-button>
-                <el-button @click="drawer = true" type="primary" style="float: right;margin:10px 20px;">
-                    系统消息
-                </el-button>
+            <el-row style="height: 60px;">
+                <el-button @click="logout" type="text" style="float: right;margin: 10px 50px 10px 10px;color: #fff;font-weight: 500">退出登录</el-button>
+                <el-button type="text" style="float: right;margin:10px;color: #fff;font-weight: 500">个人中心</el-button>
             </el-row>
-            <el-drawer
-                    title="我是标题"
-                    :visible.sync="drawer"
-                    direction="rtl"
-                    :before-close="handleCloseDrawer">
-                <span>我来啦!</span>
-            </el-drawer>
         </el-header>
-        <el-main id="home-main" style="background:rgb(171, 192, 214);padding-top: 10px">
+        <el-main id="home-main" style="background:rgb(171, 192, 214);padding-top: 0px">
             <router-view></router-view>
         </el-main>
     </el-container>
@@ -113,12 +90,11 @@
 
 <!--自定义JS组件-->
 <script type="text/javascript" src="js/utils/MenuUtil.js"></script>
-<!--<script type="text/javascript" src="js/utils/AxiosUtil.js"></script>-->
-
 <!--页面Vue组件-->
-<script type="text/javascript" src="js/common/menu.js"></script>
-<script type="text/javascript" src="js/common/process-map.js"></script>
-<script type="text/javascript" src="js/common/process-table.js"></script>
+<script type="text/javascript" src="js/system/menu.js"></script>
+<script type="text/javascript" src="js/system/config.js"></script>
+<script type="text/javascript" src="js/permission/user.js"></script>
+<script type="text/javascript" src="js/permission/role.js"></script>
 
 <!--本页面根组件，放在最后加载-->
 <script type="text/javascript" src="js/index.js"></script>

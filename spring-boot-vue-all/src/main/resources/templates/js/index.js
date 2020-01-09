@@ -12,21 +12,16 @@ window.$root = new Vue({
     data: {
         menus: $MENUS,
         activeIndex: $MENUS[0].url,
-        drawer: false
     },
     created: function () {
+        console.log("---------->",router)
     },
     methods: {
-        handleSelectMenu(key, keyPath) {
+        selectMenu(key, keyPath) {
             console.log(key, keyPath);
         },
-        handleCloseDrawer(done) {
-            this.$confirm('确认关闭？')
-                .then(_ => {
-                    done();
-                })
-                .catch(_ => {
-                });
+        logout() {
+            window.location.href = "/auth/logout"
         }
     }
 });

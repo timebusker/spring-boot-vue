@@ -1,14 +1,18 @@
 package com.timebusker.service;
 
 import com.timebusker.common.exception.VueException;
+import com.timebusker.model.SystemConfigEntity;
 import com.timebusker.repository.AbstractBaseRepository;
 import com.timebusker.utils.BeanInvokeUtil;
 import com.timebusker.utils.Query;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import java.util.Set;
+import java.util.Collection;
 
 /**
  * @Description: AbstractBaseServiceImpl
@@ -16,6 +20,8 @@ import java.util.Set;
  * @Date: 2019/12/21 20:03
  **/
 public abstract class AbstractBaseServiceImpl<DTO, DAO extends AbstractBaseRepository> implements AbstractBaseService<DTO> {
+
+    public static final Pageable DEFAULT_PAGEABLE = PageRequest.of(Query.DEFAULT_CURRENT_PAGE, Query.DEFAULT_PAGE_SIZE);
 
     private DAO repository;
 
@@ -34,7 +40,7 @@ public abstract class AbstractBaseServiceImpl<DTO, DAO extends AbstractBaseRepos
     }
 
     @Override
-    public boolean save(Set<DTO> set) {
+    public boolean save(Collection<DTO> set) {
         repository.saveAll(set);
         return true;
     }
@@ -75,5 +81,12 @@ public abstract class AbstractBaseServiceImpl<DTO, DAO extends AbstractBaseRepos
     public DTO query(String idx) {
         DTO dto = (DTO) repository.getOne(idx);
         return dto;
+    }
+
+    @Override
+    public Page<DTO> queryWithPage(Query params) {
+        Pageable pageable = PageRequest.of(params.getCurrentPage(), params.getPageSize());
+        Page<DTO> page = repository.findAll(pageable);
+        return page;
     }
 }

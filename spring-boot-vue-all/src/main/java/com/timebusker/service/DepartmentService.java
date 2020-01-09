@@ -5,6 +5,7 @@ import com.timebusker.repository.DepartmentRepository;
 import com.timebusker.utils.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -26,18 +27,4 @@ public class DepartmentService extends AbstractBaseServiceImpl<DepartmentEntity,
         this.setRepository(departmentRepository);
     }
 
-    @Override
-    public DepartmentEntity queryByParams(Query params) {
-        return null;
-    }
-
-    @Override
-    public List<DepartmentEntity> query(Query params) {
-        return null;
-    }
-
-    @Override
-    public Page<DepartmentEntity> query(Query params, Pageable pageable) {
-        return null;
-    }
 }

@@ -1,0 +1,103 @@
+<el-container style="width: 100%;height: 100%;background: white;">
+    <el-row style="width: 100%;height: 100%;margin: 0 auto" :gutter="8">
+        <el-col :span="5" style="height: 100%;margin: 0 auto;outline:solid grey thin;overflow: hidden">
+            <el-row style="width: 100%">
+                <el-select v-model="systemId" filterable placeholder="请选择系统筛选菜单" style="width: 100%" @change="queryMenuTree">
+                    <el-option v-for="(item,index) in systemData" :key="item.id" :label="item.name" :value="item.id"/>
+                </el-select>
+            </el-row>
+            <el-row style="width: 100%">
+                <el-tree :data="treeData" default-expand-all show-checkbox node-key="id" ref="tree" :expand-on-click-node="false"
+                         @node-click="updateTable" highlight-current style="font-size: 14px" :props="treeProps">
+                    <!-- node:当前节点数据，data：当前节点对象数据 -->
+                    <template slot-scope="{node,data}">
+                        <span style="display: inline-block;margin: 3px"><i :class="data.icon" style="display: inline-block;margin: 3px"></i>{{ data.name }}</span>
+                    </template>
+                </el-tree>
+            </el-row>
+        </el-col>
+        <el-col :span="18" style="height: 100%;margin: 0 auto;border-radius: 4px" v-show="treeData.length>0">
+            <el-row style="height: 60px;line-height: 60px;width: 100%;">
+                <el-button type="primary" icon="el-icon-plus" style="float: left;margin-top: 10px;margin-left: 30px" round size="small" @click="addMenu('新增菜单')">
+                    新增菜单
+                </el-button>
+                <el-button type="danger" icon="el-icon-delete" style="float: left;margin-top: 10px" round size="small">
+                    批量删除
+                </el-button>
+            </el-row>
+            <el-row style="width: 100%;height: auto">
+                <el-table :data="tableData" stripe style="width: 100%">
+                    <el-table-column prop="id" label="编号" width="200" show-overflow-tooltip/>
+                    <el-table-column prop="name" label="名称" width="180"/>
+                    <el-table-column prop="icon" label="ICON" width="150"/>
+                    <el-table-column prop="disabled" label="状态" width="100">
+                        <template slot-scope="data">
+                            <el-tag effect="dark" type="warning" v-if="data.row.disabled==true" size="small">
+                                不可用
+                            </el-tag>
+                            <el-tag effect="dark" type="success" v-else size="small">
+                                可用
+                            </el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="template" label="组件名称" width="150" show-overflow-tooltip>
+                        <template slot-scope="data">
+                            <span v-if="data.row.template != ''">{{ data.row.template }}</span>
+                            <span v-else> -- </span>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="type" label="类型" width="120">
+                        <template slot-scope="data">
+                            <el-tag size="small">{{ data.row.type }}</el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="url" label="URL" min-width="150" show-overflow-tooltip/>
+                    <el-table-column prop="id" label="操作" min-width="200">
+                        <template slot-scope="scope">
+                            <el-button type="text" size="small" @click="addChildMenu(scope.row,'新增子菜单')"><i class="el-icon-plus"></i>新增子菜单</el-button>
+                            <el-button type="text" size="small" @click="editMenu(scope.row,'修改菜单')"><i class="el-icon-edit"></i>编辑</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </el-row>
+        </el-col>
+        <el-dialog :title="dialogTitle" :visible.sync="dialogVisible" width="30%" :before-close="closeDialog">
+            <el-form ref="form" :model="menu" label-width="100px">
+                <el-form-item label="菜单名称">
+                    <el-input v-model="menu.name"></el-input>
+                </el-form-item>
+                <el-form-item label="菜单ICON">
+                    <el-input v-model="menu.icon"></el-input>
+                </el-form-item>
+                <el-form-item label="菜单排序">
+                    <el-input v-model="menu.sort"></el-input>
+                </el-form-item>
+                <el-form-item label="菜单组件">
+                    <el-input v-model="menu.template"></el-input>
+                </el-form-item>
+                <el-form-item label="菜单类型">
+                    <el-select style="float: left;" v-model="menu.type" placeholder="请选择">
+                        <el-option key="menu" name="菜单" value="menu"/>
+                        <el-option key="point" name="按钮" value="point"/>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="菜单打开方式">
+                    <el-select style="float: left;" v-model="menu.target" placeholder="请选择">
+                        <el-option key="view_window" name="新窗口" value="view_window"/>
+                        <el-option key="view_frame" name="本窗口" value="view_frame"/>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="菜单URL">
+                    <el-input v-model="menu.url"></el-input>
+                </el-form-item>
+                <el-form-item label="是否可用">
+                    <el-switch style="float: left;margin-left: 30px;line-height:30px;height: 30px" v-model="menu.disabled" active-text="不可用" inactive-text="可用"></el-switch>
+                </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="closeDialog" size="small">取 消</el-button>
+                <el-button type="primary" @click="saveMenu" size="small">确 定</el-button>
+            </span>
+        </el-dialog>
+    </el-row>
+</el-container>

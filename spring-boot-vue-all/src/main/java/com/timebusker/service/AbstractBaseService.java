@@ -2,10 +2,9 @@ package com.timebusker.service;
 
 import com.timebusker.utils.Query;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @Description: AbstractBaseService
@@ -14,7 +13,7 @@ import java.util.Set;
  **/
 public interface AbstractBaseService<DTO> {
 
-    boolean save(Set<DTO> set);
+    boolean save(Collection<DTO> set);
 
     boolean save(DTO dto);
 
@@ -28,10 +27,5 @@ public interface AbstractBaseService<DTO> {
 
     DTO query(String idx);
 
-    DTO queryByParams(Query params);
-
-    List<DTO> query(Query params);
-
-    Page<DTO> query(Query params, Pageable pageable);
-
+    Page<DTO> queryWithPage(Query params);
 }

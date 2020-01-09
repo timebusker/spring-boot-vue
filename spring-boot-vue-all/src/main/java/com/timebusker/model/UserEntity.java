@@ -32,6 +32,7 @@ public class UserEntity implements Serializable {
     private String nickName;
     private String loginName;
     private String telNumber;
+    private String password;
     private String address;
     private boolean disabled = false;
     @DateTimeFormat(pattern = DateUtil.PATTERN_DATETIME)

@@ -5,6 +5,7 @@ import com.timebusker.repository.OperationRepository;
 import com.timebusker.utils.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -24,20 +25,5 @@ public class OperationLogService extends AbstractBaseServiceImpl<OperationEntity
     @Override
     protected void instance() {
         this.setRepository(operationRepository);
-    }
-
-    @Override
-    public OperationEntity queryByParams(Query params) {
-        return null;
-    }
-
-    @Override
-    public List<OperationEntity> query(Query params) {
-        return null;
-    }
-
-    @Override
-    public Page<OperationEntity> query(Query params, Pageable pageable) {
-        return null;
     }
 }

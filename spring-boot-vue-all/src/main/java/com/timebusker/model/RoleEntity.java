@@ -27,6 +27,7 @@ public class RoleEntity implements Serializable, Comparable<RoleEntity> {
     @GenericGenerator(name = "idGenerator", strategy = "com.timebusker.utils.IdGeneratorUtil")
     private String id;
     private String name;
+    private String symbol;
     private String icon;
     private boolean status;
     private String description;

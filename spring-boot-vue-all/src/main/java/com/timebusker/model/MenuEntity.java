@@ -31,11 +31,12 @@ public class MenuEntity implements Serializable, Comparable<MenuEntity> {
     private String id;
     private String systemId;
     private String parentId;
-    private String icon;
+    private String icon = "el-icon-star-on";
     private String name;
     private String url = "#";
     private String template;
-    private String type = "";
+    private String type;
+    private String target;
     private boolean disabled = false;
     private int sort;
     @DateTimeFormat(pattern = DateUtil.PATTERN_DATETIME)

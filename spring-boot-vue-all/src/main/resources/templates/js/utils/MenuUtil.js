@@ -26,13 +26,14 @@ function formatRoutes(menus) {
             url,
             template,
             type,
+            target,
             disabled,
             sort,
             updateTime,
             updateUserId,
             children,
         } = menu;
-        if (type === "view_frame") {
+        if (target === "view_frame") {
             if (template != '') {
                 let fmtRouter = {
                     path: url,
@@ -58,7 +59,7 @@ function formatRoutes(menus) {
 function getMenus() {
     let menus = [];
     $.post({
-        url: "/menus",
+        url: "home/menu",
         dataType: "json",
         async: false,
         success: function (r) {

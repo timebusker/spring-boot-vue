@@ -5,6 +5,7 @@ import com.timebusker.repository.UserRepository;
 import com.timebusker.utils.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -27,17 +28,11 @@ public class UserService extends AbstractBaseServiceImpl<UserEntity, UserReposit
     }
 
     @Override
-    public UserEntity queryByParams(Query params) {
-        return null;
-    }
-
-    @Override
-    public List<UserEntity> query(Query params) {
-        return null;
-    }
-
-    @Override
-    public Page<UserEntity> query(Query params, Pageable pageable) {
-        return null;
+    public boolean save(UserEntity userEntity) {
+        if (userEntity.getId() == null) {
+            String password = userEntity.getPassword();
+            userEntity.setPassword(password);
+        }
+        return super.save(userEntity);
     }
 }

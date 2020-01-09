@@ -5,6 +5,7 @@ import com.timebusker.repository.SystemRepository;
 import com.timebusker.utils.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -28,22 +29,11 @@ public class SystemService extends AbstractBaseServiceImpl<SystemEntity, SystemR
         this.setRepository(systemRepository);
     }
 
-    @Override
-    public SystemEntity queryByParams(Query params) {
-        return null;
-    }
-
-    @Override
     public List<SystemEntity> query(Query params) {
         List<SystemEntity> list = new ArrayList<>();
         if (params == null || params.isEmpty()) {
             list = systemRepository.findAll(systemRepository.sort);
         }
         return list;
-    }
-
-    @Override
-    public Page<SystemEntity> query(Query params, Pageable pageable) {
-        return null;
     }
 }

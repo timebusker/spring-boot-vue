@@ -15,8 +15,6 @@ import javax.persistence.EntityManager;
 @Repository
 public class SystemRepository extends AbstractBaseRepository<SystemEntity, String> {
 
-    public static Sort sort;
-
     public SystemRepository(EntityManager em) {
         super(SystemEntity.class, em);
         sort = new Sort(Sort.Direction.ASC, "name");

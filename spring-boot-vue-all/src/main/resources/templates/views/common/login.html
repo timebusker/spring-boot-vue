@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>spring-boot-vue</title>
+    <!-- 统一样式表引入 -->
+    <!--重置基础样式-->
+    <link href="/css/common/reset.css" rel="stylesheet">
+    <!--当前页面样式表-->
+    <link href="/css/index.css" rel="stylesheet">
+
+    <!--JS库导入-->
+    <!--Vue组件-->
+    <script src="/libs/vue-2.5.2/vue.js"></script>
+    <!--ElementUI-->
+    <link rel="stylesheet" href="/libs/element-ui-2.11.0/theme-chalk/index.css">
+    <script src="/libs/element-ui-2.11.0/index.js"></script>
+    <!--JQuery-->
+    <script src="/libs/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<!--element-UI必须初始化Vue实例才生效-->
+<el-container id="app">
+    <el-container class="login-body">
+        <el-container class="login-container">
+            <el-col class="login-form">
+                <el-row style="margin: 0;padding:10px;height: 60px;line-height: 40px;background: #ffffff">
+                    <span style="font-size: 20px;font-weight: 600;color: #3a8ee6">系统管理员登录</span>
+                </el-row>
+                <el-row style="background: #ffff">
+                    <el-form ref="form" :model="loginForm" label-width="20px" style="width: 80%;margin:0 auto">
+                        <el-form-item>
+                            <el-input v-model="loginForm.loginName" placeholder="请输入账户/手机号/会员ID" clearable/>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-input v-model="loginForm.password" placeholder="请输入账户登录密码" show-password clearable/>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-row>
+                                <el-col style="display: inline-block;width: 60%;float: left;">
+                                    <el-input v-model="loginForm.code" placeholder="请输入图形验证码" clearable style=""/>
+                                </el-col>
+                                <el-col style="display: inline-block;width: 35%;float: right;">
+                                    <el-image src="/auth/code" style="height: 40px">
+                                        <div slot="error" class="image-slot">
+                                            <i class="el-icon-picture-outline"></i>
+                                        </div>
+                                    </el-image>
+                                </el-col>
+                            </el-row>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-checkbox v-model="loginForm.rememberMe" checked style="float: left">自动登录</el-checkbox>
+                            <el-button type="text">忘记密码？</el-button>
+                            <el-button type="primary" @click="login">登录</el-button>
+                        </el-form-item>
+                    </el-form>
+                </el-row>
+                <el-row style="position: absolute;bottom: 5vh;text-align: center;color: red;margin: 10px;width: 100%;height: auto">
+                    <span style="display: inline-block">在线测试系统 Copyright ©timebusker.top All Rights Reserved</span>
+                </el-row>
+            </el-col>
+        </el-container>
+    </el-container>
+</el-container>
+<!--本页面根组件，放在最后加载-->
+<script type="text/javascript" src="/js/common/login.js"></script>
+</body>
+</html>

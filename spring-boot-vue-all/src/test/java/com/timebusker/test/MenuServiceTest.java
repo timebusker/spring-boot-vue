@@ -45,15 +45,15 @@ public class MenuServiceTest {
     public void test2() {
         MenuEntity menu1 = new MenuEntity();
         menu1.setDisabled(false);
-        menu1.setIcon("###");
-        menu1.setName("菜单管理");
+        menu1.setIcon("el-icon-eleme");
+        menu1.setName("系统配置");
         menu1.setParentId("M_1208626369043501058");
-        menu1.setSort(1);
+        menu1.setSort(2);
         menu1.setSystemId("M_1208608669512634368");
-        menu1.setTemplate("menuView");
+        menu1.setTemplate("configView");
         menu1.setType("子菜单");
         menu1.setUpdateTime(LocalDateTime.now());
-        menu1.setUrl("/menu/list");
+        menu1.setUrl("/config/list");
         menu1.setUpdateUserId("admin");
         menuService.save(menu1);
     }
