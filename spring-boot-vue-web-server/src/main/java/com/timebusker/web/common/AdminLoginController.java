@@ -1,13 +1,12 @@
 package com.timebusker.web.common;
 
-import com.alibaba.fastjson.JSON;
 import com.timebusker.common.web.ResultVo;
 import com.timebusker.constant.CommonKey;
 import com.timebusker.service.cache.SysUserKey;
 import com.timebusker.service.common.SysUserService;
 import com.timebusker.utils.MD5Utils;
 import com.timebusker.web.AbstractBaseController;
-import com.timebusker.web.vo.UserVo;
+import com.timebusker.model.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -13,6 +13,9 @@ const userView = Vue.component("userView", function (resolve) {
                     dialogVisible: false,
                     dialogTitle: "",
                     user: {},
+                    authDialogVisible: false,
+                    authDialogTitle: '',
+                    authTreeData: [],
                 }
             },
             created: function () {
@@ -22,7 +25,65 @@ const userView = Vue.component("userView", function (resolve) {
 
             },
             methods: {
-                authUser() {
+                saveAuth() {
+                    let res = this.$refs.tree.getCheckedKeys()
+                    let _this = this;
+                    $.post({
+                        url: "user/auth",
+                        methods: "post",
+                        contentType: 'application/json;charset=utf-8',
+                        data: JSON.stringify({
+                            roleIds: res,
+                            userId: _this.user.id,
+                        }),
+                        success: function (res) {
+                            _this.authDialogVisible = false;
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(XMLHttpRequest, textStatus, errorThrown);
+                            _this.$message.error('角色授权失败！');
+                        }
+                    })
+                },
+                cancelAuth() {
+                    this.authDialogTitle = "";
+                    this.authDialogVisible = false;
+                },
+                authUser(data) {
+                    this.user = data;
+                    this.authDialogTitle = data.nickName + "(" + data.loginName + ") 用户授权";
+                    this.authDialogVisible = true;
+                    this.queryRole();
+                    let _this = this;
+                    $.post({
+                        url: "user/authorized",
+                        methods: "post",
+                        dataType: "json",
+                        data: data,
+                        success: function (res) {
+                            _this.$refs.tree.setCheckedKeys(res.data,true)
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                            this.$message.error('查询权限信息失败！');
+                        }
+                    })
+                },
+                queryRole() {
+                    let _this = this;
+                    $.post({
+                        url: "role/all",
+                        methods: "post",
+                        dataType: "json",
+                        data: {},
+                        success: function (res) {
+                            _this.authTreeData = res.data;
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log(textStatus, errorThrown);
+                            this.$message.error('查询权限信息失败！');
+                        }
+                    })
                 },
                 handleCurrentChange(value) {
                     this.currentPage = value;

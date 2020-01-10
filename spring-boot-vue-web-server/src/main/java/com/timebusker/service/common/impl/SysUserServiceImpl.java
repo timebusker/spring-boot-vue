@@ -7,13 +7,11 @@ import com.timebusker.model.common.SysUser;
 import com.timebusker.service.cache.SysUserKey;
 import com.timebusker.service.common.SysUserService;
 import com.timebusker.utils.MD5Utils;
-import com.timebusker.web.vo.UserVo;
+import com.timebusker.model.vo.UserVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
-
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @DESC:SysUserServiceImpl

@@ -2,8 +2,10 @@ package com.timebusker.config;
 
 import com.timebusker.security.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -11,10 +13,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import javax.sql.DataSource;
+
+import static javafx.scene.input.KeyCode.O;
 
 /**
  * @Description: SecurityConfig 安全控制配置
@@ -59,6 +64,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private DataSource dataSource;
 
     /**
+     * 权限不足异常处理
+     */
+    @Autowired
+    private CustomAccessDeniedHandler accessDeniedHandler;
+
+    @Autowired
+    private CustomFilterInvocationSecurityMetadataSource invocationSecurityMetadataSource;
+    @Autowired
+    private CustomAccessDecisionManager accessDecisionManager;
+
+    /**
+     * 系统登出处理器
+     */
+    @Autowired
+    private CustomLogoutSuccessHandler logoutSuccessHandler;
+
+    /**
      * 设置权限授权控制信息
      *
      * @param http
@@ -69,6 +91,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 //开启登录配置
                 .authorizeRequests()
+                .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+                    @Override
+                    public <O extends FilterSecurityInterceptor> O postProcess(O object) {
+                        object.setAccessDecisionManager(accessDecisionManager);
+                        object.setSecurityMetadataSource(invocationSecurityMetadataSource);
+                        return object;
+                    }
+                })
                 // 验证码允许响应所有请求
                 .antMatchers("/auth/code").permitAll()
                 // 其他接口，登录之后就能访问
@@ -88,7 +118,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/auth/logout").clearAuthentication(true).deleteCookies("rememberMe").invalidateHttpSession(true).logoutSuccessUrl("/auth/login")
-                .logoutSuccessHandler(new CustomLogoutSuccessHandler())
+                .logoutSuccessHandler(logoutSuccessHandler)
                 .permitAll()
                 .and()
                 .httpBasic()
@@ -107,6 +137,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .maximumSessions(1).maxSessionsPreventsLogin(false).expiredSessionStrategy(new CustomExpiredSessionStrategy());
         // 关闭CSRF跨域
         http.csrf().disable();
+        // security异常处理
+        http.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
 
     /**

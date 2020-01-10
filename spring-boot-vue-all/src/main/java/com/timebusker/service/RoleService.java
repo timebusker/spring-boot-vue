@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,5 +27,11 @@ public class RoleService extends AbstractBaseServiceImpl<RoleEntity, RoleReposit
     @Override
     protected void instance() {
         this.setRepository(roleRepository);
+    }
+
+    public List<RoleEntity> queryAll() {
+        List<RoleEntity> list = new ArrayList<>();
+        list = roleRepository.findAll();
+        return list;
     }
 }

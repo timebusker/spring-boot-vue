@@ -1,8 +1,10 @@
 package com.timebusker.test;
 
+import com.alibaba.fastjson.JSON;
 import com.timebusker.model.RoleEntity;
 import com.timebusker.model.UserEntity;
 import com.timebusker.repository.RoleRepository;
+import com.timebusker.repository.RoleResourceRepository;
 import com.timebusker.repository.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +24,10 @@ import java.time.LocalDateTime;
 public class RoleRepositoryTest {
 
     @Autowired
-    private RoleRepository repository;
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private RoleResourceRepository roleResourceRepository;
 
     @Test
     public void test1() {
@@ -32,6 +37,17 @@ public class RoleRepositoryTest {
         role.setName("超级管理员");
         role.setStatus(true);
         role.setUpdateTime(LocalDateTime.now());
-        repository.save(role);
+        roleRepository.save(role);
+    }
+
+    @Test
+    public void test2() {
+        System.err.println(JSON.toJSONString(roleResourceRepository.findAllPermission().size()));
+        System.err.println(JSON.toJSONString(roleResourceRepository.findAllPermission()));
+    }
+
+    @Test
+    public void test3() {
+        System.err.println(JSON.toJSONString(roleRepository.queryByUserId("M_1214168112337915904")));
     }
 }

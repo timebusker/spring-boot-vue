@@ -5,7 +5,7 @@ import com.timebusker.mapper.shop.ShopGoodsMapper;
 import com.timebusker.model.shop.ShopGoods;
 import com.timebusker.service.AbstractBaseService;
 import com.timebusker.service.shop.ShopGoodsService;
-import com.timebusker.web.vo.QueryParamsVo;
+import com.timebusker.model.vo.QueryParamsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

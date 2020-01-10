@@ -1,5 +1,7 @@
 package com.timebusker.common.web;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +11,7 @@ import java.util.Map;
  * @author:timebusker
  * @date:2019/3/14
  */
+@Data
 public class ResultVO extends HashMap<String, Object> implements Serializable {
 
     public ResultVO() {

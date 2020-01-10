@@ -1,6 +1,7 @@
 package com.timebusker.service;
 
 import com.timebusker.model.RoleResourceEntity;
+import com.timebusker.model.vo.RolePermissionVO;
 import com.timebusker.repository.RoleResourceRepository;
 import com.timebusker.utils.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Description: RoleResourceService
@@ -39,5 +38,15 @@ public class RoleResourceService extends AbstractBaseServiceImpl<RoleResourceEnt
     public boolean save(Collection<RoleResourceEntity> collection) {
         roleResourceRepository.deleteByRoleId(collection.iterator().next().getIdx().getRoleId());
         return super.save(collection);
+    }
+
+    public List<RolePermissionVO> getPermission() {
+        List<RolePermissionVO> list = roleResourceRepository.findAllPermission();
+        return list;
+    }
+
+    public List<RolePermissionVO> getPermission(Set<String> roleIds) {
+        List<RolePermissionVO> list = roleResourceRepository.findAllPermission(roleIds);
+        return list;
     }
 }

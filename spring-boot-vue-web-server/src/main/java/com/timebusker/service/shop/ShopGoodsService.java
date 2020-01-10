@@ -1,7 +1,7 @@
 package com.timebusker.service.shop;
 
 import com.timebusker.model.shop.ShopGoods;
-import com.timebusker.web.vo.QueryParamsVo;
+import com.timebusker.model.vo.QueryParamsVo;
 
 import java.util.List;
 

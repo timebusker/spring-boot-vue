@@ -4,7 +4,7 @@ import com.timebusker.common.web.ResultVo;
 import com.timebusker.model.shop.ShopGoods;
 import com.timebusker.service.shop.ShopGoodsService;
 import com.timebusker.web.AbstractBaseController;
-import com.timebusker.web.vo.QueryParamsVo;
+import com.timebusker.model.vo.QueryParamsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

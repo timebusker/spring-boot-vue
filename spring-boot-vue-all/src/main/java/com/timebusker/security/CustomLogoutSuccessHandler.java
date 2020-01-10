@@ -2,6 +2,7 @@ package com.timebusker.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import java.io.PrintWriter;
  * @Author: Administrator
  * @Date: 2020/1/7 15:41
  **/
+@Component
 public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 
     @Override

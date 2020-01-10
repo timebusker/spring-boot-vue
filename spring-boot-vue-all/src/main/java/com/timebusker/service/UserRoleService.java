@@ -8,7 +8,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -25,5 +28,18 @@ public class UserRoleService extends AbstractBaseServiceImpl<UserRoleEntity, Use
     @Override
     protected void instance() {
         this.setRepository(userRoleRepository);
+    }
+
+    public List<String> query(Query params) {
+        List<String> list = new ArrayList<>();
+        list = userRoleRepository.findByUserId(params.get("userId").toString());
+        return list;
+    }
+
+    @Override
+    @Transactional
+    public boolean save(Collection<UserRoleEntity> set) {
+        userRoleRepository.deleteByUserId(set.iterator().next().getIdx().getUserId());
+        return super.save(set);
     }
 }

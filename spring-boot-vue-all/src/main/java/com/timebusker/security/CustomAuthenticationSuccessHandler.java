@@ -1,5 +1,7 @@
 package com.timebusker.security;
 
+import com.timebusker.common.web.ResultVO;
+import com.timebusker.utils.HttpServletUtil;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
@@ -19,5 +21,6 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         System.err.println("\t\t\t登录认证成功！");
+        HttpServletUtil.writeJson(response, ResultVO.ok("登录认证成功"));
     }
 }

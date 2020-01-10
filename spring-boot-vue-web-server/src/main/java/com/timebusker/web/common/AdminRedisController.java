@@ -3,7 +3,7 @@ package com.timebusker.web.common;
 import com.timebusker.common.redis.RedisService;
 import com.timebusker.common.web.ResultVo;
 import com.timebusker.web.AbstractBaseController;
-import com.timebusker.web.vo.RedisVo;
+import com.timebusker.model.vo.RedisVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

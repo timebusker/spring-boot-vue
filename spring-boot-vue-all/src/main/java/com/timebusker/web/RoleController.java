@@ -44,6 +44,12 @@ public class RoleController extends AbstractBaseController {
                 .put("pageSize", query.getPageSize());
     }
 
+    @RequestMapping("/all")
+    public ResultVO all() {
+        List<RoleEntity> list = roleService.queryAll();
+        return ResultVO.ok().put("data", list);
+    }
+
     @RequestMapping("/save")
     public ResultVO save(RoleEntity role) {
         role.setUpdateTime(LocalDateTime.now());

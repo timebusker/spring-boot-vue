@@ -1,4 +1,4 @@
-package com.timebusker.web.vo;
+package com.timebusker.model.vo;
 
 import java.io.Serializable;
 

@@ -72,4 +72,21 @@
                 <el-button type="primary" @click="saveUser" size="small">确 定</el-button>
             </span>
     </el-dialog>
+    <el-dialog :title="authDialogTitle" :visible.sync="authDialogVisible" width="30%" :before-close="cancelAuth">
+        <div style="height: auto;width:100%; margin: 0 auto;max-height: 800px">
+            <el-row style="width: 100%">
+                <el-tree :data="authTreeData" show-checkbox node-key="id" ref="tree" :expand-on-click-node="false" accordion
+                         highlight-current style="font-size: 14px">
+                    <!-- node:当前节点数据，data：当前节点对象数据 -->
+                    <template slot-scope="{node,data}">
+                        <span style="display: inline-block;margin: 3px"><i :class="data.icon" style="display: inline-block;margin: 3px"></i>{{ data.name }}</span>
+                    </template>
+                </el-tree>
+            </el-row>
+        </div>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="cancelAuth" size="small">取 消</el-button>
+            <el-button type="primary" @click="saveAuth" size="small">保 存</el-button>
+        </div>
+    </el-dialog>
 </el-container>

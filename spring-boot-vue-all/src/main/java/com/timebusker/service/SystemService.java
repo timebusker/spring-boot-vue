@@ -32,7 +32,7 @@ public class SystemService extends AbstractBaseServiceImpl<SystemEntity, SystemR
     public List<SystemEntity> query(Query params) {
         List<SystemEntity> list = new ArrayList<>();
         if (params == null || params.isEmpty()) {
-            list = systemRepository.findAll(systemRepository.sort);
+            list = systemRepository.findAll(systemRepository.setSort());
         }
         return list;
     }

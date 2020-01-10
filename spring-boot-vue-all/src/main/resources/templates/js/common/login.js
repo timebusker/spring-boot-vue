@@ -2,7 +2,7 @@ let vm = new Vue({
     el: '#app',
     data: {
         loginForm: {
-            loginName:'timebusker',
+            loginName: 'timebusker',
             password: '123',
         },
     },
@@ -17,6 +17,7 @@ let vm = new Vue({
             $.post({
                 url: "/auth/process",
                 methods: "post",
+                dataType: 'json',
                 data: {
                     loginName: _this.loginForm.loginName,
                     password: _this.loginForm.password,
@@ -36,7 +37,7 @@ let vm = new Vue({
                     // 5、URL路径问题： 路径不能有中文
                     // 异常捕获主要打印：textStatus（错误原因）
                     console.log(XMLHttpRequest, textStatus, errorThrown);
-                    _this.$message.error('登录失败！');
+                    _this.$message.error(textStatus);
                 }
             })
         },
